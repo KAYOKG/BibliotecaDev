@@ -1,6 +1,6 @@
 # Categorias:
 
-## Desenvolvimento ágil:
+## Desenvolvimento Ágil:
 
 * Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio - Autor (Casa do Código)
 
