@@ -1,7 +1,7 @@
 # Desenvolvimento Pessoal e Autoajuda
 
-- [x] 12 Regras para a Vida - Autor (Jordan B. Peterson)
-- [ ] A Bíblia para o Milhão de Dólares - Autor (Napoleon Hill)
+* 12 Regras para a Vida - Autor (Jordan B. Peterson)
+* A Bíblia para o Milhão de Dólares - Autor (Napoleon Hill)
 * A Ciência de Ficar Rico - Autor (Wallace D. Wattles)
 * A lei da atração - Autor (Rhonda Byrne)
 * A lei do Triunfo - Autor (Napoleon Hill)
