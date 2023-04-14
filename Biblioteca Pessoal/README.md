@@ -5,7 +5,7 @@
 * A Ciência de Ficar Rico - Autor (Wallace D. Wattles)
 * A lei da atração - Autor (Rhonda Byrne)
 * A lei do Triunfo - Autor (Napoleon Hill)
-* A Sabedoria do Dinheiro A ciência para conquistar riqueza com espiritualidade, consciência e segurança - Autor (Roberto Navarro)
+* A Sabedoria do Dinheiro - A ciência para conquistar riqueza com espiritualidade, consciência e segurança - Autor (Roberto Navarro)
 * A sutil arte de ligar o foda-se - Autor (Mark Manson)
 * A Triade Do Tempo - Autor (Christian Barbosa)
 * Arrume a sua Cama - Pequenas Atitudes, Grandes Mudanças - Autor (William H. McRaven)
