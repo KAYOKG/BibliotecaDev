@@ -70,8 +70,8 @@
 
 ## Entrevista e Preparação para Programação:
 
-* Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
-
 * TDD - Desenvolvimento Guiado por Testes - Autor (Ken Beck)
 
 * Programando em Go - Crie Aplicações com a Linguagem do Google - Autor (Casa do Código)
+
+* Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
