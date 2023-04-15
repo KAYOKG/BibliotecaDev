@@ -1,6 +1,6 @@
 # Categorias:
 
-## Desenvolvimento ágil:
+## Desenvolvimento Ágil:
 
 * Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio - Autor (Casa do Código)
 
@@ -13,18 +13,20 @@
 
 * Algoritmos - Teoria e Prática de Thomas Cormen - Autor (Thomas Cormen)
 
-* But How Do it Know - The Basic Principles of Computers for Everyone - Author (J. Clark Scott)
-
 * Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos - Autor (Aditya Y. Bhargava)
+
+* But How Do it Know - The Basic Principles of Computers for Everyone - Author (J. Clark Scott)
 
 
 ## Arquitetura de Software:
+
+* Introdução à arquitetura de design de software - Autor (Paulo Silveira)
 
 * Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software - Autor (Robert C. Martin)
 
 * Princípios de Design e Padrões de Projeto - Autor (Robert C. Martin)
 
-* Introdução à arquitetura de design de software - Autor (Paulo Silveira)
+* Refatoração - Aperfeiçoando o Design de Códigos Existentes - Autor (Martin Fowler)
 
 
 ## DevOps:
@@ -48,8 +50,6 @@
 
 * Domain-Driven Design Referência - Sumário de Padrões e Definições - Autor (Eric Evans)
 
-* Refatoração - Aperfeiçoando o Design de Códigos Existentes - Autor (Martin Fowler)
-
 * Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos - Autor (Erich Gamma)
 
 
@@ -70,8 +70,8 @@
 
 ## Entrevista e Preparação para Programação:
 
-* Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
-
 * TDD - Desenvolvimento Guiado por Testes - Autor (Ken Beck)
 
 * Programando em Go - Crie Aplicações com a Linguagem do Google - Autor (Casa do Código)
+
+* Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
