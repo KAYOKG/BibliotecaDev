@@ -13,8 +13,8 @@
 | • [Design de Software](#design-de-software) | Conceitos e práticas de design de software, como princípios de design, usabilidade, experiência do usuário (UX), interfaces de usuário, entre outros |
 | • [Carreira e Habilidades](#carreira-e-habilidades) | Habilidades profissionais, como liderança, gestão de projetos, comunicação, trabalho em equipe, entre outros, além de dicas e orientações para o desenvolvimento de carreira na área de programação |
 | • [Entrevista e Preparação para Programação](#entrevista-e-preparação-para-programação) | Dicas e orientações para entrevistas de emprego na área de programação, preparação para processos seletivos, práticas de resolução de problemas, entre outros |
-
-<h3 align="center"> Desenvolvimento Ágil </h3>
+#
+### Desenvolvimento Ágil
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
@@ -24,9 +24,8 @@
 |  | [Scrum - Gestão ágil para projetos de sucesso]() | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 |  | [Scrum 360 - Um guia completo e prático de agilidade]() | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 |  | [Test-Driven Development - Teste e Design no Mundo Real]() | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
-
 #
-<h3 align="center"> Algoritmos e Estruturas de Dados </h3>
+### Algoritmos e Estruturas de Dados
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
@@ -34,7 +33,7 @@
 | ![image](https://user-images.githubusercontent.com/98864503/232234730-f1d62b47-a3f4-4a0d-a254-ad6269406ceb.png) | [Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos](https://www.amazon.com.br/Entendendo-Algoritmos-Ilustrado-Programadores-Curiosos/dp/8575225634/ref=asc_df_8575225634/?tag=googleshopp00-20&linkCode=df0&hvadid=379765802639&hvpos=&hvnetw=g&hvrand=1342819995648808026&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1001578&hvtargid=pla-811121403561&psc=1) | Aditya Y. Bhargava | ![image](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 | ![image](https://user-images.githubusercontent.com/98864503/232234699-dcac2c5f-889a-4d14-9c3d-45276b7a2d27.png) | [But How Do it Know - The Basic Principles of Computers for Everyone](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/But%20How%20Do%20It%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone%20-%20Author%20(J.%20Clark%20Scott).pdf) | J. Clark Scott | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176386-56cfbf3a-27b5-40e6-bf86-892f8645cbc3.png) |
 #
-<h3 align="center"> Arquitetura de Software </h3>
+### Arquitetura de Software
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
@@ -45,7 +44,7 @@
 |  | [The Software Craftsman - Professionalism, Pragmatism, Pride](https://www.amazon.com.br/Software-Craftsman-Professionalism-Pragmatism-Pride/dp/0134052501) | Sandro Mancuso | ![image](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 |  | [Trabalho Eficaz com Código Legado](https://www.amazon.com.br/Trabalho-Eficaz-com-Código-Legado/dp/8582600321) | Michael C. Feathers | ![image](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 #
-<h3 align="center"> DevOps </h3>
+### DevOps
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
@@ -60,7 +59,7 @@
 |  | [NoSQL - Como armazenar os dados de uma aplicação moderna]() | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 | ![image](https://user-images.githubusercontent.com/98864503/232179119-5dd70194-190f-41da-9679-313a8e03865b.png)| [MongoDB - Construa Novas Aplicações com Novas Tecnologias](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/MongoDB%20-%20Construa%20Novas%20Aplicações%20com%20Novas%20Tecnologias%20-%20Autor%20(Casa%20do%20Código).pdf) | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 #
-<h3 align="center"> Design de Software </h3>
+### Design de Software
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
@@ -75,7 +74,7 @@
 |  | [UX e Usabilidade Aplicados em Mobile e Web]() | Caelum | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 |  | [Web Design Responsivo - Páginas adaptáveis para todos os dispositivos]() | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 #
-<h3 align="center"> Carreira e Habilidades </h3>
+### Carreira e Habilidades
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
@@ -94,7 +93,7 @@
 | ![image](https://user-images.githubusercontent.com/98864503/232179975-dabb0b93-bdf9-4f8b-8484-143969daeead.png)| [SEO Prático - Seu Site na Primeira Página das Buscas](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/SEO%20Prático%20-%20Seu%20Site%20na%20Primeira%20Página%20das%20Buscas%20-%20Autor%20(Casa%20do%20Código).pdf) | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 | ![image](https://user-images.githubusercontent.com/98864503/232179721-69f27d96-7bd0-4e32-8c36-98542af04ca6.png)| [The Mythical Man-Month Essays On Software Engineering](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering%20-%20Author%20(Frederick%20P.%20Brooks).pdf) | Frederick P. Brooks | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176386-56cfbf3a-27b5-40e6-bf86-892f8645cbc3.png) |
 #
-<h3 align="center"> Entrevista e Preparação para Programação </h3>
+### Entrevista e Preparação para Programação
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
@@ -102,9 +101,7 @@
 | ![image](https://user-images.githubusercontent.com/98864503/232176316-d53aafcf-8a3e-415d-850b-628ff8cf23bd.png) | [Programando em Go - Crie Aplicações com a Linguagem do Google](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Programando%20em%20Go%20-%20Crie%20Aplicações%20com%20a%20Linguagem%20do%20Google%20-%20Autor%20(Casa%20do%20Código).pdf) | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176545-aea4baa9-56f8-46a9-9988-250682675a81.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 | ![image](https://user-images.githubusercontent.com/98864503/232179318-1820a64c-1a6e-4e8f-8b87-9b7e138e581c.png) | [Cracking the Coding Interview - 189 Programming Questions and Solutions](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions%20-%20Author%20(Gayle%20Laakmann%20McDowell).pdf) | Gayle Laakmann McDowell | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176386-56cfbf3a-27b5-40e6-bf86-892f8645cbc3.png) |
 #
-<h3 align="center"> </h3> LEGENDA
-<div align="center">
-<div width="50%">
+### LEGENDA
 
 | STATUS | DESCRIÇÃO |
 | - | - |
@@ -112,11 +109,3 @@
 | ![image](https://user-images.githubusercontent.com/98864503/232176545-aea4baa9-56f8-46a9-9988-250682675a81.png) | Leitura em Andamento |
 | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | Livro no Repositório |
 | ![image](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | Livro Online |
-</div>
-<div width="50%">
-
-| S |
-| - |
-| [Desenvolvimento Ágil](#desenvolvimento-ágil) [Algoritmos e Estruturas de Dados](#algoritmos-e-estruturas-de-dados) [Arquitetura de Software](#arquitetura-de-software) [DevOps](#devops) [Design de Software](#design-de-software) [Carreira e Habilidades](#carreira-e-habilidades) [Entrevista e Preparação para Programação](#entrevista-e-preparação-para-programação) |
-</div>
-</div>
