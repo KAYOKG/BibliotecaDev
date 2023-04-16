@@ -8,7 +8,7 @@
 |------------|------------|
 | • [Desenvolvimento Ágil](#desenvolvimento-ágil) | Orientações práticas para implementar efetivamente práticas ágeis no desenvolvimento de software, visando entregas frequentes, valor de negócio e qualidade do código. |
 | • [Algoritmos e Estruturas de Dados](#algoritmos-e-estruturas-de-dados) | Fundamentos teóricos e práticos de algoritmos e estruturas de dados, essenciais para a resolução eficiente de problemas de programação |
-| • [Arquitetura de Software](#3arquitetura-de-software) | Princípios, conceitos e práticas relacionados à arquitetura de software, incluindo a estruturação, design e organização de sistemas de software |
+| • [Arquitetura de Software](#arquitetura-de-software) | Princípios, conceitos e práticas relacionados à arquitetura de software, incluindo a estruturação, design e organização de sistemas de software |
 | • [DevOps](#devops) | Práticas de integração e entrega contínua, automação de processos, gerenciamento de configuração e monitoramento em projetos de desenvolvimento de software |
 | • [Design de Software](#design-de-software) | Conceitos e práticas de design de software, como princípios de design, usabilidade, experiência do usuário (UX), interfaces de usuário, entre outros |
 | • [Carreira e Habilidades](#carreira-e-habilidades) | Habilidades profissionais, como liderança, gestão de projetos, comunicação, trabalho em equipe, entre outros, além de dicas e orientações para o desenvolvimento de carreira na área de programação |
