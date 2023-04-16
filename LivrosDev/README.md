@@ -4,9 +4,13 @@
 
 * Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio - Autor (Casa do Código)
 
+* BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle - Autor (John Ferguson Smart)
+
 * Código limpo - Habilidades práticas do Agile Software - Autor (Robert C. Martin)
 
-* BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle - Autor (John Ferguson Smart)
+* eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software - Autor (Casa do Código)
+
+* Métricas ágeis - Obtenha melhores resultados em sua equipe - Autor (Casa do Código)
 
 * Scrum - Gestão ágil para projetos de sucesso - Autor (Casa do Código)
 
@@ -14,24 +18,34 @@
 
 * Test-Driven Development - Teste e Design no Mundo Real - Autor (Casa do Código)
 
+* Testes Automatizados de Software - Um Guia Prático - Autor (Casa do Código)
+
 ## Algoritmos e Estruturas de Dados:
 
 * Algoritmos - Teoria e Prática de Thomas Cormen - Autor (Thomas Cormen)
 
+* But How Do it Know - The Basic Principles of Computers for Everyone - Author (J. Clark Scott)
+
 * Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos - Autor (Aditya Y. Bhargava)
 
-* But How Do it Know - The Basic Principles of Computers for Everyone - Author (J. Clark Scott)
+* Introdução a data science - Algoritmos de machine learning e métodos de análise - Autor (Casa do Código)
 
 
 ## Arquitetura de Software:
 
-* Introdução à arquitetura de design de software - Autor (Paulo Silveira)
-
 * Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software - Autor (Robert C. Martin)
+
+* Big Data - Técnicas e tecnologias para extração de valor dos dados - Autor (Casa do Código)
+
+* Business Intelligence - Implementar do jeito certo e a custo zero - Autor (Casa do Código)
+
+* Introdução à arquitetura de design de software - Autor (Paulo Silveira)
 
 * Princípios de Design e Padrões de Projeto - Autor (Robert C. Martin)
 
 * Refatoração - Aperfeiçoando o Design de Códigos Existentes - Autor (Martin Fowler)
+
+* SOA Aplicado - Integrando com web services e além - Autor (Casa do Código)
 
 * The Software Craftsman - Professionalism, Pragmatism, Pride - Autor (Sandro Mancuso)
 
@@ -40,28 +54,39 @@
 
 ## DevOps:
 
+* Amazon AWS - Descomplicando a computação na nuvem - Autor (Casa do Código)
+
 * Aplicações web real time com Node-js - Autor (Casa do Código)
+
+* Azure - Coloque suas plataformas e serviços no cloud - Autor (Casa do Código)
 
 * Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos - Autor (Casa do Código)
 
-* DevOps na Prática - Entrega de Software Confiável e Automatizada - Autor (Casa do Código)
+* Comunicação de Dados e Redes de Computadores - Autor (Behrouz A. Forouzan)
 
-* Jenkins - Automatize Tudo sem Complicações - Autor (Casa do Código)
-
-* Controlando Versões com Git e GitHub - Autor (Casa do Código)
+* Construindo API REST com Node JS - Autor (Casa do Código)
 
 * Containers com Docker - Do desenvolvimento à produção - Autor (Casa do Código)
 
-* Comunicação de Dados e Redes de Computadores - Autor (Behrouz A. Forouzan)
+* Controlando Versões com Git e GitHub - Autor (Casa do Código)
+
+* DevOps na Prática - Entrega de Software Confiável e Automatizada - Autor (Casa do Código)
 
 * Entrega contínua em Android - Como automatizar a distribuição de apps - Autor (Casa do Código)
 
-* NoSQL - Como armazenar os dados de uma aplicação moderna - Autor (Casa do Código)
+* Guia prático do servidor Linux - Administração Linux para iniciantes - Autor (Casa do Código)
+
+* Jenkins - Automatize Tudo sem Complicações - Autor (Casa do Código)
+
+* Kubernetes - Tudo sobre orquestração de contêineres - Autor (Casa do Código)
 
 * MongoDB - Construa Novas Aplicações com Novas Tecnologias - Autor (Casa do Código)
 
+* NoSQL - Como armazenar os dados de uma aplicação moderna - Autor (Casa do Código)
 
-## Design de Software:
+* REST - Construa API's inteligentes de maneira simples - Autor (Casa do Código)
+
+## Padrões e Design de Software:
 
 * A Web Mobile - Programe para um Mundo de Muitos Dispositivos - Autor (Casa do Código)
 
@@ -79,6 +104,8 @@
 
 * Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos - Autor (Erich Gamma)
 
+* Progressive web apps - Construa aplicações progressivas com React - Autor (Casa do Código)
+
 * UX e Usabilidade Aplicados em Mobile e Web - Autor (Caelum)
 
 * Web Design Responsivo - Páginas adaptáveis para todos os dispositivos - Autor (Casa do Código)
@@ -86,17 +113,19 @@
 
 ## Carreira e Habilidades:
 
+* A jornada do empreendedor - O herói da nossa Era - Autor (Casa do Código)
+
 * A Startup Enxuta- Autor (Eric Ries)
+
+* ABAP - O guia de Sobrevivência do Profissional Moderno - Autor (Casa do Código)
+
+* Antologia Brasil - Histórias de aprendizado e inovação - Autor (Casa do Código)
 
 * Começando com o Linux - Comandos, serviços e administração - Autor (Casa do Código)
 
 * Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código - Autor (Pete Goodliffe)
 
 * Direto ao Ponto - Criando produtos de forma enxuta - Autor (Casa do Código)
-
-* O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software - Autor (Casa do Código)
-
-* O Programador Pragmático - Autor (Andrew Hunt e David Thomas)
 
 * Fragmentos de um programador - Artigos e insights da carreira de um profissional - Autor (Casa do Código)
 
@@ -108,7 +137,13 @@
 
 * LEAN ENTERPRISE - Como empresas de alta performance inovam em escala - Autor (Casa do Código)
 
-* Secrets of a Buccaneer-Scholar Self-Education and the Pursuit of Passion - Autor (James Marcus Bach)
+* Learning 3.0 - Como os profissionais criativos aprendem - Autor (Casa do Código)
+
+* O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software - Autor (Casa do Código)
+
+* O Programador Pragmático - Autor (Andrew Hunt e David Thomas)
+
+* Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success - Autor (James Marcus Bach)
 
 * SEO Prático - Seu Site na Primeira Página das Buscas - Autor (Casa do Código)
 
@@ -117,8 +152,8 @@
 
 ## Entrevista e Preparação para Programação:
 
-* TDD - Desenvolvimento Guiado por Testes - Autor (Ken Beck)
+* Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
 
 * Programando em Go - Crie Aplicações com a Linguagem do Google - Autor (Casa do Código)
 
-* Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
+* TDD - Desenvolvimento Guiado por Testes - Autor (Ken Beck)
