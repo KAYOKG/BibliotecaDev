@@ -10,7 +10,7 @@
 | • [Algoritmos e Estruturas de Dados](#algoritmos-e-estruturas-de-dados) | Fundamentos teóricos e práticos de algoritmos e estruturas de dados, essenciais para a resolução eficiente de problemas de programação |
 | • [Arquitetura de Software](#arquitetura-de-software) | Princípios, conceitos e práticas relacionados à arquitetura de software, incluindo a estruturação, design e organização de sistemas de software |
 | • [DevOps](#devops) | Práticas de integração e entrega contínua, automação de processos, gerenciamento de configuração e monitoramento em projetos de desenvolvimento de software |
-| • [Design de Software](#design-de-software) | Conceitos e práticas de design de software, como princípios de design, usabilidade, experiência do usuário (UX), interfaces de usuário, entre outros |
+| • [Padrões e Design de Software](#design-de-software) | Conceitos e práticas de padrões e design de software, como princípios de design, usabilidade, experiência do usuário (UX), interfaces de usuário, padrões de projetos, entre outros |
 | • [Carreira e Habilidades](#carreira-e-habilidades) | Habilidades profissionais, como liderança, gestão de projetos, comunicação, trabalho em equipe, entre outros, além de dicas e orientações para o desenvolvimento de carreira na área de programação |
 | • [Entrevista e Preparação para Programação](#entrevista-e-preparação-para-programação) | Dicas e orientações para entrevistas de emprego na área de programação, preparação para processos seletivos, práticas de resolução de problemas, entre outros |
 #
@@ -73,7 +73,7 @@
 |  | [REST - Construa API's inteligentes de maneira simples]() | Casa do Código | ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 
 #
-### Design de Software
+### Padrões e Design de Software
 
 | TÓPICO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
