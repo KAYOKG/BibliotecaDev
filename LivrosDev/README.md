@@ -186,6 +186,8 @@
 
 * Extreme Programming Explained - Embrace Change - Autor (Kent Beck)
 
+* Implementando o Desenvolvimento Lean de Software - Do Conceito ao Dinheiro - Autor (Mary Poppendieck e Tom Poppendieck)
+
 * Real-World Kanban - Do Less, Accomplish More with Lean Thinking - Autor (Mattias Skarin)
 
 * Scaling Done Right - How to Achieve Business Agility with Scrum@Scale and Make the Competition Irrelevant - Autor (Gereon Hermkes e Luiz Quintela)
