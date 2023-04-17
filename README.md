@@ -1,6 +1,4 @@
-<h1 align="center">📚 • BibliotecaDev • 📚</h1>
-
-<p align="center">a vida se resume a não saber nada e agir mesmo assim</p>
+![Header](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/header.svg)
 
 <h2 align="center"> Súmario </h2>
 
