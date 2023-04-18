@@ -2,7 +2,7 @@
 
 ## Algoritmos e Estruturas de Dados:
 
-* Algoritmos - Teoria e Prática de Thomas Cormen - Autor (Thomas Cormen)
+* Algoritmos - Teoria e Prática - Autor (Thomas Cormen)
 
 * But How Do it Know - The Basic Principles of Computers for Everyone - Author (J. Clark Scott)
 
