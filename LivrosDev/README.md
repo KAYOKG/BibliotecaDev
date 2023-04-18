@@ -36,11 +36,9 @@
 
 * A jornada do empreendedor - O herói da nossa Era - Autor (Casa do Código)
 
-* A Startup Enxuta- Autor (Eric Ries)
+* A Startup Enxuta - Autor (Eric Ries)
 
 * ABAP - O guia de Sobrevivência do Profissional Moderno - Autor (Casa do Código)
-
-* Antologia Brasil - Histórias de aprendizado e inovação - Autor (Casa do Código)
 
 * Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman - Autor (Dave Hoover e Adewale Oshineye)
 
@@ -77,6 +75,8 @@
 * The Mythical Man-Month Essays On Software Engineering - Author (Frederick P. Brooks)
 
 * The Passionate Programmer - Creating a Remarkable Career in Software Development - Autor (Chad Fowler)
+
+* ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação - Autor (Casa do Código)
 
 ## Desenvolvimento Ágil:
 
