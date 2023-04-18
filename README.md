@@ -1,4 +1,4 @@
-![Header](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/header.svg)
+[![Header](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/header.svg)](https://github.com/KAYOKG)
 
 <h2 align="center"> Súmario </h2>
 
