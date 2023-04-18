@@ -14,7 +14,7 @@
 | • [Liderança e Gestão de Equipe](#liderança-e-gestão-de-equipe) | Princípios e práticas de liderança e gestão de equipes na área de programação, incluindo habilidades de liderança, motivação, gestão de conflitos, entre outros |
 | • [Metodologias Ágeis Avançadas](#metodologias-ágeis-avançadas) | Conceitos avançados e práticas de metodologias ágeis, como Scrum, Kanban, Lean, entre outros, e sua aplicação em projetos de desenvolvimento de software |
 | • [Padrões e Design de Software](#padrões-e-design-de-software) | Conceitos e práticas de padrões e design de software, como princípios de design, usabilidade, experiência do usuário (UX), interfaces de usuário, padrões de projetos, entre outros |
-#
+# teste
 ### Algoritmos e Estruturas de Dados
 
 | LIVRO | NOME | AUTOR |  STATUS | IDIOMA |
