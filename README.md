@@ -166,8 +166,6 @@
 #
 ### LEGENDA
 
-| STATUS | DESCRIÇÃO |
-| - | - |
-| ![image](https://user-images.githubusercontent.com/98864503/232177319-53ae3164-c4a4-443d-9e2f-4cc25431c8c8.png) | Leitura Completa |
-| ![image](https://user-images.githubusercontent.com/98864503/232176545-aea4baa9-56f8-46a9-9988-250682675a81.png) | Leitura em Andamento |
-| ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | Livro no Repositório |
+| Livro no Repositório | Leitura em Andamento | Leitura Completa |
+| - | - | - |
+| ![image](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![image](https://user-images.githubusercontent.com/98864503/232176545-aea4baa9-56f8-46a9-9988-250682675a81.png) | ![image](https://user-images.githubusercontent.com/98864503/232177319-53ae3164-c4a4-443d-9e2f-4cc25431c8c8.png) |
