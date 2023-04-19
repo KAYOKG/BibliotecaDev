@@ -20,6 +20,8 @@
 
 * Introdução à arquitetura de design de software - Autor (Paulo Silveira)
 
+* Oauth 2.0 Proteja Suas Aplicações Com O Spring Security Oauth2 - Autor (Casa do Código)
+
 * Princípios de Design e Padrões de Projeto - Autor (Robert C. Martin)
 
 * Refatoração - Aperfeiçoando o Design de Códigos Existentes - Autor (Martin Fowler)
@@ -118,6 +120,8 @@
 
 * Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos - Autor (Casa do Código)
 
+* Canivete suiço do desenvolvedor Node - Autor (Casa do Código)
+
 * Comunicação de Dados e Redes de Computadores - Autor (Behrouz A. Forouzan)
 
 * Construindo API REST com Node JS - Autor (Casa do Código)
@@ -160,9 +164,19 @@
 
 ## Entrevista e Preparação para Programação:
 
+* Aprofundando em Flutter - Desenvolva aplicações Dart com Widgets - Autor (Casa do Código)
+
 * Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
 
 * Front End Interview Handbook
+
+* Guia prático de TypeScript - Melhore suas aplicações JavaScript - Autor (Casa do Código)
+
+* Iniciando Com Flutter Framework - Desenvolva Aplicacoes Moveis No Dart Side - Autor (Casa do Código)
+
+* O guia de Dart - Fundamentos, prática, conceitos avançados e tudo mais - Autor (Casa do Código)
+
+* Primeiros passos com Node.js - Autor (Casa do Código)
 
 * Programando em Go - Crie Aplicações com a Linguagem do Google - Autor (Casa do Código)
 
