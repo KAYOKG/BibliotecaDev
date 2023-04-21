@@ -1,7 +1,0 @@
-- name: Markup Link Checker (mlc)
-  # You may pin to the exact commit or the version.
-  # uses: becheran/mlc@167bf1b19ffed2e5a3f31770ec1046e302d592fb
-  uses: becheran/mlc@v0.16.1
-  with:
-    # arguments
-    args: "https://github.com/KAYOKG/BibliotecaDev/blob/main/README.md"
