@@ -8,6 +8,8 @@
 
 * Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos - Autor (Aditya Y. Bhargava)
 
+*  Expressões Regulares - uma abordagem divertida - Autor (Aurelio Marinho)
+
 * Introdução a data science - Algoritmos de machine learning e métodos de análise - Autor (Casa do Código)
 
 ## Arquitetura de Software:
@@ -67,6 +69,10 @@
 * O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software - Autor (Casa do Código)
 
 * O Programador Pragmático - Autor (Andrew Hunt e David Thomas)
+
+* Por que Os Generalistas Vencem Em um Mundo de Especialistas - Autor(David Epstein)
+
+* Range - Why Generalists Triumph in a Specialized World - Autor(David Epstein)
 
 * Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success - Autor (James Marcus Bach)
 
@@ -156,6 +162,8 @@
 
 * Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition - Autor (Adkins Lyssa)
 
+* Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento - Autor(Software House)
+
 * More Agile Testing - Learning Journeys for the Whole Team - Autor (Lisa Crispin)
 
 * Sprint - Autor (Jake Knapp)
@@ -169,6 +177,8 @@
 * Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
 
 * Front End Interview Handbook
+
+* Go Programming Language For Dummies - Autor (John Wiley)
 
 * Guia prático de TypeScript - Melhore suas aplicações JavaScript - Autor (Casa do Código)
 
@@ -205,6 +215,8 @@
 * Real-World Kanban - Do Less, Accomplish More with Lean Thinking - Autor (Mattias Skarin)
 
 * Scaling Done Right - How to Achieve Business Agility with Scrum@Scale and Make the Competition Irrelevant - Autor (Gereon Hermkes e Luiz Quintela)
+
+* The Cambridge Handbook of the Learning Sciences - Autor(R. Keith Sawyer)
 
 
 ## Padrões e Design de Software:
