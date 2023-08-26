@@ -62,8 +62,6 @@
 
 * Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi - Autor (Casa do Código)
 
-* LEAN ENTERPRISE - Como empresas de alta performance inovam em escala - Autor (Casa do Código)
-
 * Learning 3.0 - Como os profissionais criativos aprendem - Autor (Casa do Código)
 
 * O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software - Autor (Casa do Código)
@@ -163,6 +161,8 @@
 * Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition - Autor (Adkins Lyssa)
 
 * Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento - Autor(Software House)
+
+* LEAN ENTERPRISE - Como empresas de alta performance inovam em escala - Autor (Casa do Código)
 
 * More Agile Testing - Learning Journeys for the Whole Team - Autor (Lisa Crispin)
 
