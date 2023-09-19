@@ -26,7 +26,7 @@
 | [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise.svg)](https://www.amazon.com.br/Introdução-Data-Science-Algoritmos-Learning-ebook/dp/B085CK5Z9S) | [Introdução a data science - Algoritmos de machine learning e métodos de análise](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Introdução%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20métodos%20de%20análise%20-%20Autor%20(Casa%20do%20Código).pdf) | Casa do Código | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 #
 ### Arquitetura de Software
-
+ 
 | LIVRO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
 | [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software.svg)](https://www.amazon.com.br/Arquitetura-Limpa-Artesão-Estrutura-Software/dp/8550804606) | [Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artesão%20para%20Estrutura%20e%20Design%20de%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf) | Robert C. Martin | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
