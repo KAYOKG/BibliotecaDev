@@ -181,3 +181,4 @@
 | Livro no Repositório | Livro Fora do Repositório | Leitura em Andamento | Leitura Completa |
 | - | - | - | - |
 | <P align="center">![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png)</p> | <P align="center">![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png)</p> | <P align="center">![STATUS](https://user-images.githubusercontent.com/98864503/232176545-aea4baa9-56f8-46a9-9988-250682675a81.png)</p> | <P align="center">![STATUS](https://user-images.githubusercontent.com/98864503/232177319-53ae3164-c4a4-443d-9e2f-4cc25431c8c8.png)</p> |
+...
