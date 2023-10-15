@@ -172,23 +172,13 @@
 
 ## Entrevista e Preparação para Programação:
 
-* Aprofundando em Flutter - Desenvolva aplicações Dart com Widgets - Autor (Casa do Código)
-
 * Cracking the Coding Interview - 189 Programming Questions and Solutions - Author (Gayle Laakmann McDowell)
 
 * Front End Interview Handbook
 
-* Go Programming Language For Dummies - Autor (John Wiley)
-
 * Guia prático de TypeScript - Melhore suas aplicações JavaScript - Autor (Casa do Código)
 
-* Iniciando Com Flutter Framework - Desenvolva Aplicacoes Moveis No Dart Side - Autor (Casa do Código)
-
-* O guia de Dart - Fundamentos, prática, conceitos avançados e tudo mais - Autor (Casa do Código)
-
 * Primeiros passos com Node.js - Autor (Casa do Código)
-
-* Programando em Go - Crie Aplicações com a Linguagem do Google - Autor (Casa do Código)
 
 * TDD - Desenvolvimento Guiado por Testes - Autor (Ken Beck)
 
@@ -234,8 +224,6 @@
 * Google Android - crie aplicações para celulares e tablets - Autor (Casa do Código)
 
 * HTML5 e CSS3 - domine a web do futuro - Autor (Casa do Código)
-
-* Mean - Full stack JavaScript para aplicações web com MongoDB, Express, Angular e Node - Autor (Casa do Código)
 
 * Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos - Autor (Erich Gamma)
 
