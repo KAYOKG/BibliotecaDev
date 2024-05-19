@@ -22,6 +22,8 @@
 
 * Introdução à arquitetura de design de software - Autor (Paulo Silveira)
 
+* Mergulho nos Padrões de Projeto - Autor (Alexander Shvets)
+
 * Oauth 2.0 Proteja Suas Aplicações Com O Spring Security Oauth2 - Autor (Casa do Código)
 
 * Princípios de Design e Padrões de Projeto - Autor (Robert C. Martin)
