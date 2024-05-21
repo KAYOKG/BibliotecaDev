@@ -1,23 +1,23 @@
-# Contribution Guidelines
+# Diretrizes para contribuir
 
-This project has a [Code of Conduct (in Portuguese)](code_of_conduct.md). By participating in this project, you agree to its terms.
+Esse projeto foi criado com um [Código de conduta(em português)](code_of_conduct.md). Ao participar desse projeto, você concorda com os termos dele.
 
-## Adding Your Contribution
+## Adicionando sua contribuição
 
-Before opening a pull request with your contribution, **check if the feature already exists in the list**.
+Antes de abrir um pull request com a sua contribuição **veja se já existe o recurso na lista**.
 
-Ensure that your pull request follows this structure:
+Garanta que seu Pull Request tenha a seguinte estrutura
 
-- One resource per pull request
-- Clear PR title and a well-described justification in the PR body explaining why the book should be added.
+- Um recurso por pull request
+- Título do PR claro e justificativa bem descritiva no corpo do PR sobre o porque adicionar o livro.
 
-## Example to Add to the Table
-| COVER | NAME | AUTHOR | STATUS | LANGUAGE |
+## Exemplo a adicionar na tabela
+| CAPA | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
-| <svg>SVG code</svg> | [Book Name](book link) | Author Name | ![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![Portuguese Language](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) ![English Language](https://user-images.githubusercontent.com/98864503/232176386-56cfbf3a-27b5-40e6-bf86-892f8645cbc3.png) |
+| <svg>codigo svg</svg> | [Nome do livro](link do livro) | Nome do Autor | ![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![Idioma Português](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) ![Idioma Inglês](https://user-images.githubusercontent.com/98864503/232176386-56cfbf3a-27b5-40e6-bf86-892f8645cbc3.png) |
 
-## Reporting an Error
+## Relatando um erro
 
-Ensure that the pull request is well described, detailing what the error is and where it is located.
+Garanta que a Pull Request esteja bem descritiva sobre qual o erro e aonde ele está.
 
-Thank you for collaborating!
+Obrigado por colaborar!
