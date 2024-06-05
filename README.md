@@ -70,12 +70,11 @@
 | [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/ThoughtWorks%20Antologia%20Brasil%20-%20Histórias%20de%20aprendizado%20e%20inovação.svg)](https://www.amazon.com.br/ThoughtWorks-Antologia-Histórias-Aprendizado-Inovação/dp/8555190673/ref=sr_1_1?__mk_pt_BR=ÅMÅŽÕÑ&crid=3JN2W5W76901T&keywords=ThoughtWorks+Antologia+Brasil+-+Histórias+de+aprendizado+e+inovação&qid=1681873112&s=books&sprefix=thoughtworks+antologia+brasil+-+histórias+de+aprendizado+e+inovação%2Cstripbooks%2C346&sr=1-1) | [ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/ThoughtWorks%20Antologia%20Brasil%20-%20Histórias%20de%20aprendizado%20e%20inovação%20-%20Autor%20(Casa%20do%20Código).pdf) | Casa do Código | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 
 #
-
 ### Data Science
 
 | LIVRO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
-| [![capa do livro](https://github.com/orlandojsjunior/BibliotecaDev/blob/main/.github/img/Estatatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona.png)](https://www.amazon.com.br/Estat%C3%ADstica-para-serve-como-funciona/dp/8537815128) | [Estatística - O que é, para que serve, como funciona](https://github.com/orlandojsjunior/BibliotecaDev/blob/main/LivrosDev/Estatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona%20.pdf) | Charles J. Wheelan | ![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![Idioma Português](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
+| [![capa do livro](https://github.com/orlandojsjunior/BibliotecaDev/blob/main/.github/img/Estatatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona.png)](https://www.amazon.com.br/Estat%C3%ADstica-para-serve-como-funciona/dp/8537815128) | [Estatística - O que é, para que serve, como funciona](https://github.com/orlandojsjunior/BibliotecaDev/blob/main/LivrosDev/Estatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona%20.pdf) | Charles J. Wheelan | ![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 
 #
 ### Desenvolvimento Ágil
