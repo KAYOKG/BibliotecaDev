@@ -75,7 +75,7 @@
 | LIVRO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
 | [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona.svg)](https://www.amazon.com.br/Estat%C3%ADstica-para-serve-como-funciona/dp/8537815128) | [Estatística - O que é, para que serve, como funciona](https://github.com/orlandojsjunior/BibliotecaDev/blob/main/LivrosDev/Estatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona%20.pdf) | Charles J. Wheelan | ![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
-| [![capa do livro](???)](???) | [???](???) | ??? | ![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
+| [![Aguardando](???)](???) | [Aguardando proximos livros](???) | ??? | ![STATUS](https://user-images.githubusercontent.com/98864503/232176777-943283b9-5695-4309-9323-93dfc855a0c7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 
 #
 ### Desenvolvimento Ágil
