@@ -31,7 +31,7 @@
 
 | LIVRO | NOME | AUTOR |  STATUS | IDIOMA |
 | - | - | - | - | - |
-| [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/Engenharia-de-Software-Pressman.svg)] | [Engenharia de Software - Uma Abordagem Profissional](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Engenharia-de-Software-Uma-Abordagem-Profissional-7-edicao-Roger-S-Pressman.pdf) | Roger S. Pressman | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
+| [![capa do livro]()](https://www.amazon.com.br/Engenharia-Software-Uma-Abordagem-Profissional/dp/8563308335) | [Engenharia de Software - Uma Abordagem Profissional](https://github.com/michelereginabora/BibliotecaDev/blob/191e6522ef1ece17390eca84bc774b23cf473b21/LivrosDev/Engenharia-de-Software-Uma-Abordagem-Profissional-7-edicao-Roger-S-Pressman.pdf) | Roger S. Pressman | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 #
 
 ### Arquitetura de Software
