@@ -5,6 +5,7 @@
 | Categorias | Descrição |
 |------------|------------|
 | • [Algoritmos e Estruturas de Dados](#algoritmos-e-estruturas-de-dados) | Fundamentos teóricos e práticos de algoritmos e estruturas de dados, essenciais para a resolução eficiente de problemas de programação |
+| • [Engenharia de Software](#engenharia-de-software) | Princípios de engenharia ao desenvolvimento de sistemas de software. Abrange métodos, ferramentas e práticas para criar, manter e gerenciar software de forma sistemática e eficiente ao longo de todo seu ciclo de vida. |
 | • [Arquitetura de Software](#arquitetura-de-software) | Princípios, conceitos e práticas relacionados à arquitetura de software, incluindo a estruturação, design e organização de sistemas de software |
 | • [Carreira e Habilidades](#carreira-e-habilidades) | Habilidades profissionais, como liderança, gestão de projetos, comunicação, trabalho em equipe, entre outros, além de dicas e orientações para o desenvolvimento de carreira na área de programação |
 | • [Data Science](#data-science) | Data Science ou Ciência de Dados é um campo que estuda a coleta, o processamento, o tratamento, a análise, a modelagem e a visualização de dados. |
@@ -25,7 +26,14 @@
 | [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos.svg)](https://www.amazon.com.br/Entendendo-Algoritmos-Ilustrado-Programadores-Curiosos/dp/8575225634) | [Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf) | Aditya Y. Bhargava | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 | [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).svg)](https://amzn.to/44v4nJ1) | [Expressões Regulares - uma abordagem divertida](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).pdf) | Aurelio Marinho | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 | [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise.svg)](https://www.amazon.com.br/Introdução-Data-Science-Algoritmos-Learning-ebook/dp/B085CK5Z9S) | [Introdução a data science - Algoritmos de machine learning e métodos de análise](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Introdução%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20métodos%20de%20análise%20-%20Autor%20(Casa%20do%20Código).pdf) | Casa do Código | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
+
+### Engenharia de Software
+
+| LIVRO | NOME | AUTOR |  STATUS | IDIOMA |
+| - | - | - | - | - |
+| [![capa do livro](https://github.com/KAYOKG/BibliotecaDev/blob/main/.github/img/Engenharia-de-Software-Pressman.svg)] | [Engenharia de Software - Uma Abordagem Profissional](https://github.com/KAYOKG/BibliotecaDev/blob/main/LivrosDev/Engenharia-de-Software-Uma-Abordagem-Profissional-7-edicao-Roger-S-Pressman.pdf) | Roger S. Pressman | ![STATUS](https://user-images.githubusercontent.com/98864503/232176474-b32dd53d-caeb-4053-9189-d8d07171d5d7.png) | ![IDIOMA](https://user-images.githubusercontent.com/98864503/232176253-313aac7b-b0c8-49f3-b234-10eeba6a2077.png) |
 #
+
 ### Arquitetura de Software
 
 | LIVRO | NOME | AUTOR |  STATUS | IDIOMA |

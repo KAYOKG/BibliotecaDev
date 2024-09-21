@@ -12,6 +12,10 @@
 
 * Introdução a data science - Algoritmos de machine learning e métodos de análise - Autor (Casa do Código)
 
+## Engenharia de Software
+
+* Engenharia de Software - Uma Abordagem Profissional Auotor (Roger S. Pressman)
+
 ## Arquitetura de Software:
 
 * Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software - Autor (Robert C. Martin)
