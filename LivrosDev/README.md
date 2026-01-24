@@ -36,6 +36,10 @@
 
 * Trabalho Eficaz com Código Legado - Autor (Michael C. Feathers)
 
+* Seven Languages in Seven Weeks - Autor Bruce A. Tate
+
+* Eloquent Ruby - Autor Olsen, Russ
+
 ## Carreira e Habilidades:
 
 * 14 Hábitos de Desenvolvedores Altamente Produtivos - Autor (Zeno Rocha)
