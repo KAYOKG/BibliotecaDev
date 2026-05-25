@@ -1,0 +1,2209 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BibliotecaDev</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fa;
+      --surface: #ffffff;
+      --surface-strong: #eef3f7;
+      --text: #17212b;
+      --muted: #637083;
+      --line: #d9e0e7;
+      --teal: #0f7c80;
+      --teal-dark: #0a5e61;
+      --coral: #cf4f45;
+      --gold: #b77812;
+      --ink: #242934;
+      --shadow: 0 12px 28px rgba(28, 38, 50, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .site-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 28px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      background:
+        linear-gradient(90deg, var(--teal) 0 50%, var(--coral) 50% 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 10px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(112px, 1fr));
+      gap: 10px;
+    }
+
+    .stat {
+      min-width: 112px;
+      padding: 14px 16px;
+      background: var(--surface-strong);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(245, 247, 250, 0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .toolbar-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 16px 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .search-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box span {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px 0 42px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--text);
+      outline: none;
+    }
+
+    .search-box input:focus {
+      border-color: var(--teal);
+      box-shadow: 0 0 0 4px rgba(15, 124, 128, 0.14);
+    }
+
+    .visible-count {
+      min-width: 120px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: right;
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: thin;
+    }
+
+    .filter-button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text);
+      padding: 8px 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .filter-button span {
+      min-width: 24px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--surface-strong);
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .filter-button:hover,
+    .filter-button:focus-visible {
+      border-color: var(--teal);
+      outline: none;
+    }
+
+    .filter-button.is-active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
+    .filter-button.is-active span {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 56px;
+    }
+
+    .category-section {
+      padding: 22px 0 34px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .category-section:last-child {
+      border-bottom: 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(220px, 0.8fr) minmax(260px, 1.2fr);
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .section-heading span {
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      margin: 4px 0 0;
+      color: var(--ink);
+      font-size: clamp(1.55rem, 3vw, 2.4rem);
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 14px;
+    }
+
+    .book-card {
+      min-height: 190px;
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 14px;
+      padding: 12px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(28, 38, 50, 0.04);
+      transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .book-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(15, 124, 128, 0.45);
+      box-shadow: var(--shadow);
+    }
+
+    .cover-link {
+      width: 96px;
+      aspect-ratio: 2 / 3;
+      display: block;
+      align-self: start;
+      overflow: hidden;
+      border-radius: 6px;
+      background: #dfe7ed;
+      border: 1px solid rgba(23, 33, 43, 0.08);
+    }
+
+    .cover-link img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .cover-placeholder {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(135deg, rgba(15, 124, 128, 0.9), rgba(207, 79, 69, 0.9));
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.4rem;
+    }
+
+    .book-body {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .book-category {
+      max-width: 100%;
+      color: var(--teal-dark);
+      background: rgba(15, 124, 128, 0.09);
+      border: 1px solid rgba(15, 124, 128, 0.16);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .book-body h3 {
+      margin: 10px 0 0;
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .book-body h3 a:hover,
+    .book-body h3 a:focus-visible {
+      color: var(--teal-dark);
+      outline: none;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .book-body p {
+      margin: 8px 0 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .open-link {
+      margin-top: auto;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .open-link:hover,
+    .open-link:focus-visible {
+      background: var(--teal-dark);
+      outline: none;
+    }
+
+    .empty-state {
+      margin: 36px 0 0;
+      padding: 28px;
+      background: var(--surface);
+      border: 1px dashed var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .page-footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 0 0 32px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 820px) {
+      .header-shell,
+      .section-heading {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .header-shell,
+      .toolbar-shell,
+      main,
+      .page-footer {
+        width: min(100% - 22px, 1180px);
+      }
+
+      .brand {
+        align-items: flex-start;
+      }
+
+      .brand-mark {
+        width: 46px;
+        height: 46px;
+      }
+
+      .search-row {
+        grid-template-columns: 1fr;
+      }
+
+      .visible-count {
+        min-width: 0;
+        text-align: left;
+      }
+
+      .book-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .book-card {
+        grid-template-columns: 88px minmax(0, 1fr);
+        min-height: 176px;
+      }
+
+      .cover-link {
+        width: 88px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-shell">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">BD</div>
+        <div>
+          <h1>BibliotecaDev</h1>
+          <p>Catálogo local dos livros da pasta <strong>LivrosDev</strong>, com capas e abertura direta dos PDFs no navegador.</p>
+        </div>
+      </div>
+      <div class="stats" aria-label="Resumo da biblioteca">
+        <div class="stat">
+          <strong>109</strong>
+          <span>PDFs locais</span>
+        </div>
+        <div class="stat">
+          <strong>8</strong>
+          <span>categorias</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar-shell">
+      <div class="search-row">
+        <label class="search-box" for="bookSearch">
+          <span aria-hidden="true">⌕</span>
+          <input id="bookSearch" type="search" autocomplete="off" placeholder="Buscar por título, autor ou tecnologia">
+        </label>
+        <div class="visible-count"><strong id="visibleCount">109</strong> encontrados</div>
+      </div>
+      <nav class="filter-row" aria-label="Categorias">
+          <button class="filter-button is-active" type="button" data-category-filter="all">Todos <span>109</span></button>
+          <button class="filter-button" type="button" data-category-filter="Algoritmos e Fundamentos">Algoritmos e Fundamentos <span>7</span></button>
+          <button class="filter-button" type="button" data-category-filter="Arquitetura, Design e Código">Arquitetura, Design e Código <span>12</span></button>
+          <button class="filter-button" type="button" data-category-filter="Web, Mobile e APIs">Web, Mobile e APIs <span>18</span></button>
+          <button class="filter-button" type="button" data-category-filter="DevOps e Cloud">DevOps e Cloud <span>22</span></button>
+          <button class="filter-button" type="button" data-category-filter="Dados, BI e Estatística">Dados, BI e Estatística <span>6</span></button>
+          <button class="filter-button" type="button" data-category-filter="Agilidade e Qualidade">Agilidade e Qualidade <span>19</span></button>
+          <button class="filter-button" type="button" data-category-filter="Carreira, Produto e Soft Skills">Carreira, Produto e Soft Skills <span>18</span></button>
+          <button class="filter-button" type="button" data-category-filter="Liderança e Cultura">Liderança e Cultura <span>7</span></button>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+
+      <section class="category-section" id="Algoritmos%20e%20Fundamentos" data-category-section="Algoritmos e Fundamentos">
+        <div class="section-heading">
+          <div>
+            <span>7 livros</span>
+            <h2>Algoritmos e Fundamentos</h2>
+          </div>
+          <p>Computação, algoritmos, redes, expressões regulares e preparação técnica.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="Algoritmos e Fundamentos" data-search="algoritmos teoria e pratica thomas cormen algoritmos e fundamentos">
+            <a class="cover-link" href="LivrosDev/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica%20-%20Autor%20(Thomas%20Cormen).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Algoritmos - Teoria e Prática">
+              <img src=".github/img/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica.svg" alt="Capa do livro Algoritmos - Teoria e Prática" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Algoritmos e Fundamentos</span>
+              <h3><a href="LivrosDev/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica%20-%20Autor%20(Thomas%20Cormen).pdf" target="_blank" rel="noopener">Algoritmos - Teoria e Prática</a></h3>
+              <p>Thomas Cormen</p>
+              <a class="open-link" href="LivrosDev/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica%20-%20Autor%20(Thomas%20Cormen).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Algoritmos - Teoria e Prática">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Algoritmos e Fundamentos" data-search="but how do it know the basic principles of computers for everyone j clark scott algoritmos e fundamentos">
+            <a class="cover-link" href="LivrosDev/But%20How%20Do%20It%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone%20-%20Author%20(J.%20Clark%20Scott).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: But How Do It Know - The Basic Principles of Computers for Everyone">
+              <img src=".github/img/But%20How%20Do%20it%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone.svg" alt="Capa do livro But How Do It Know - The Basic Principles of Computers for Everyone" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Algoritmos e Fundamentos</span>
+              <h3><a href="LivrosDev/But%20How%20Do%20It%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone%20-%20Author%20(J.%20Clark%20Scott).pdf" target="_blank" rel="noopener">But How Do It Know - The Basic Principles of Computers for Everyone</a></h3>
+              <p>J. Clark Scott</p>
+              <a class="open-link" href="LivrosDev/But%20How%20Do%20It%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone%20-%20Author%20(J.%20Clark%20Scott).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de But How Do It Know - The Basic Principles of Computers for Everyone">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Algoritmos e Fundamentos" data-search="comunicacao de dados e redes de computadores behrouz a forouzan algoritmos e fundamentos">
+            <a class="cover-link" href="LivrosDev/Comunica%C3%A7%C3%A3o%20de%20Dados%20e%20Redes%20de%20Computadores%20-%20Autor%20(Behrouz%20A.%20Forouzan).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Comunicação de Dados e Redes de Computadores">
+              <img src=".github/img/Comunica%C3%A7%C3%A3o%20de%20Dados%20e%20Redes%20de%20Computadores.svg" alt="Capa do livro Comunicação de Dados e Redes de Computadores" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Algoritmos e Fundamentos</span>
+              <h3><a href="LivrosDev/Comunica%C3%A7%C3%A3o%20de%20Dados%20e%20Redes%20de%20Computadores%20-%20Autor%20(Behrouz%20A.%20Forouzan).pdf" target="_blank" rel="noopener">Comunicação de Dados e Redes de Computadores</a></h3>
+              <p>Behrouz A. Forouzan</p>
+              <a class="open-link" href="LivrosDev/Comunica%C3%A7%C3%A3o%20de%20Dados%20e%20Redes%20de%20Computadores%20-%20Autor%20(Behrouz%20A.%20Forouzan).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Comunicação de Dados e Redes de Computadores">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Algoritmos e Fundamentos" data-search="cracking the coding interview 189 programming questions and solutions gayle laakmann mcdowell algoritmos e fundamentos">
+            <a class="cover-link" href="LivrosDev/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions%20-%20Author%20(Gayle%20Laakmann%20McDowell).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Cracking the Coding Interview - 189 Programming Questions and Solutions">
+              <img src=".github/img/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions.svg" alt="Capa do livro Cracking the Coding Interview - 189 Programming Questions and Solutions" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Algoritmos e Fundamentos</span>
+              <h3><a href="LivrosDev/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions%20-%20Author%20(Gayle%20Laakmann%20McDowell).pdf" target="_blank" rel="noopener">Cracking the Coding Interview - 189 Programming Questions and Solutions</a></h3>
+              <p>Gayle Laakmann McDowell</p>
+              <a class="open-link" href="LivrosDev/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions%20-%20Author%20(Gayle%20Laakmann%20McDowell).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Cracking the Coding Interview - 189 Programming Questions and Solutions">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Algoritmos e Fundamentos" data-search="entendendo algoritmos um guia ilustrado para programadores e outros curiosos aditya y bhargava algoritmos e fundamentos">
+            <a class="cover-link" href="LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos">
+              <img src=".github/img/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos.svg" alt="Capa do livro Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Algoritmos e Fundamentos</span>
+              <h3><a href="LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf" target="_blank" rel="noopener">Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos</a></h3>
+              <p>Aditya Y. Bhargava</p>
+              <a class="open-link" href="LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Algoritmos e Fundamentos" data-search="expressoes regulares uma abordagem divertida aurelio marinho algoritmos e fundamentos">
+            <a class="cover-link" href="LivrosDev/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Expressões Regulares - uma abordagem divertida">
+              <img src=".github/img/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).svg" alt="Capa do livro Expressões Regulares - uma abordagem divertida" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Algoritmos e Fundamentos</span>
+              <h3><a href="LivrosDev/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).pdf" target="_blank" rel="noopener">Expressões Regulares - uma abordagem divertida</a></h3>
+              <p>Aurelio Marinho</p>
+              <a class="open-link" href="LivrosDev/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Expressões Regulares - uma abordagem divertida">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Algoritmos e Fundamentos" data-search="introducao a data science algoritmos de machine learning e metodos de analise casa do codigo algoritmos e fundamentos">
+            <a class="cover-link" href="LivrosDev/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Introdução a data science - Algoritmos de machine learning e métodos de análise">
+              <img src=".github/img/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise.svg" alt="Capa do livro Introdução a data science - Algoritmos de machine learning e métodos de análise" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Algoritmos e Fundamentos</span>
+              <h3><a href="LivrosDev/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Introdução a data science - Algoritmos de machine learning e métodos de análise</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Introdução a data science - Algoritmos de machine learning e métodos de análise">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" id="Arquitetura%2C%20Design%20e%20C%C3%B3digo" data-category-section="Arquitetura, Design e Código">
+        <div class="section-heading">
+          <div>
+            <span>12 livros</span>
+            <h2>Arquitetura, Design e Código</h2>
+          </div>
+          <p>Arquitetura limpa, refatoração, DDD, padrões e qualidade estrutural de software.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="apprenticeship patterns guidance for the aspiring software craftsman dave hoover e adewale oshineye arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman%20-%20Autor%20(Dave%20Hoover%20e%20Adewale%20Oshineye).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman">
+              <img src=".github/img/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman.svg" alt="Capa do livro Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman%20-%20Autor%20(Dave%20Hoover%20e%20Adewale%20Oshineye).pdf" target="_blank" rel="noopener">Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman</a></h3>
+              <p>Dave Hoover e Adewale Oshineye</p>
+              <a class="open-link" href="LivrosDev/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman%20-%20Autor%20(Dave%20Hoover%20e%20Adewale%20Oshineye).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="arquitetura limpa o guia do artesao para estrutura e design de software robert c martin arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software">
+              <img src=".github/img/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software.svg" alt="Capa do livro Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener">Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software</a></h3>
+              <p>Robert C. Martin</p>
+              <a class="open-link" href="LivrosDev/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="clean coder the a code of conduct for professional programmers robert c martin arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Clean%20Coder%2C%20The%20-%20A%20Code%20of%20Conduct%20for%20Professional%20Programmers%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Clean Coder, The - A Code of Conduct for Professional Programmers">
+              <img src=".github/img/Clean%20Coder%2C%20The%20-%20A%20Code%20of%20Conduct%20for%20Professional%20Programmers.svg" alt="Capa do livro Clean Coder, The - A Code of Conduct for Professional Programmers" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Clean%20Coder%2C%20The%20-%20A%20Code%20of%20Conduct%20for%20Professional%20Programmers%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener">Clean Coder, The - A Code of Conduct for Professional Programmers</a></h3>
+              <p>Robert C. Martin</p>
+              <a class="open-link" href="LivrosDev/Clean%20Coder%2C%20The%20-%20A%20Code%20of%20Conduct%20for%20Professional%20Programmers%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Clean Coder, The - A Code of Conduct for Professional Programmers">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="codigo limpo habilidades praticas do agile software robert c martin arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/C%C3%B3digo%20limpo%20-%20Habilidades%20pr%C3%A1ticas%20do%20Agile%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Código limpo - Habilidades práticas do Agile Software">
+              <img src=".github/img/C%C3%B3digo%20limpo%20-%20Habilidades%20pr%C3%A1ticas%20do%20Agile%20Software.svg" alt="Capa do livro Código limpo - Habilidades práticas do Agile Software" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/C%C3%B3digo%20limpo%20-%20Habilidades%20pr%C3%A1ticas%20do%20Agile%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener">Código limpo - Habilidades práticas do Agile Software</a></h3>
+              <p>Robert C. Martin</p>
+              <a class="open-link" href="LivrosDev/C%C3%B3digo%20limpo%20-%20Habilidades%20pr%C3%A1ticas%20do%20Agile%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Código limpo - Habilidades práticas do Agile Software">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="domain driven design rapido eric evans arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Domain%20Driven%20Design%20Rapido%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Domain Driven Design Rapido">
+              <img src=".github/img/Domain%20Driven%20Design%20Rapido.svg" alt="Capa do livro Domain Driven Design Rapido" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Domain%20Driven%20Design%20Rapido%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener">Domain Driven Design Rapido</a></h3>
+              <p>Eric Evans</p>
+              <a class="open-link" href="LivrosDev/Domain%20Driven%20Design%20Rapido%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Domain Driven Design Rapido">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="domain driven design referencia sumario de padroes e definicoes eric evans arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Domain-Driven%20Design%20Refer%C3%AAncia%20-%20Sum%C3%A1rio%20de%20Padr%C3%B5es%20e%20Defini%C3%A7%C3%B5es%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Domain-Driven Design Referência - Sumário de Padrões e Definições">
+              <img src=".github/img/Domain-Driven%20Design%20Refer%C3%AAncia%20-%20Sum%C3%A1rio%20de%20Padr%C3%B5es%20e%20Defini%C3%A7%C3%B5es.svg" alt="Capa do livro Domain-Driven Design Referência - Sumário de Padrões e Definições" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Domain-Driven%20Design%20Refer%C3%AAncia%20-%20Sum%C3%A1rio%20de%20Padr%C3%B5es%20e%20Defini%C3%A7%C3%B5es%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener">Domain-Driven Design Referência - Sumário de Padrões e Definições</a></h3>
+              <p>Eric Evans</p>
+              <a class="open-link" href="LivrosDev/Domain-Driven%20Design%20Refer%C3%AAncia%20-%20Sum%C3%A1rio%20de%20Padr%C3%B5es%20e%20Defini%C3%A7%C3%B5es%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Domain-Driven Design Referência - Sumário de Padrões e Definições">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="introducao a arquitetura de design de software paulo silveira arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Introdu%C3%A7%C3%A3o%20%C3%A0%20arquitetura%20de%20design%20de%20software%20-%20Autor%20(Paulo%20Silveira).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Introdução à arquitetura de design de software">
+              <img src=".github/img/Introdu%C3%A7%C3%A3o%20%C3%A0%20arquitetura%20de%20design%20de%20software.svg" alt="Capa do livro Introdução à arquitetura de design de software" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Introdu%C3%A7%C3%A3o%20%C3%A0%20arquitetura%20de%20design%20de%20software%20-%20Autor%20(Paulo%20Silveira).pdf" target="_blank" rel="noopener">Introdução à arquitetura de design de software</a></h3>
+              <p>Paulo Silveira</p>
+              <a class="open-link" href="LivrosDev/Introdu%C3%A7%C3%A3o%20%C3%A0%20arquitetura%20de%20design%20de%20software%20-%20Autor%20(Paulo%20Silveira).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Introdução à arquitetura de design de software">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="padroes de projetos solucoes reutilizaveis de software orientados a objetos erich gamma arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Padr%C3%B5es%20de%20Projetos%20-%20Solu%C3%A7%C3%B5es%20Reutiliz%C3%A1veis%20de%20Software%20Orientados%20a%20Objetos%20-%20Autor%20(Erich%20Gamma).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos">
+              <img src=".github/img/Padr%C3%B5es%20de%20Projetos%20-%20Solu%C3%A7%C3%B5es%20Reutiliz%C3%A1veis%20de%20Software%20Orientados%20a%20Objetos.svg" alt="Capa do livro Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Padr%C3%B5es%20de%20Projetos%20-%20Solu%C3%A7%C3%B5es%20Reutiliz%C3%A1veis%20de%20Software%20Orientados%20a%20Objetos%20-%20Autor%20(Erich%20Gamma).pdf" target="_blank" rel="noopener">Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos</a></h3>
+              <p>Erich Gamma</p>
+              <a class="open-link" href="LivrosDev/Padr%C3%B5es%20de%20Projetos%20-%20Solu%C3%A7%C3%B5es%20Reutiliz%C3%A1veis%20de%20Software%20Orientados%20a%20Objetos%20-%20Autor%20(Erich%20Gamma).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="principios de design e padroes de projeto robert c martin arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Princ%C3%ADpios%20de%20Design%20e%20Padr%C3%B5es%20de%20Projeto%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Princípios de Design e Padrões de Projeto">
+              <img src=".github/img/Princ%C3%ADpios%20de%20Design%20e%20Padr%C3%B5es%20de%20Projeto.svg" alt="Capa do livro Princípios de Design e Padrões de Projeto" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Princ%C3%ADpios%20de%20Design%20e%20Padr%C3%B5es%20de%20Projeto%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener">Princípios de Design e Padrões de Projeto</a></h3>
+              <p>Robert C. Martin</p>
+              <a class="open-link" href="LivrosDev/Princ%C3%ADpios%20de%20Design%20e%20Padr%C3%B5es%20de%20Projeto%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Princípios de Design e Padrões de Projeto">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="refatoracao aperfeicoando o design de codigos existentes martin fowler arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Refatora%C3%A7%C3%A3o%20-%20Aperfei%C3%A7oando%20o%20Design%20de%20C%C3%B3digos%20Existentes%20-%20Autor%20(Martin%20Fowler).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Refatoração - Aperfeiçoando o Design de Códigos Existentes">
+              <img src=".github/img/Refatora%C3%A7%C3%A3o%20-%20Aperfei%C3%A7oando%20o%20Design%20de%20C%C3%B3digos%20Existentes.svg" alt="Capa do livro Refatoração - Aperfeiçoando o Design de Códigos Existentes" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Refatora%C3%A7%C3%A3o%20-%20Aperfei%C3%A7oando%20o%20Design%20de%20C%C3%B3digos%20Existentes%20-%20Autor%20(Martin%20Fowler).pdf" target="_blank" rel="noopener">Refatoração - Aperfeiçoando o Design de Códigos Existentes</a></h3>
+              <p>Martin Fowler</p>
+              <a class="open-link" href="LivrosDev/Refatora%C3%A7%C3%A3o%20-%20Aperfei%C3%A7oando%20o%20Design%20de%20C%C3%B3digos%20Existentes%20-%20Autor%20(Martin%20Fowler).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Refatoração - Aperfeiçoando o Design de Códigos Existentes">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="the software craftsman professionalism pragmatism pride sandro mancuso arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/The%20Software%20Craftsman%20-%20Professionalism%2C%20Pragmatism%2C%20Pride%20-%20Autor%20(Sandro%20Mancuso).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: The Software Craftsman - Professionalism, Pragmatism, Pride">
+              <img src=".github/img/The%20Software%20Craftsman%20-%20Professionalism%2C%20Pragmatism%2C%20Pride.svg" alt="Capa do livro The Software Craftsman - Professionalism, Pragmatism, Pride" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/The%20Software%20Craftsman%20-%20Professionalism%2C%20Pragmatism%2C%20Pride%20-%20Autor%20(Sandro%20Mancuso).pdf" target="_blank" rel="noopener">The Software Craftsman - Professionalism, Pragmatism, Pride</a></h3>
+              <p>Sandro Mancuso</p>
+              <a class="open-link" href="LivrosDev/The%20Software%20Craftsman%20-%20Professionalism%2C%20Pragmatism%2C%20Pride%20-%20Autor%20(Sandro%20Mancuso).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de The Software Craftsman - Professionalism, Pragmatism, Pride">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Arquitetura, Design e Código" data-search="trabalho eficaz com codigo legado michael c feathers arquitetura design e codigo">
+            <a class="cover-link" href="LivrosDev/Trabalho%20Eficaz%20com%20C%C3%B3digo%20Legado%20-%20Autor%20(Michael%20C.%20Feathers).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Trabalho Eficaz com Código Legado">
+              <img src=".github/img/Trabalho%20Eficaz%20com%20C%C3%B3digo%20Legado.svg" alt="Capa do livro Trabalho Eficaz com Código Legado" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Arquitetura, Design e Código</span>
+              <h3><a href="LivrosDev/Trabalho%20Eficaz%20com%20C%C3%B3digo%20Legado%20-%20Autor%20(Michael%20C.%20Feathers).pdf" target="_blank" rel="noopener">Trabalho Eficaz com Código Legado</a></h3>
+              <p>Michael C. Feathers</p>
+              <a class="open-link" href="LivrosDev/Trabalho%20Eficaz%20com%20C%C3%B3digo%20Legado%20-%20Autor%20(Michael%20C.%20Feathers).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Trabalho Eficaz com Código Legado">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" id="Web%2C%20Mobile%20e%20APIs" data-category-section="Web, Mobile e APIs">
+        <div class="section-heading">
+          <div>
+            <span>18 livros</span>
+            <h2>Web, Mobile e APIs</h2>
+          </div>
+          <p>Front-end, mobile, UX, APIs, Node, REST, OAuth e tecnologias de interface.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="a web mobile programe para um mundo de muitos dispositivos casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: A Web Mobile - Programe para um Mundo de Muitos Dispositivos">
+              <img src=".github/img/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos.svg" alt="Capa do livro A Web Mobile - Programe para um Mundo de Muitos Dispositivos" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">A Web Mobile - Programe para um Mundo de Muitos Dispositivos</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de A Web Mobile - Programe para um Mundo de Muitos Dispositivos">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="aplicacoes web real time com node js casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Aplica%C3%A7%C3%B5es%20web%20real%20time%20com%20Node-js%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Aplicações web real time com Node-js">
+              <img src=".github/img/Aplica%C3%A7%C3%B5es%20web%20real%20time%20com%20Node-js.svg" alt="Capa do livro Aplicações web real time com Node-js" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Aplica%C3%A7%C3%B5es%20web%20real%20time%20com%20Node-js%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Aplicações web real time com Node-js</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Aplica%C3%A7%C3%B5es%20web%20real%20time%20com%20Node-js%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Aplicações web real time com Node-js">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="canivete suico do desenvolvedor node casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Canivete%20suico%20do%20desenvolvedor%20Node%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Canivete suico do desenvolvedor Node">
+              <img src=".github/img/Canivete%20sui%C3%A7o%20do%20desenvolvedor%20Node.svg" alt="Capa do livro Canivete suico do desenvolvedor Node" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Canivete%20suico%20do%20desenvolvedor%20Node%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Canivete suico do desenvolvedor Node</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Canivete%20suico%20do%20desenvolvedor%20Node%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Canivete suico do desenvolvedor Node">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="construindo api rest com node js casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Construindo%20API%20REST%20com%20Node%20JS%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Construindo API REST com Node JS">
+              <img src=".github/img/Construindo%20API%20REST%20com%20Node%20JS.svg" alt="Capa do livro Construindo API REST com Node JS" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Construindo%20API%20REST%20com%20Node%20JS%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Construindo API REST com Node JS</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Construindo%20API%20REST%20com%20Node%20JS%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Construindo API REST com Node JS">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="css eficiente tecnicas e ferramentas que fazem a diferenca nos seus estilos casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/CSS%20Eficiente%20-%20T%C3%A9cnicas%20e%20ferramentas%20que%20fazem%20a%20diferen%C3%A7a%20nos%20seus%20estilos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos">
+              <img src=".github/img/CSS%20Eficiente%20-%20T%C3%A9cnicas%20e%20ferramentas%20que%20fazem%20a%20diferen%C3%A7a%20nos%20seus%20estilos.svg" alt="Capa do livro CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/CSS%20Eficiente%20-%20T%C3%A9cnicas%20e%20ferramentas%20que%20fazem%20a%20diferen%C3%A7a%20nos%20seus%20estilos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/CSS%20Eficiente%20-%20T%C3%A9cnicas%20e%20ferramentas%20que%20fazem%20a%20diferen%C3%A7a%20nos%20seus%20estilos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="desconstruindo a web as tecnologias por tras de uma requisicao casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Desconstruindo%20a%20Web%20-%20As%20Tecnologias%20por%20Tr%C3%A1s%20de%20uma%20Requisi%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Desconstruindo a Web - As Tecnologias por Trás de uma Requisição">
+              <span class="cover-placeholder" aria-hidden="true">DW</span>
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Desconstruindo%20a%20Web%20-%20As%20Tecnologias%20por%20Tr%C3%A1s%20de%20uma%20Requisi%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Desconstruindo a Web - As Tecnologias por Trás de uma Requisição</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Desconstruindo%20a%20Web%20-%20As%20Tecnologias%20por%20Tr%C3%A1s%20de%20uma%20Requisi%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Desconstruindo a Web - As Tecnologias por Trás de uma Requisição">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="google android crie aplicacoes para celulares e tablets casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Google%20Android%20-%20crie%20aplica%C3%A7%C3%B5es%20para%20celulares%20e%20tablets%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Google Android - crie aplicações para celulares e tablets">
+              <img src=".github/img/Google%20Android%20-%20crie%20aplica%C3%A7%C3%B5es%20para%20celulares%20e%20tablets.svg" alt="Capa do livro Google Android - crie aplicações para celulares e tablets" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Google%20Android%20-%20crie%20aplica%C3%A7%C3%B5es%20para%20celulares%20e%20tablets%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Google Android - crie aplicações para celulares e tablets</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Google%20Android%20-%20crie%20aplica%C3%A7%C3%B5es%20para%20celulares%20e%20tablets%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Google Android - crie aplicações para celulares e tablets">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="guia da startup como startups e empresas estabelecidas podem criar produtos web rentaveis casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Guia%20da%20Startup%20-%20Como%20Startups%20e%20Empresas%20Estabelecidas%20Podem%20Criar%20Produtos%20Web%20Rent%C3%A1veis%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Guia da Startup - Como Startups e Empresas Estabelecidas Podem Criar Produtos Web Rentáveis">
+              <img src=".github/img/Guia%20da%20Startup%20-%20Como%20Startups%20e%20Empresas%20Estabelecidas%20Podem%20Criar%20Produtos%20Web%20Rent%C3%A1veis.svg" alt="Capa do livro Guia da Startup - Como Startups e Empresas Estabelecidas Podem Criar Produtos Web Rentáveis" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Guia%20da%20Startup%20-%20Como%20Startups%20e%20Empresas%20Estabelecidas%20Podem%20Criar%20Produtos%20Web%20Rent%C3%A1veis%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Guia da Startup - Como Startups e Empresas Estabelecidas Podem Criar Produtos Web Rentáveis</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Guia%20da%20Startup%20-%20Como%20Startups%20e%20Empresas%20Estabelecidas%20Podem%20Criar%20Produtos%20Web%20Rent%C3%A1veis%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Guia da Startup - Como Startups e Empresas Estabelecidas Podem Criar Produtos Web Rentáveis">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="guia pratico de typescript melhore suas aplicacoes javascript casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Guia%20pr%C3%A1tico%20de%20TypeScript%20-%20Melhore%20suas%20aplica%C3%A7%C3%B5es%20JavaScript%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Guia prático de TypeScript - Melhore suas aplicações JavaScript">
+              <img src=".github/img/Guia%20pr%C3%A1tico%20de%20TypeScript%20-%20Melhore%20suas%20aplica%C3%A7%C3%B5es%20JavaScript.svg" alt="Capa do livro Guia prático de TypeScript - Melhore suas aplicações JavaScript" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Guia%20pr%C3%A1tico%20de%20TypeScript%20-%20Melhore%20suas%20aplica%C3%A7%C3%B5es%20JavaScript%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Guia prático de TypeScript - Melhore suas aplicações JavaScript</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Guia%20pr%C3%A1tico%20de%20TypeScript%20-%20Melhore%20suas%20aplica%C3%A7%C3%B5es%20JavaScript%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Guia prático de TypeScript - Melhore suas aplicações JavaScript">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="html5 e css3 domine a web do futuro casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/HTML5%20e%20CSS3%20-%20domine%20a%20web%20do%20futuro%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: HTML5 e CSS3 - domine a web do futuro">
+              <img src=".github/img/HTML5%20e%20CSS3%20-%20domine%20a%20web%20do%20futuro.svg" alt="Capa do livro HTML5 e CSS3 - domine a web do futuro" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/HTML5%20e%20CSS3%20-%20domine%20a%20web%20do%20futuro%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">HTML5 e CSS3 - domine a web do futuro</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/HTML5%20e%20CSS3%20-%20domine%20a%20web%20do%20futuro%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de HTML5 e CSS3 - domine a web do futuro">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="introducao e boas praticas em ux design casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Introdu%C3%A7%C3%A3o%20e%20boas%20pr%C3%A1ticas%20em%20UX%20Design%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Introdução e boas práticas em UX Design">
+              <span class="cover-placeholder" aria-hidden="true">IB</span>
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Introdu%C3%A7%C3%A3o%20e%20boas%20pr%C3%A1ticas%20em%20UX%20Design%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Introdução e boas práticas em UX Design</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Introdu%C3%A7%C3%A3o%20e%20boas%20pr%C3%A1ticas%20em%20UX%20Design%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Introdução e boas práticas em UX Design">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="oauth 2 0 proteja suas aplicacoes com o spring security oauth2 casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Oauth%202.0%20Proteja%20Suas%20Aplicacoes%20Com%20O%20Spring%20Security%20Oauth2%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Oauth 2.0 Proteja Suas Aplicacoes Com O Spring Security Oauth2">
+              <img src=".github/img/Oauth%202.0%20Proteja%20Suas%20Aplica%C3%A7%C3%B5es%20Com%20O%20Spring%20Security%20Oauth2.svg" alt="Capa do livro Oauth 2.0 Proteja Suas Aplicacoes Com O Spring Security Oauth2" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Oauth%202.0%20Proteja%20Suas%20Aplicacoes%20Com%20O%20Spring%20Security%20Oauth2%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Oauth 2.0 Proteja Suas Aplicacoes Com O Spring Security Oauth2</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Oauth%202.0%20Proteja%20Suas%20Aplicacoes%20Com%20O%20Spring%20Security%20Oauth2%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Oauth 2.0 Proteja Suas Aplicacoes Com O Spring Security Oauth2">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="progressive web apps construa aplicacoes progressivas com react casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Progressive%20web%20apps%20-%20Construa%20aplica%C3%A7%C3%B5es%20progressivas%20com%20React%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Progressive web apps - Construa aplicações progressivas com React">
+              <img src=".github/img/Progressive%20web%20apps%20-%20Construa%20aplica%C3%A7%C3%B5es%20progressivas%20com%20React.svg" alt="Capa do livro Progressive web apps - Construa aplicações progressivas com React" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Progressive%20web%20apps%20-%20Construa%20aplica%C3%A7%C3%B5es%20progressivas%20com%20React%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Progressive web apps - Construa aplicações progressivas com React</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Progressive%20web%20apps%20-%20Construa%20aplica%C3%A7%C3%B5es%20progressivas%20com%20React%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Progressive web apps - Construa aplicações progressivas com React">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="rest construa api s inteligentes de maneira simples casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/REST%20-%20Construa%20API&#39;s%20inteligentes%20de%20maneira%20simples%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: REST - Construa API&#39;s inteligentes de maneira simples">
+              <img src=".github/img/REST%20-%20Construa%20API's%20inteligentes%20de%20maneira%20simples.svg" alt="Capa do livro REST - Construa API&#39;s inteligentes de maneira simples" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/REST%20-%20Construa%20API&#39;s%20inteligentes%20de%20maneira%20simples%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">REST - Construa API&#39;s inteligentes de maneira simples</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/REST%20-%20Construa%20API&#39;s%20inteligentes%20de%20maneira%20simples%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de REST - Construa API&#39;s inteligentes de maneira simples">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="seo pratico seu site na primeira pagina das buscas casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/SEO%20Pr%C3%A1tico%20-%20Seu%20Site%20na%20Primeira%20P%C3%A1gina%20das%20Buscas%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: SEO Prático - Seu Site na Primeira Página das Buscas">
+              <img src=".github/img/SEO%20Pr%C3%A1tico%20-%20Seu%20Site%20na%20Primeira%20P%C3%A1gina%20das%20Buscas.svg" alt="Capa do livro SEO Prático - Seu Site na Primeira Página das Buscas" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/SEO%20Pr%C3%A1tico%20-%20Seu%20Site%20na%20Primeira%20P%C3%A1gina%20das%20Buscas%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">SEO Prático - Seu Site na Primeira Página das Buscas</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/SEO%20Pr%C3%A1tico%20-%20Seu%20Site%20na%20Primeira%20P%C3%A1gina%20das%20Buscas%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de SEO Prático - Seu Site na Primeira Página das Buscas">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="soa aplicado integrando com web services e alem casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/SOA%20Aplicado%20-%20Integrando%20com%20web%20services%20e%20al%C3%A9m%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: SOA Aplicado - Integrando com web services e além">
+              <img src=".github/img/SOA%20Aplicado%20-%20Integrando%20com%20web%20services%20e%20al%C3%A9m.svg" alt="Capa do livro SOA Aplicado - Integrando com web services e além" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/SOA%20Aplicado%20-%20Integrando%20com%20web%20services%20e%20al%C3%A9m%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">SOA Aplicado - Integrando com web services e além</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/SOA%20Aplicado%20-%20Integrando%20com%20web%20services%20e%20al%C3%A9m%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de SOA Aplicado - Integrando com web services e além">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="ux e usabilidade aplicados em mobile e web caelum web mobile e apis">
+            <a class="cover-link" href="LivrosDev/UX%20e%20Usabilidade%20Aplicados%20em%20Mobile%20e%20Web%20-%20Autor%20(Caelum).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: UX e Usabilidade Aplicados em Mobile e Web">
+              <img src=".github/img/UX%20e%20Usabilidade%20Aplicados%20em%20Mobile%20e%20Web.svg" alt="Capa do livro UX e Usabilidade Aplicados em Mobile e Web" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/UX%20e%20Usabilidade%20Aplicados%20em%20Mobile%20e%20Web%20-%20Autor%20(Caelum).pdf" target="_blank" rel="noopener">UX e Usabilidade Aplicados em Mobile e Web</a></h3>
+              <p>Caelum</p>
+              <a class="open-link" href="LivrosDev/UX%20e%20Usabilidade%20Aplicados%20em%20Mobile%20e%20Web%20-%20Autor%20(Caelum).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de UX e Usabilidade Aplicados em Mobile e Web">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Web, Mobile e APIs" data-search="web design responsivo paginas adaptaveis para todos os dispositivos casa do codigo web mobile e apis">
+            <a class="cover-link" href="LivrosDev/Web%20Design%20Responsivo%20-%20P%C3%A1ginas%20adapt%C3%A1veis%20para%20todos%20os%20dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Web Design Responsivo - Páginas adaptáveis para todos os dispositivos">
+              <img src=".github/img/Web%20Design%20Responsivo%20-%20P%C3%A1ginas%20adapt%C3%A1veis%20para%20todos%20os%20dispositivos.svg" alt="Capa do livro Web Design Responsivo - Páginas adaptáveis para todos os dispositivos" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Web, Mobile e APIs</span>
+              <h3><a href="LivrosDev/Web%20Design%20Responsivo%20-%20P%C3%A1ginas%20adapt%C3%A1veis%20para%20todos%20os%20dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Web Design Responsivo - Páginas adaptáveis para todos os dispositivos</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Web%20Design%20Responsivo%20-%20P%C3%A1ginas%20adapt%C3%A1veis%20para%20todos%20os%20dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Web Design Responsivo - Páginas adaptáveis para todos os dispositivos">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" id="DevOps%20e%20Cloud" data-category-section="DevOps e Cloud">
+        <div class="section-heading">
+          <div>
+            <span>22 livros</span>
+            <h2>DevOps e Cloud</h2>
+          </div>
+          <p>AWS, Azure, Linux, Docker, Kubernetes, CI/CD, automação e infraestrutura.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="amazon aws descomplicando a computacao na nuvem casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Amazon AWS - Descomplicando a computação na nuvem">
+              <img src=".github/img/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem.svg" alt="Capa do livro Amazon AWS - Descomplicando a computação na nuvem" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Amazon AWS - Descomplicando a computação na nuvem</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Amazon AWS - Descomplicando a computação na nuvem">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified cloud practitioner exam jon bonso and adrian formaran devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20Cloud%20Practitioner%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified Cloud Practitioner Exam">
+              <img src=".github/img/AWS%20Certified%20Cloud%20Practitioner%20Exam.svg" alt="Capa do livro AWS Certified Cloud Practitioner Exam" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20Cloud%20Practitioner%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener">AWS Certified Cloud Practitioner Exam</a></h3>
+              <p>Jon Bonso and Adrian Formaran</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20Cloud%20Practitioner%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified Cloud Practitioner Exam">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified developer associate exam jon bonso and adrian formaran devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20Developer%20Associate%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified Developer Associate Exam">
+              <img src=".github/img/AWS%20Certified%20Developer%20Associate%20Exam.svg" alt="Capa do livro AWS Certified Developer Associate Exam" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20Developer%20Associate%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener">AWS Certified Developer Associate Exam</a></h3>
+              <p>Jon Bonso and Adrian Formaran</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20Developer%20Associate%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified Developer Associate Exam">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified devops engineer professional certification and beyond adam book devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20DevOps%20Engineer%20-%20Professional%20Certification%20and%20Beyond%20-%20Autor%20(Adam%20Book).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified DevOps Engineer - Professional Certification and Beyond">
+              <img src=".github/img/AWS%20Certified%20DevOps%20Engineer.svg" alt="Capa do livro AWS Certified DevOps Engineer - Professional Certification and Beyond" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20DevOps%20Engineer%20-%20Professional%20Certification%20and%20Beyond%20-%20Autor%20(Adam%20Book).pdf" target="_blank" rel="noopener">AWS Certified DevOps Engineer - Professional Certification and Beyond</a></h3>
+              <p>Adam Book</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20DevOps%20Engineer%20-%20Professional%20Certification%20and%20Beyond%20-%20Autor%20(Adam%20Book).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified DevOps Engineer - Professional Certification and Beyond">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified devops professional engineer jon bonso and kenneth samonte devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20DevOps%20Professional%20Engineer%20-%20Autor%20(Jon%20Bonso%20and%20Kenneth%20Samonte).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified DevOps Professional Engineer">
+              <img src=".github/img/AWS%20Certified%20DevOps%20Professional%20Engineer.svg" alt="Capa do livro AWS Certified DevOps Professional Engineer" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20DevOps%20Professional%20Engineer%20-%20Autor%20(Jon%20Bonso%20and%20Kenneth%20Samonte).pdf" target="_blank" rel="noopener">AWS Certified DevOps Professional Engineer</a></h3>
+              <p>Jon Bonso and Kenneth Samonte</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20DevOps%20Professional%20Engineer%20-%20Autor%20(Jon%20Bonso%20and%20Kenneth%20Samonte).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified DevOps Professional Engineer">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified security specialty exam jon bonso and carlo acebedo devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20Security%20Specialty%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Carlo%20Acebedo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified Security Specialty Exam">
+              <img src=".github/img/AWS%20Certified%20Security%20Specialty%20Exam.svg" alt="Capa do livro AWS Certified Security Specialty Exam" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20Security%20Specialty%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Carlo%20Acebedo).pdf" target="_blank" rel="noopener">AWS Certified Security Specialty Exam</a></h3>
+              <p>Jon Bonso and Carlo Acebedo</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20Security%20Specialty%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Carlo%20Acebedo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified Security Specialty Exam">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified solutions architect associate saa c03 jon bonso devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Associate%20SAA-C03%20-%20Autor%20(Jon%20Bonso).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified Solutions Architect Associate SAA-C03">
+              <img src=".github/img/AWS%20Certified%20Solutions%20Architect%20Associate%20SAA-C03.svg" alt="Capa do livro AWS Certified Solutions Architect Associate SAA-C03" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Associate%20SAA-C03%20-%20Autor%20(Jon%20Bonso).pdf" target="_blank" rel="noopener">AWS Certified Solutions Architect Associate SAA-C03</a></h3>
+              <p>Jon Bonso</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Associate%20SAA-C03%20-%20Autor%20(Jon%20Bonso).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified Solutions Architect Associate SAA-C03">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified solutions architect professional jon bonso and adrian formaran devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Professional%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified Solutions Architect Professional">
+              <img src=".github/img/AWS%20Certified%20Solutions%20Architect%20Professional.svg" alt="Capa do livro AWS Certified Solutions Architect Professional" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Professional%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener">AWS Certified Solutions Architect Professional</a></h3>
+              <p>Jon Bonso and Adrian Formaran</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Professional%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified Solutions Architect Professional">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws certified sysops administrator associate version 2 jon bonso and lervin john obando devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20Certified%20SysOps%20Administrator%20Associate%20Version%202%20-%20Autor%20(Jon%20Bonso%20and%20Lervin%20John%20Obando).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS Certified SysOps Administrator Associate Version 2">
+              <img src=".github/img/AWS%20Certified%20SysOps%20Administrator%20Associate%20Version%202.svg" alt="Capa do livro AWS Certified SysOps Administrator Associate Version 2" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20Certified%20SysOps%20Administrator%20Associate%20Version%202%20-%20Autor%20(Jon%20Bonso%20and%20Lervin%20John%20Obando).pdf" target="_blank" rel="noopener">AWS Certified SysOps Administrator Associate Version 2</a></h3>
+              <p>Jon Bonso and Lervin John Obando</p>
+              <a class="open-link" href="LivrosDev/AWS%20Certified%20SysOps%20Administrator%20Associate%20Version%202%20-%20Autor%20(Jon%20Bonso%20and%20Lervin%20John%20Obando).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS Certified SysOps Administrator Associate Version 2">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws for beginners the ultimate guide to the fundamentals of aws steve m burnett devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20For%20Beginners%20-%20The%20ultimate%20guide%20to%20the%20fundamentals%20of%20aws%20-%20Autor%20(Steve%20M%20Burnett).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS For Beginners - The ultimate guide to the fundamentals of aws">
+              <img src=".github/img/AWS%20For%20Beginners%20-%20The%20ultimate%20guide%20to%20the%20fundamentals%20of%20aws.svg" alt="Capa do livro AWS For Beginners - The ultimate guide to the fundamentals of aws" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20For%20Beginners%20-%20The%20ultimate%20guide%20to%20the%20fundamentals%20of%20aws%20-%20Autor%20(Steve%20M%20Burnett).pdf" target="_blank" rel="noopener">AWS For Beginners - The ultimate guide to the fundamentals of aws</a></h3>
+              <p>Steve M Burnett</p>
+              <a class="open-link" href="LivrosDev/AWS%20For%20Beginners%20-%20The%20ultimate%20guide%20to%20the%20fundamentals%20of%20aws%20-%20Autor%20(Steve%20M%20Burnett).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS For Beginners - The ultimate guide to the fundamentals of aws">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="aws for non engineers hiroko nishimura devops e cloud">
+            <a class="cover-link" href="LivrosDev/AWS%20for%20Non-Engineers%20-%20Autor%20(Hiroko%20Nishimura).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: AWS for Non-Engineers">
+              <img src=".github/img/AWS%20for%20Non-Engineers.svg" alt="Capa do livro AWS for Non-Engineers" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/AWS%20for%20Non-Engineers%20-%20Autor%20(Hiroko%20Nishimura).pdf" target="_blank" rel="noopener">AWS for Non-Engineers</a></h3>
+              <p>Hiroko Nishimura</p>
+              <a class="open-link" href="LivrosDev/AWS%20for%20Non-Engineers%20-%20Autor%20(Hiroko%20Nishimura).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de AWS for Non-Engineers">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="azure coloque suas plataformas e servicos no cloud casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Azure%20-%20Coloque%20suas%20plataformas%20e%20servi%C3%A7os%20no%20cloud%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Azure - Coloque suas plataformas e serviços no cloud">
+              <img src=".github/img/Azure%20-%20Coloque%20suas%20plataformas%20e%20servi%C3%A7os%20no%20cloud.svg" alt="Capa do livro Azure - Coloque suas plataformas e serviços no cloud" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Azure%20-%20Coloque%20suas%20plataformas%20e%20servi%C3%A7os%20no%20cloud%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Azure - Coloque suas plataformas e serviços no cloud</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Azure%20-%20Coloque%20suas%20plataformas%20e%20servi%C3%A7os%20no%20cloud%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Azure - Coloque suas plataformas e serviços no cloud">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="caixa de ferramentas devops um guia para construcao administracao e arquitetura de sistemas modernos casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Caixa%20de%20Ferramentas%20DevOps%20-%20Um%20Guia%20para%20Constru%C3%A7%C3%A3o%2C%20Administra%C3%A7%C3%A3o%20e%20Arquitetura%20de%20Sistemas%20Modernos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos">
+              <img src=".github/img/Caixa%20de%20Ferramentas%20DevOps%20-%20Um%20Guia%20para%20Constru%C3%A7%C3%A3o%2C%20Administra%C3%A7%C3%A3o%20e%20Arquitetura%20de%20Sistemas%20Modernos.svg" alt="Capa do livro Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Caixa%20de%20Ferramentas%20DevOps%20-%20Um%20Guia%20para%20Constru%C3%A7%C3%A3o%2C%20Administra%C3%A7%C3%A3o%20e%20Arquitetura%20de%20Sistemas%20Modernos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Caixa%20de%20Ferramentas%20DevOps%20-%20Um%20Guia%20para%20Constru%C3%A7%C3%A3o%2C%20Administra%C3%A7%C3%A3o%20e%20Arquitetura%20de%20Sistemas%20Modernos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="comecando com o linux comandos servicos e administracao casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Come%C3%A7ando%20com%20o%20Linux%20-%20Comandos%2C%20servi%C3%A7os%20e%20administra%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Começando com o Linux - Comandos, serviços e administração">
+              <img src=".github/img/Come%C3%A7ando%20com%20o%20Linux%20-%20Comandos%2C%20servi%C3%A7os%20e%20administra%C3%A7%C3%A3o.svg" alt="Capa do livro Começando com o Linux - Comandos, serviços e administração" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Come%C3%A7ando%20com%20o%20Linux%20-%20Comandos%2C%20servi%C3%A7os%20e%20administra%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Começando com o Linux - Comandos, serviços e administração</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Come%C3%A7ando%20com%20o%20Linux%20-%20Comandos%2C%20servi%C3%A7os%20e%20administra%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Começando com o Linux - Comandos, serviços e administração">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="containers com docker do desenvolvimento a producao casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Containers%20com%20Docker%20-%20Do%20desenvolvimento%20%C3%A0%20produ%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Containers com Docker - Do desenvolvimento à produção">
+              <img src=".github/img/Containers%20com%20Docker%20-%20Do%20desenvolvimento%20%C3%A0%20produ%C3%A7%C3%A3o.svg" alt="Capa do livro Containers com Docker - Do desenvolvimento à produção" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Containers%20com%20Docker%20-%20Do%20desenvolvimento%20%C3%A0%20produ%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Containers com Docker - Do desenvolvimento à produção</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Containers%20com%20Docker%20-%20Do%20desenvolvimento%20%C3%A0%20produ%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Containers com Docker - Do desenvolvimento à produção">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="controlando versoes com git e github casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Controlando%20Vers%C3%B5es%20com%20Git%20e%20GitHub%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Controlando Versões com Git e GitHub">
+              <img src=".github/img/Controlando%20Vers%C3%B5es%20com%20Git%20e%20GitHub.svg" alt="Capa do livro Controlando Versões com Git e GitHub" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Controlando%20Vers%C3%B5es%20com%20Git%20e%20GitHub%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Controlando Versões com Git e GitHub</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Controlando%20Vers%C3%B5es%20com%20Git%20e%20GitHub%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Controlando Versões com Git e GitHub">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="devops na pratica entrega de software confiavel e automatizada casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/DevOps%20na%20Pr%C3%A1tica%20-%20Entrega%20de%20Software%20Confi%C3%A1vel%20e%20Automatizada%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: DevOps na Prática - Entrega de Software Confiável e Automatizada">
+              <img src=".github/img/DevOps%20na%20Pr%C3%A1tica%20-%20Entrega%20de%20Software%20Confi%C3%A1vel%20e%20Automatizada.svg" alt="Capa do livro DevOps na Prática - Entrega de Software Confiável e Automatizada" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/DevOps%20na%20Pr%C3%A1tica%20-%20Entrega%20de%20Software%20Confi%C3%A1vel%20e%20Automatizada%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">DevOps na Prática - Entrega de Software Confiável e Automatizada</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/DevOps%20na%20Pr%C3%A1tica%20-%20Entrega%20de%20Software%20Confi%C3%A1vel%20e%20Automatizada%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de DevOps na Prática - Entrega de Software Confiável e Automatizada">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="entrega continua como entregar software de forma rapida e confiavel jez humble devops e cloud">
+            <a class="cover-link" href="LivrosDev/Entrega%20Cont%C3%ADnua%20-%20Como%20Entregar%20Software%20de%20Forma%20R%C3%A1pida%20e%20Confi%C3%A1vel%20-%20Auto%20(Jez%20Humble).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Entrega Contínua - Como Entregar Software de Forma Rápida e Confiável">
+              <img src=".github/img/Entrega%20Cont%C3%ADnua%20-%20Como%20Entregar%20Software%20de%20Forma%20R%C3%A1pida%20e%20Confi%C3%A1vel.svg" alt="Capa do livro Entrega Contínua - Como Entregar Software de Forma Rápida e Confiável" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Entrega%20Cont%C3%ADnua%20-%20Como%20Entregar%20Software%20de%20Forma%20R%C3%A1pida%20e%20Confi%C3%A1vel%20-%20Auto%20(Jez%20Humble).pdf" target="_blank" rel="noopener">Entrega Contínua - Como Entregar Software de Forma Rápida e Confiável</a></h3>
+              <p>Jez Humble</p>
+              <a class="open-link" href="LivrosDev/Entrega%20Cont%C3%ADnua%20-%20Como%20Entregar%20Software%20de%20Forma%20R%C3%A1pida%20e%20Confi%C3%A1vel%20-%20Auto%20(Jez%20Humble).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Entrega Contínua - Como Entregar Software de Forma Rápida e Confiável">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="entrega continua em android como automatizar a distribuicao de apps casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Entrega%20cont%C3%ADnua%20em%20Android%20-%20Como%20automatizar%20a%20distribui%C3%A7%C3%A3o%20de%20apps%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Entrega contínua em Android - Como automatizar a distribuição de apps">
+              <img src=".github/img/Entrega%20cont%C3%ADnua%20em%20Android%20-%20Como%20automatizar%20a%20distribui%C3%A7%C3%A3o%20de%20apps.svg" alt="Capa do livro Entrega contínua em Android - Como automatizar a distribuição de apps" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Entrega%20cont%C3%ADnua%20em%20Android%20-%20Como%20automatizar%20a%20distribui%C3%A7%C3%A3o%20de%20apps%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Entrega contínua em Android - Como automatizar a distribuição de apps</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Entrega%20cont%C3%ADnua%20em%20Android%20-%20Como%20automatizar%20a%20distribui%C3%A7%C3%A3o%20de%20apps%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Entrega contínua em Android - Como automatizar a distribuição de apps">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="guia pratico do servidor linux administracao linux para iniciantes casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Guia%20pr%C3%A1tico%20do%20servidor%20Linux%20-%20Administra%C3%A7%C3%A3o%20Linux%20para%20iniciantes%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Guia prático do servidor Linux - Administração Linux para iniciantes">
+              <img src=".github/img/Guia%20pr%C3%A1tico%20do%20servidor%20Linux%20-%20Administra%C3%A7%C3%A3o%20Linux%20para%20iniciantes.svg" alt="Capa do livro Guia prático do servidor Linux - Administração Linux para iniciantes" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Guia%20pr%C3%A1tico%20do%20servidor%20Linux%20-%20Administra%C3%A7%C3%A3o%20Linux%20para%20iniciantes%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Guia prático do servidor Linux - Administração Linux para iniciantes</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Guia%20pr%C3%A1tico%20do%20servidor%20Linux%20-%20Administra%C3%A7%C3%A3o%20Linux%20para%20iniciantes%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Guia prático do servidor Linux - Administração Linux para iniciantes">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="jenkins automatize tudo sem complicacoes casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Jenkins%20-%20Automatize%20Tudo%20sem%20Complica%C3%A7%C3%B5es%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Jenkins - Automatize Tudo sem Complicações">
+              <img src=".github/img/Jenkins%20-%20Automatize%20Tudo%20sem%20Complica%C3%A7%C3%B5es.svg" alt="Capa do livro Jenkins - Automatize Tudo sem Complicações" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Jenkins%20-%20Automatize%20Tudo%20sem%20Complica%C3%A7%C3%B5es%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Jenkins - Automatize Tudo sem Complicações</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Jenkins%20-%20Automatize%20Tudo%20sem%20Complica%C3%A7%C3%B5es%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Jenkins - Automatize Tudo sem Complicações">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="DevOps e Cloud" data-search="kubernetes tudo sobre orquestracao de conteineres casa do codigo devops e cloud">
+            <a class="cover-link" href="LivrosDev/Kubernetes%20-%20Tudo%20sobre%20orquestra%C3%A7%C3%A3o%20de%20cont%C3%AAineres%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Kubernetes - Tudo sobre orquestração de contêineres">
+              <img src=".github/img/Kubernetes%20-%20Tudo%20sobre%20orquestra%C3%A7%C3%A3o%20de%20cont%C3%AAineres.svg" alt="Capa do livro Kubernetes - Tudo sobre orquestração de contêineres" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">DevOps e Cloud</span>
+              <h3><a href="LivrosDev/Kubernetes%20-%20Tudo%20sobre%20orquestra%C3%A7%C3%A3o%20de%20cont%C3%AAineres%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Kubernetes - Tudo sobre orquestração de contêineres</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Kubernetes%20-%20Tudo%20sobre%20orquestra%C3%A7%C3%A3o%20de%20cont%C3%AAineres%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Kubernetes - Tudo sobre orquestração de contêineres">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" id="Dados%2C%20BI%20e%20Estat%C3%ADstica" data-category-section="Dados, BI e Estatística">
+        <div class="section-heading">
+          <div>
+            <span>6 livros</span>
+            <h2>Dados, BI e Estatística</h2>
+          </div>
+          <p>Data science, BI, big data, estatística, bancos modernos e análise de dados.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="Dados, BI e Estatística" data-search="big data tecnicas e tecnologias para extracao de valor dos dados casa do codigo dados bi e estatistica">
+            <a class="cover-link" href="LivrosDev/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Big Data - Técnicas e tecnologias para extração de valor dos dados">
+              <img src=".github/img/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados.svg" alt="Capa do livro Big Data - Técnicas e tecnologias para extração de valor dos dados" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Dados, BI e Estatística</span>
+              <h3><a href="LivrosDev/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Big Data - Técnicas e tecnologias para extração de valor dos dados</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Big Data - Técnicas e tecnologias para extração de valor dos dados">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Dados, BI e Estatística" data-search="business intelligence implementar do jeito certo e a custo zero casa do codigo dados bi e estatistica">
+            <a class="cover-link" href="LivrosDev/Business%20Intelligence%20-%20Implementar%20do%20jeito%20certo%20e%20a%20custo%20zero%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Business Intelligence - Implementar do jeito certo e a custo zero">
+              <img src=".github/img/Business%20Intelligence%20-%20Implementar%20do%20jeito%20certo%20e%20a%20custo%20zero.svg" alt="Capa do livro Business Intelligence - Implementar do jeito certo e a custo zero" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Dados, BI e Estatística</span>
+              <h3><a href="LivrosDev/Business%20Intelligence%20-%20Implementar%20do%20jeito%20certo%20e%20a%20custo%20zero%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Business Intelligence - Implementar do jeito certo e a custo zero</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Business%20Intelligence%20-%20Implementar%20do%20jeito%20certo%20e%20a%20custo%20zero%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Business Intelligence - Implementar do jeito certo e a custo zero">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Dados, BI e Estatística" data-search="como mentir com estatistica darrell heff dados bi e estatistica">
+            <a class="cover-link" href="LivrosDev/Como%20mentir%20com%20estat%C3%ADstica%20-%20Auto%20(Darrell-Heff).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Como mentir com estatística">
+              <img src=".github/img/Como%20mentir%20com%20estat%C3%ADstica.svg" alt="Capa do livro Como mentir com estatística" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Dados, BI e Estatística</span>
+              <h3><a href="LivrosDev/Como%20mentir%20com%20estat%C3%ADstica%20-%20Auto%20(Darrell-Heff).pdf" target="_blank" rel="noopener">Como mentir com estatística</a></h3>
+              <p>Darrell-Heff</p>
+              <a class="open-link" href="LivrosDev/Como%20mentir%20com%20estat%C3%ADstica%20-%20Auto%20(Darrell-Heff).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Como mentir com estatística">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Dados, BI e Estatística" data-search="estatistica o que e para que serve como funciona nao informado dados bi e estatistica">
+            <a class="cover-link" href="LivrosDev/Estatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona%20.pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Estatistica - O que e, para que serve, como funciona">
+              <img src=".github/img/O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona.svg" alt="Capa do livro Estatistica - O que e, para que serve, como funciona" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Dados, BI e Estatística</span>
+              <h3><a href="LivrosDev/Estatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona%20.pdf" target="_blank" rel="noopener">Estatistica - O que e, para que serve, como funciona</a></h3>
+              <p>Autor não informado</p>
+              <a class="open-link" href="LivrosDev/Estatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona%20.pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Estatistica - O que e, para que serve, como funciona">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Dados, BI e Estatística" data-search="mongodb construa novas aplicacoes com novas tecnologias casa do codigo dados bi e estatistica">
+            <a class="cover-link" href="LivrosDev/MongoDB%20-%20Construa%20Novas%20Aplica%C3%A7%C3%B5es%20com%20Novas%20Tecnologias%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: MongoDB - Construa Novas Aplicações com Novas Tecnologias">
+              <img src=".github/img/MongoDB%20-%20Construa%20Novas%20Aplica%C3%A7%C3%B5es%20com%20Novas%20Tecnologias.svg" alt="Capa do livro MongoDB - Construa Novas Aplicações com Novas Tecnologias" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Dados, BI e Estatística</span>
+              <h3><a href="LivrosDev/MongoDB%20-%20Construa%20Novas%20Aplica%C3%A7%C3%B5es%20com%20Novas%20Tecnologias%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">MongoDB - Construa Novas Aplicações com Novas Tecnologias</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/MongoDB%20-%20Construa%20Novas%20Aplica%C3%A7%C3%B5es%20com%20Novas%20Tecnologias%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de MongoDB - Construa Novas Aplicações com Novas Tecnologias">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Dados, BI e Estatística" data-search="nosql como armazenar os dados de uma aplicacao moderna casa do codigo dados bi e estatistica">
+            <a class="cover-link" href="LivrosDev/NoSQL%20-%20Como%20armazenar%20os%20dados%20de%20uma%20aplica%C3%A7%C3%A3o%20moderna%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: NoSQL - Como armazenar os dados de uma aplicação moderna">
+              <img src=".github/img/NoSQL%20-%20Como%20armazenar%20os%20dados%20de%20uma%20aplica%C3%A7%C3%A3o%20moderna.svg" alt="Capa do livro NoSQL - Como armazenar os dados de uma aplicação moderna" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Dados, BI e Estatística</span>
+              <h3><a href="LivrosDev/NoSQL%20-%20Como%20armazenar%20os%20dados%20de%20uma%20aplica%C3%A7%C3%A3o%20moderna%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">NoSQL - Como armazenar os dados de uma aplicação moderna</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/NoSQL%20-%20Como%20armazenar%20os%20dados%20de%20uma%20aplica%C3%A7%C3%A3o%20moderna%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de NoSQL - Como armazenar os dados de uma aplicação moderna">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" id="Agilidade%20e%20Qualidade" data-category-section="Agilidade e Qualidade">
+        <div class="section-heading">
+          <div>
+            <span>19 livros</span>
+            <h2>Agilidade e Qualidade</h2>
+          </div>
+          <p>Scrum, Kanban, XP, Lean, TDD, BDD, testes e métricas ágeis.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="agile desenvolvimento de software com entregas frequentes e foco no valor de negocio casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio">
+              <img src=".github/img/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio.svg" alt="Capa do livro Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="agile estimating and planning mike cohn agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Agile%20Estimating%20and%20Planning%20-%20Autor%20(Mike%20Cohn).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Agile Estimating and Planning">
+              <img src=".github/img/Agile%20Estimating%20and%20Planning.svg" alt="Capa do livro Agile Estimating and Planning" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Agile%20Estimating%20and%20Planning%20-%20Autor%20(Mike%20Cohn).pdf" target="_blank" rel="noopener">Agile Estimating and Planning</a></h3>
+              <p>Mike Cohn</p>
+              <a class="open-link" href="LivrosDev/Agile%20Estimating%20and%20Planning%20-%20Autor%20(Mike%20Cohn).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Agile Estimating and Planning">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="agile project management with scrum ken schwaber agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Agile%20Project%20Management%20with%20Scrum%20-%20Autor%20(Ken%20Schwaber).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Agile Project Management with Scrum">
+              <img src=".github/img/Agile%20Project%20Management%20with%20Scrum.svg" alt="Capa do livro Agile Project Management with Scrum" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Agile%20Project%20Management%20with%20Scrum%20-%20Autor%20(Ken%20Schwaber).pdf" target="_blank" rel="noopener">Agile Project Management with Scrum</a></h3>
+              <p>Ken Schwaber</p>
+              <a class="open-link" href="LivrosDev/Agile%20Project%20Management%20with%20Scrum%20-%20Autor%20(Ken%20Schwaber).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Agile Project Management with Scrum">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="agile retrospectives making good teams great pragmatic programmers esther derby agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Agile%20Retrospectives%20-%20Making%20Good%20Teams%20Great%20(Pragmatic%20Programmers)%20-%20Autor%20(Esther%20Derby).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Agile Retrospectives - Making Good Teams Great (Pragmatic Programmers)">
+              <img src=".github/img/Agile%20Retrospectives%20-%20Making%20Good%20Teams%20Great.svg" alt="Capa do livro Agile Retrospectives - Making Good Teams Great (Pragmatic Programmers)" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Agile%20Retrospectives%20-%20Making%20Good%20Teams%20Great%20(Pragmatic%20Programmers)%20-%20Autor%20(Esther%20Derby).pdf" target="_blank" rel="noopener">Agile Retrospectives - Making Good Teams Great (Pragmatic Programmers)</a></h3>
+              <p>Esther Derby</p>
+              <a class="open-link" href="LivrosDev/Agile%20Retrospectives%20-%20Making%20Good%20Teams%20Great%20(Pragmatic%20Programmers)%20-%20Autor%20(Esther%20Derby).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Agile Retrospectives - Making Good Teams Great (Pragmatic Programmers)">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="bdd in action behavior driven development for the whole software lifecycle john ferguson smart agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/BDD%20in%20Action%20-%20Behavior-Driven%20Development%20for%20the%20Whole%20Software%20Lifecycle%20-%20Autor%20(John%20Ferguson%20Smart).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle">
+              <img src=".github/img/BDD%20in%20Action%20-%20Behavior-Driven%20Development%20for%20the%20Whole%20Software%20Lifecycle.svg" alt="Capa do livro BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/BDD%20in%20Action%20-%20Behavior-Driven%20Development%20for%20the%20Whole%20Software%20Lifecycle%20-%20Autor%20(John%20Ferguson%20Smart).pdf" target="_blank" rel="noopener">BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle</a></h3>
+              <p>John Ferguson Smart</p>
+              <a class="open-link" href="LivrosDev/BDD%20in%20Action%20-%20Behavior-Driven%20Development%20for%20the%20Whole%20Software%20Lifecycle%20-%20Autor%20(John%20Ferguson%20Smart).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="clean agile back to basics robert martin agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Clean%20Agile%20-%20Back%20to%20Basics%20-%20Autor%20(Robert%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Clean Agile - Back to Basics">
+              <img src=".github/img/Clean%20Agile%20-%20Back%20to%20Basics.svg" alt="Capa do livro Clean Agile - Back to Basics" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Clean%20Agile%20-%20Back%20to%20Basics%20-%20Autor%20(Robert%20Martin).pdf" target="_blank" rel="noopener">Clean Agile - Back to Basics</a></h3>
+              <p>Robert Martin</p>
+              <a class="open-link" href="LivrosDev/Clean%20Agile%20-%20Back%20to%20Basics%20-%20Autor%20(Robert%20Martin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Clean Agile - Back to Basics">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="coaching agile teams a companion for scrummasters agile coaches and project managers in transition adkins lyssa agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Coaching%20Agile%20Teams%20-%20A%20Companion%20for%20ScrumMasters%2C%20Agile%20Coaches%2C%20and%20Project%20Managers%20in%20Transition%20-%20Autor%20(Adkins%20Lyssa).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition">
+              <img src=".github/img/Coaching%20Agile%20Teams%20-%20A%20Companion%20for%20ScrumMasters%2C%20Agile%20Coaches%2C%20and%20Project%20Managers%20in%20Transition.svg" alt="Capa do livro Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Coaching%20Agile%20Teams%20-%20A%20Companion%20for%20ScrumMasters%2C%20Agile%20Coaches%2C%20and%20Project%20Managers%20in%20Transition%20-%20Autor%20(Adkins%20Lyssa).pdf" target="_blank" rel="noopener">Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition</a></h3>
+              <p>Adkins Lyssa</p>
+              <a class="open-link" href="LivrosDev/Coaching%20Agile%20Teams%20-%20A%20Companion%20for%20ScrumMasters%2C%20Agile%20Coaches%2C%20and%20Project%20Managers%20in%20Transition%20-%20Autor%20(Adkins%20Lyssa).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="crystal clear a human powered methodology for small teams alistair cockburn agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Crystal%20Clear%20-%20A%20Human-Powered%20Methodology%20for%20Small%20Teams%20-%20Autor%20(Alistair%20Cockburn).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Crystal Clear - A Human-Powered Methodology for Small Teams">
+              <img src=".github/img/Crystal%20Clear%20-%20A%20Human-Powered%20Methodology%20for%20Small%20Teams.svg" alt="Capa do livro Crystal Clear - A Human-Powered Methodology for Small Teams" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Crystal%20Clear%20-%20A%20Human-Powered%20Methodology%20for%20Small%20Teams%20-%20Autor%20(Alistair%20Cockburn).pdf" target="_blank" rel="noopener">Crystal Clear - A Human-Powered Methodology for Small Teams</a></h3>
+              <p>Alistair Cockburn</p>
+              <a class="open-link" href="LivrosDev/Crystal%20Clear%20-%20A%20Human-Powered%20Methodology%20for%20Small%20Teams%20-%20Autor%20(Alistair%20Cockburn).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Crystal Clear - A Human-Powered Methodology for Small Teams">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="extreme programming praticas para o dia a dia no desenvolvimento agil de software casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/eXtreme%20Programming%20-%20Pr%C3%A1ticas%20para%20o%20dia%20a%20dia%20no%20desenvolvimento%20%C3%A1gil%20de%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software">
+              <img src=".github/img/eXtreme%20Programming%20-%20Pr%C3%A1ticas%20para%20o%20dia%20a%20dia%20no%20desenvolvimento%20%C3%A1gil%20de%20software.svg" alt="Capa do livro eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/eXtreme%20Programming%20-%20Pr%C3%A1ticas%20para%20o%20dia%20a%20dia%20no%20desenvolvimento%20%C3%A1gil%20de%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/eXtreme%20Programming%20-%20Pr%C3%A1ticas%20para%20o%20dia%20a%20dia%20no%20desenvolvimento%20%C3%A1gil%20de%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="extreme programming explained embrace change kent beck agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Extreme%20Programming%20Explained%20-%20Embrace%20Change%20-%20Autor%20(Kent%20Beck).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Extreme Programming Explained - Embrace Change">
+              <img src=".github/img/Extreme%20Programming%20Explained%20-%20Embrace%20Change.svg" alt="Capa do livro Extreme Programming Explained - Embrace Change" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Extreme%20Programming%20Explained%20-%20Embrace%20Change%20-%20Autor%20(Kent%20Beck).pdf" target="_blank" rel="noopener">Extreme Programming Explained - Embrace Change</a></h3>
+              <p>Kent Beck</p>
+              <a class="open-link" href="LivrosDev/Extreme%20Programming%20Explained%20-%20Embrace%20Change%20-%20Autor%20(Kent%20Beck).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Extreme Programming Explained - Embrace Change">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="lean enterprise como empresas de alta performance inovam em escala casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/LEAN%20ENTERPRISE%20-%20Como%20empresas%20de%20alta%20performance%20inovam%20em%20escala%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: LEAN ENTERPRISE - Como empresas de alta performance inovam em escala">
+              <img src=".github/img/LEAN%20ENTERPRISE%20-%20Como%20empresas%20de%20alta%20performance%20inovam%20em%20escala.svg" alt="Capa do livro LEAN ENTERPRISE - Como empresas de alta performance inovam em escala" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/LEAN%20ENTERPRISE%20-%20Como%20empresas%20de%20alta%20performance%20inovam%20em%20escala%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">LEAN ENTERPRISE - Como empresas de alta performance inovam em escala</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/LEAN%20ENTERPRISE%20-%20Como%20empresas%20de%20alta%20performance%20inovam%20em%20escala%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de LEAN ENTERPRISE - Como empresas de alta performance inovam em escala">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="metricas ageis obtenha melhores resultados em sua equipe casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/M%C3%A9tricas%20%C3%A1geis%20-%20Obtenha%20melhores%20resultados%20em%20sua%20equipe%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Métricas ágeis - Obtenha melhores resultados em sua equipe">
+              <img src=".github/img/M%C3%A9tricas%20%C3%A1geis%20-%20Obtenha%20melhores%20resultados%20em%20sua%20equipe.svg" alt="Capa do livro Métricas ágeis - Obtenha melhores resultados em sua equipe" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/M%C3%A9tricas%20%C3%A1geis%20-%20Obtenha%20melhores%20resultados%20em%20sua%20equipe%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Métricas ágeis - Obtenha melhores resultados em sua equipe</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/M%C3%A9tricas%20%C3%A1geis%20-%20Obtenha%20melhores%20resultados%20em%20sua%20equipe%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Métricas ágeis - Obtenha melhores resultados em sua equipe">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="more agile testing learning journeys for the whole team lisa crispin agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/More%20Agile%20Testing%20-%20Learning%20Journeys%20for%20the%20Whole%20Team%20-%20Autor%20(Lisa%20Crispin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: More Agile Testing - Learning Journeys for the Whole Team">
+              <img src=".github/img/More%20Agile%20Testing%20-%20Learning%20Journeys%20for%20the%20Whole%20Team.svg" alt="Capa do livro More Agile Testing - Learning Journeys for the Whole Team" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/More%20Agile%20Testing%20-%20Learning%20Journeys%20for%20the%20Whole%20Team%20-%20Autor%20(Lisa%20Crispin).pdf" target="_blank" rel="noopener">More Agile Testing - Learning Journeys for the Whole Team</a></h3>
+              <p>Lisa Crispin</p>
+              <a class="open-link" href="LivrosDev/More%20Agile%20Testing%20-%20Learning%20Journeys%20for%20the%20Whole%20Team%20-%20Autor%20(Lisa%20Crispin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de More Agile Testing - Learning Journeys for the Whole Team">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="real world kanban do less accomplish more with lean thinking mattias skarin agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Real-World%20Kanban%20-%20Do%20Less%2C%20Accomplish%20More%20with%20Lean%20Thinking%20-%20Autor%20(Mattias%20Skarin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Real-World Kanban - Do Less, Accomplish More with Lean Thinking">
+              <img src=".github/img/Real-World%20Kanban%20-%20Do%20Less%2C%20Accomplish%20More%20with%20Lean%20Thinking.svg" alt="Capa do livro Real-World Kanban - Do Less, Accomplish More with Lean Thinking" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Real-World%20Kanban%20-%20Do%20Less%2C%20Accomplish%20More%20with%20Lean%20Thinking%20-%20Autor%20(Mattias%20Skarin).pdf" target="_blank" rel="noopener">Real-World Kanban - Do Less, Accomplish More with Lean Thinking</a></h3>
+              <p>Mattias Skarin</p>
+              <a class="open-link" href="LivrosDev/Real-World%20Kanban%20-%20Do%20Less%2C%20Accomplish%20More%20with%20Lean%20Thinking%20-%20Autor%20(Mattias%20Skarin).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Real-World Kanban - Do Less, Accomplish More with Lean Thinking">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="scrum gestao agil para projetos de sucesso casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Scrum%20-%20Gest%C3%A3o%20%C3%A1gil%20para%20projetos%20de%20sucesso%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Scrum - Gestão ágil para projetos de sucesso">
+              <img src=".github/img/Scrum%20-%20Gest%C3%A3o%20%C3%A1gil%20para%20projetos%20de%20sucesso.svg" alt="Capa do livro Scrum - Gestão ágil para projetos de sucesso" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Scrum%20-%20Gest%C3%A3o%20%C3%A1gil%20para%20projetos%20de%20sucesso%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Scrum - Gestão ágil para projetos de sucesso</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Scrum%20-%20Gest%C3%A3o%20%C3%A1gil%20para%20projetos%20de%20sucesso%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Scrum - Gestão ágil para projetos de sucesso">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="scrum 360 um guia completo e pratico de agilidade casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Scrum%20360%20-%20Um%20guia%20completo%20e%20pra%CC%81tico%20de%20agilidade%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Scrum 360 - Um guia completo e prático de agilidade">
+              <img src=".github/img/Scrum%20360%20-%20Um%20guia%20completo%20e%20pr%C3%A1tico%20de%20agilidade.svg" alt="Capa do livro Scrum 360 - Um guia completo e prático de agilidade" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Scrum%20360%20-%20Um%20guia%20completo%20e%20pra%CC%81tico%20de%20agilidade%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Scrum 360 - Um guia completo e prático de agilidade</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Scrum%20360%20-%20Um%20guia%20completo%20e%20pra%CC%81tico%20de%20agilidade%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Scrum 360 - Um guia completo e prático de agilidade">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="tdd desenvolvimento guiado por testes ken beck agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/TDD%20-%20Desenvolvimento%20Guiado%20por%20Testes%20-%20Autor%20(Ken%20Beck).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: TDD - Desenvolvimento Guiado por Testes">
+              <img src=".github/img/TDD%20-%20Desenvolvimento%20Guiado%20por%20Testes.svg" alt="Capa do livro TDD - Desenvolvimento Guiado por Testes" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/TDD%20-%20Desenvolvimento%20Guiado%20por%20Testes%20-%20Autor%20(Ken%20Beck).pdf" target="_blank" rel="noopener">TDD - Desenvolvimento Guiado por Testes</a></h3>
+              <p>Ken Beck</p>
+              <a class="open-link" href="LivrosDev/TDD%20-%20Desenvolvimento%20Guiado%20por%20Testes%20-%20Autor%20(Ken%20Beck).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de TDD - Desenvolvimento Guiado por Testes">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="test driven development teste e design no mundo real casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Test-Driven%20Development%20-%20Teste%20e%20Design%20no%20Mundo%20Real%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Test-Driven Development - Teste e Design no Mundo Real">
+              <img src=".github/img/Test-Driven%20Development%20-%20Teste%20e%20Design%20no%20Mundo%20Real.svg" alt="Capa do livro Test-Driven Development - Teste e Design no Mundo Real" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Test-Driven%20Development%20-%20Teste%20e%20Design%20no%20Mundo%20Real%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Test-Driven Development - Teste e Design no Mundo Real</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Test-Driven%20Development%20-%20Teste%20e%20Design%20no%20Mundo%20Real%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Test-Driven Development - Teste e Design no Mundo Real">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Agilidade e Qualidade" data-search="testes automatizados de software um guia pratico casa do codigo agilidade e qualidade">
+            <a class="cover-link" href="LivrosDev/Testes%20Automatizados%20de%20Software%20-%20Um%20Guia%20Pr%C3%A1tico%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Testes Automatizados de Software - Um Guia Prático">
+              <img src=".github/img/Testes%20Automatizados%20de%20Software%20-%20Um%20Guia%20Pr%C3%A1tico.svg" alt="Capa do livro Testes Automatizados de Software - Um Guia Prático" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Agilidade e Qualidade</span>
+              <h3><a href="LivrosDev/Testes%20Automatizados%20de%20Software%20-%20Um%20Guia%20Pr%C3%A1tico%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Testes Automatizados de Software - Um Guia Prático</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Testes%20Automatizados%20de%20Software%20-%20Um%20Guia%20Pr%C3%A1tico%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Testes Automatizados de Software - Um Guia Prático">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" id="Carreira%2C%20Produto%20e%20Soft%20Skills" data-category-section="Carreira, Produto e Soft Skills">
+        <div class="section-heading">
+          <div>
+            <span>18 livros</span>
+            <h2>Carreira, Produto e Soft Skills</h2>
+          </div>
+          <p>Carreira, produto, aprendizado, produtividade e habilidades profissionais.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="a jornada do empreendedor o heroi da nossa era casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: A jornada do empreendedor - O herói da nossa Era">
+              <img src=".github/img/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era.svg" alt="Capa do livro A jornada do empreendedor - O herói da nossa Era" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">A jornada do empreendedor - O herói da nossa Era</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de A jornada do empreendedor - O herói da nossa Era">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="a startup enxuta eric ries carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/A%20Startup%20Enxuta%20-%20Autor%20(Eric%20Ries).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: A Startup Enxuta">
+              <img src=".github/img/A%20Startup%20Enxuta.svg" alt="Capa do livro A Startup Enxuta" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/A%20Startup%20Enxuta%20-%20Autor%20(Eric%20Ries).pdf" target="_blank" rel="noopener">A Startup Enxuta</a></h3>
+              <p>Eric Ries</p>
+              <a class="open-link" href="LivrosDev/A%20Startup%20Enxuta%20-%20Autor%20(Eric%20Ries).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de A Startup Enxuta">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="como ser um programador melhor um manual para programadores que se importam com codigo pete goodliffe carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Como%20ser%20um%20Programador%20Melhor%20-%20um%20Manual%20Para%20Programadores%20que%20se%20Importam%20com%20C%C3%B3digo%20-%20Autor%20(Pete%20Goodliffe).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código">
+              <img src=".github/img/Como%20ser%20um%20Programador%20Melhor%20-%20um%20Manual%20Para%20Programadores%20que%20se%20Importam%20com%20C%C3%B3digo.svg" alt="Capa do livro Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Como%20ser%20um%20Programador%20Melhor%20-%20um%20Manual%20Para%20Programadores%20que%20se%20Importam%20com%20C%C3%B3digo%20-%20Autor%20(Pete%20Goodliffe).pdf" target="_blank" rel="noopener">Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código</a></h3>
+              <p>Pete Goodliffe</p>
+              <a class="open-link" href="LivrosDev/Como%20ser%20um%20Programador%20Melhor%20-%20um%20Manual%20Para%20Programadores%20que%20se%20Importam%20com%20C%C3%B3digo%20-%20Autor%20(Pete%20Goodliffe).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="direto ao ponto criando produtos de forma enxuta casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Direto%20ao%20Ponto%20-%20Criando%20produtos%20de%20forma%20enxuta%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Direto ao Ponto - Criando produtos de forma enxuta">
+              <img src=".github/img/Direto%20ao%20Ponto%20-%20Criando%20produtos%20de%20forma%20enxuta.svg" alt="Capa do livro Direto ao Ponto - Criando produtos de forma enxuta" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Direto%20ao%20Ponto%20-%20Criando%20produtos%20de%20forma%20enxuta%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Direto ao Ponto - Criando produtos de forma enxuta</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Direto%20ao%20Ponto%20-%20Criando%20produtos%20de%20forma%20enxuta%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Direto ao Ponto - Criando produtos de forma enxuta">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="fragmentos de um programador artigos e insights da carreira de um profissional casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Fragmentos%20de%20um%20programador%20-%20Artigos%20e%20insights%20da%20carreira%20de%20um%20profissional%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Fragmentos de um programador - Artigos e insights da carreira de um profissional">
+              <img src=".github/img/Fragmentos%20de%20um%20programador%20-%20Artigos%20e%20insights%20da%20carreira%20de%20um%20profissional.svg" alt="Capa do livro Fragmentos de um programador - Artigos e insights da carreira de um profissional" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Fragmentos%20de%20um%20programador%20-%20Artigos%20e%20insights%20da%20carreira%20de%20um%20profissional%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Fragmentos de um programador - Artigos e insights da carreira de um profissional</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Fragmentos%20de%20um%20programador%20-%20Artigos%20e%20insights%20da%20carreira%20de%20um%20profissional%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Fragmentos de um programador - Artigos e insights da carreira de um profissional">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="gestao de produtos como aumentar as chances de sucesso do seu software casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Gest%C3%A3o%20de%20produtos%20-%20Como%20aumentar%20as%20chances%20de%20sucesso%20do%20seu%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Gestão de produtos - Como aumentar as chances de sucesso do seu software">
+              <img src=".github/img/Gest%C3%A3o%20de%20produtos%20-%20Como%20aumentar%20as%20chances%20de%20sucesso%20do%20seu%20software.svg" alt="Capa do livro Gestão de produtos - Como aumentar as chances de sucesso do seu software" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Gest%C3%A3o%20de%20produtos%20-%20Como%20aumentar%20as%20chances%20de%20sucesso%20do%20seu%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Gestão de produtos - Como aumentar as chances de sucesso do seu software</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Gest%C3%A3o%20de%20produtos%20-%20Como%20aumentar%20as%20chances%20de%20sucesso%20do%20seu%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Gestão de produtos - Como aumentar as chances de sucesso do seu software">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="guia do mestre programador pensando como pirata evoluindo como jedi casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Guia%20do%20Mestre%20Programador%20-%20Pensando%20como%20pirata%2C%20evoluindo%20como%20jedi%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi">
+              <img src=".github/img/Guia%20do%20Mestre%20Programador%20-%20Pensando%20como%20pirata%2C%20evoluindo%20como%20jedi.svg" alt="Capa do livro Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Guia%20do%20Mestre%20Programador%20-%20Pensando%20como%20pirata%2C%20evoluindo%20como%20jedi%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Guia%20do%20Mestre%20Programador%20-%20Pensando%20como%20pirata%2C%20evoluindo%20como%20jedi%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="learning 3 0 como os profissionais criativos aprendem casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Learning%203.0%20-%20Como%20os%20profissionais%20criativos%20aprendem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Learning 3.0 - Como os profissionais criativos aprendem">
+              <img src=".github/img/Learning%203.0%20-%20Como%20os%20profissionais%20criativos%20aprendem.svg" alt="Capa do livro Learning 3.0 - Como os profissionais criativos aprendem" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Learning%203.0%20-%20Como%20os%20profissionais%20criativos%20aprendem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Learning 3.0 - Como os profissionais criativos aprendem</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/Learning%203.0%20-%20Como%20os%20profissionais%20criativos%20aprendem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Learning 3.0 - Como os profissionais criativos aprendem">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="o programador apaixonado construindo uma carreira notavel em desenvolvimento de software casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/O%20Programador%20Apaixonado%20-%20Construindo%20uma%20Carreira%20Not%C3%A1vel%20em%20Desenvolvimento%20de%20Software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software">
+              <img src=".github/img/O%20Programador%20Apaixonado%20-%20Construindo%20uma%20Carreira%20Not%C3%A1vel%20em%20Desenvolvimento%20de%20Software.svg" alt="Capa do livro O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/O%20Programador%20Apaixonado%20-%20Construindo%20uma%20Carreira%20Not%C3%A1vel%20em%20Desenvolvimento%20de%20Software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/O%20Programador%20Apaixonado%20-%20Construindo%20uma%20Carreira%20Not%C3%A1vel%20em%20Desenvolvimento%20de%20Software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="o programador pragmatico andrew hunt e david thomas carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/O%20Programador%20Pragm%C3%A1tico%20-%20Autor%20(Andrew%20Hunt%20e%20David%20Thomas).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: O Programador Pragmático">
+              <img src=".github/img/O%20Programador%20Pragm%C3%A1tico.svg" alt="Capa do livro O Programador Pragmático" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/O%20Programador%20Pragm%C3%A1tico%20-%20Autor%20(Andrew%20Hunt%20e%20David%20Thomas).pdf" target="_blank" rel="noopener">O Programador Pragmático</a></h3>
+              <p>Andrew Hunt e David Thomas</p>
+              <a class="open-link" href="LivrosDev/O%20Programador%20Pragm%C3%A1tico%20-%20Autor%20(Andrew%20Hunt%20e%20David%20Thomas).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de O Programador Pragmático">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="por que os generalistas vencem em um mundo de especialistas david epstein carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Por%20que%20Os%20Generalistas%20Vencem%20Em%20um%20Mundo%20de%20Especialistas%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Por que Os Generalistas Vencem Em um Mundo de Especialistas">
+              <img src=".github/img/Por%20que%20Os%20Generalistas%20Vencem%20Em%20um%20Mundo%20de%20Especialistas%20-%20Autor(David%20Epstein).svg" alt="Capa do livro Por que Os Generalistas Vencem Em um Mundo de Especialistas" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Por%20que%20Os%20Generalistas%20Vencem%20Em%20um%20Mundo%20de%20Especialistas%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener">Por que Os Generalistas Vencem Em um Mundo de Especialistas</a></h3>
+              <p>David Epstein</p>
+              <a class="open-link" href="LivrosDev/Por%20que%20Os%20Generalistas%20Vencem%20Em%20um%20Mundo%20de%20Especialistas%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Por que Os Generalistas Vencem Em um Mundo de Especialistas">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="range why generalists triumph in a specialized world david epstein carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Range%20-%20Why%20Generalists%20Triumph%20in%20a%20Specialized%20World%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Range - Why Generalists Triumph in a Specialized World">
+              <img src=".github/img/Range%20-%20Why%20Generalists%20Triumph%20in%20a%20Specialized%20World%20-%20Autor(David%20Epstein).svg" alt="Capa do livro Range - Why Generalists Triumph in a Specialized World" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Range%20-%20Why%20Generalists%20Triumph%20in%20a%20Specialized%20World%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener">Range - Why Generalists Triumph in a Specialized World</a></h3>
+              <p>David Epstein</p>
+              <a class="open-link" href="LivrosDev/Range%20-%20Why%20Generalists%20Triumph%20in%20a%20Specialized%20World%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Range - Why Generalists Triumph in a Specialized World">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="secrets of a buccaneer scholar how self education and the pursuit of passion can lead to a lifetime of success james marcus bach carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Secrets%20of%20a%20Buccaneer-Scholar%20-%20How%20Self-Education%20and%20the%20Pursuit%20of%20Passion%20Can%20Lead%20to%20a%20Lifetime%20of%20Success%20-%20Autor%20(James%20Marcus%20Bach).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success">
+              <img src=".github/img/Secrets%20of%20a%20Buccaneer-Scholar%20-%20How%20Self-Education%20and%20the%20Pursuit%20of%20Passion%20Can%20Lead%20to%20a%20Lifetime%20of%20Success.svg" alt="Capa do livro Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Secrets%20of%20a%20Buccaneer-Scholar%20-%20How%20Self-Education%20and%20the%20Pursuit%20of%20Passion%20Can%20Lead%20to%20a%20Lifetime%20of%20Success%20-%20Autor%20(James%20Marcus%20Bach).pdf" target="_blank" rel="noopener">Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success</a></h3>
+              <p>James Marcus Bach</p>
+              <a class="open-link" href="LivrosDev/Secrets%20of%20a%20Buccaneer-Scholar%20-%20How%20Self-Education%20and%20the%20Pursuit%20of%20Passion%20Can%20Lead%20to%20a%20Lifetime%20of%20Success%20-%20Autor%20(James%20Marcus%20Bach).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="soft skills the software developer s life manual john sonmez carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/Soft%20Skills%20-%20The%20Software%20Developer&#39;s%20Life%20Manual%20-%20Autor%20(John%20Sonmez).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Soft Skills - The Software Developer&#39;s Life Manual">
+              <img src=".github/img/Soft%20Skills%20-%20The%20Software%20Developer's%20Life%20Manual.svg" alt="Capa do livro Soft Skills - The Software Developer&#39;s Life Manual" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/Soft%20Skills%20-%20The%20Software%20Developer&#39;s%20Life%20Manual%20-%20Autor%20(John%20Sonmez).pdf" target="_blank" rel="noopener">Soft Skills - The Software Developer&#39;s Life Manual</a></h3>
+              <p>John Sonmez</p>
+              <a class="open-link" href="LivrosDev/Soft%20Skills%20-%20The%20Software%20Developer&#39;s%20Life%20Manual%20-%20Autor%20(John%20Sonmez).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Soft Skills - The Software Developer&#39;s Life Manual">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="the cambridge handbook of the learning sciences r keith sawyer carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/The%20Cambridge%20Handbook%20of%20the%20Learning%20Sciences%20-%20Autor(R.%20Keith%20Sawyer).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: The Cambridge Handbook of the Learning Sciences">
+              <img src=".github/img/The%20Cambridge%20Handbook%20of%20the%20Learning%20Sciences%20-%20Autor(R.%20Keith%20Sawyer).svg" alt="Capa do livro The Cambridge Handbook of the Learning Sciences" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/The%20Cambridge%20Handbook%20of%20the%20Learning%20Sciences%20-%20Autor(R.%20Keith%20Sawyer).pdf" target="_blank" rel="noopener">The Cambridge Handbook of the Learning Sciences</a></h3>
+              <p>R. Keith Sawyer</p>
+              <a class="open-link" href="LivrosDev/The%20Cambridge%20Handbook%20of%20the%20Learning%20Sciences%20-%20Autor(R.%20Keith%20Sawyer).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de The Cambridge Handbook of the Learning Sciences">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="the mythical man month essays on software engineering frederick p brooks carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering%20-%20Author%20(Frederick%20P.%20Brooks).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: The Mythical Man-Month Essays On Software Engineering">
+              <img src=".github/img/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering.svg" alt="Capa do livro The Mythical Man-Month Essays On Software Engineering" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering%20-%20Author%20(Frederick%20P.%20Brooks).pdf" target="_blank" rel="noopener">The Mythical Man-Month Essays On Software Engineering</a></h3>
+              <p>Frederick P. Brooks</p>
+              <a class="open-link" href="LivrosDev/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering%20-%20Author%20(Frederick%20P.%20Brooks).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de The Mythical Man-Month Essays On Software Engineering">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="the passionate programmer creating a remarkable career in software development chad fowler carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/The%20Passionate%20Programmer%20-%20Creating%20a%20Remarkable%20Career%20in%20Software%20Development%20-%20Autor%20(Chad%20Fowler).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: The Passionate Programmer - Creating a Remarkable Career in Software Development">
+              <img src=".github/img/The%20Passionate%20Programmer%20-%20Creating%20a%20Remarkable%20Career%20in%20Software%20Development.svg" alt="Capa do livro The Passionate Programmer - Creating a Remarkable Career in Software Development" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/The%20Passionate%20Programmer%20-%20Creating%20a%20Remarkable%20Career%20in%20Software%20Development%20-%20Autor%20(Chad%20Fowler).pdf" target="_blank" rel="noopener">The Passionate Programmer - Creating a Remarkable Career in Software Development</a></h3>
+              <p>Chad Fowler</p>
+              <a class="open-link" href="LivrosDev/The%20Passionate%20Programmer%20-%20Creating%20a%20Remarkable%20Career%20in%20Software%20Development%20-%20Autor%20(Chad%20Fowler).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de The Passionate Programmer - Creating a Remarkable Career in Software Development">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Carreira, Produto e Soft Skills" data-search="thoughtworks antologia brasil historias de aprendizado e inovacao casa do codigo carreira produto e soft skills">
+            <a class="cover-link" href="LivrosDev/ThoughtWorks%20Antologia%20Brasil%20-%20Hist%C3%B3rias%20de%20aprendizado%20e%20inova%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação">
+              <img src=".github/img/ThoughtWorks%20Antologia%20Brasil%20-%20Hist%C3%B3rias%20de%20aprendizado%20e%20inova%C3%A7%C3%A3o.svg" alt="Capa do livro ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Carreira, Produto e Soft Skills</span>
+              <h3><a href="LivrosDev/ThoughtWorks%20Antologia%20Brasil%20-%20Hist%C3%B3rias%20de%20aprendizado%20e%20inova%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/ThoughtWorks%20Antologia%20Brasil%20-%20Hist%C3%B3rias%20de%20aprendizado%20e%20inova%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="category-section" id="Lideran%C3%A7a%20e%20Cultura" data-category-section="Liderança e Cultura">
+        <div class="section-heading">
+          <div>
+            <span>7 livros</span>
+            <h2>Liderança e Cultura</h2>
+          </div>
+          <p>Gestão, cultura, liderança, times, comunicação e melhoria organizacional.</p>
+        </div>
+        <div class="book-grid">
+
+          <article class="book-card" data-book-card data-category="Liderança e Cultura" data-search="a arte de dar feedback um guia acima da media hbr motive sua equipe melhore a comunicacao estabeleca objetivos claros harvard business review lideranca e cultura">
+            <a class="cover-link" href="LivrosDev/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe.%20Melhore%20a%20comunica%C3%A7%C3%A3o.%20Estabele%C3%A7a%20objetivos%20claros.%20-%20Autor%20(Harvard%20Business%20Review).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros.">
+              <img src=".github/img/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe%20Melhore%20a%20comunica%C3%A7%C3%A3o%20Estabele%C3%A7a%20objetivos%20claros.svg" alt="Capa do livro A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros." loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Liderança e Cultura</span>
+              <h3><a href="LivrosDev/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe.%20Melhore%20a%20comunica%C3%A7%C3%A3o.%20Estabele%C3%A7a%20objetivos%20claros.%20-%20Autor%20(Harvard%20Business%20Review).pdf" target="_blank" rel="noopener">A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros.</a></h3>
+              <p>Harvard Business Review</p>
+              <a class="open-link" href="LivrosDev/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe.%20Melhore%20a%20comunica%C3%A7%C3%A3o.%20Estabele%C3%A7a%20objetivos%20claros.%20-%20Autor%20(Harvard%20Business%20Review).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros.">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Liderança e Cultura" data-search="a regra e nao ter regras a netflix e a cultura da reinvencao reed hastings lideranca e cultura">
+            <a class="cover-link" href="LivrosDev/A%20Regra%20%C3%A9%20N%C3%A3o%20Ter%20Regras%20-%20A%20Netflix%20e%20a%20Cultura%20da%20Reinven%C3%A7%C3%A3o%20-%20Autor%20(Reed%20Hastings).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: A Regra é Não Ter Regras - A Netflix e a Cultura da Reinvenção">
+              <img src=".github/img/A%20Regra%20%C3%A9%20N%C3%A3o%20Ter%20Regras%20-%20A%20Netflix%20e%20a%20Cultura%20da%20Reinven%C3%A7%C3%A3o.svg" alt="Capa do livro A Regra é Não Ter Regras - A Netflix e a Cultura da Reinvenção" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Liderança e Cultura</span>
+              <h3><a href="LivrosDev/A%20Regra%20%C3%A9%20N%C3%A3o%20Ter%20Regras%20-%20A%20Netflix%20e%20a%20Cultura%20da%20Reinven%C3%A7%C3%A3o%20-%20Autor%20(Reed%20Hastings).pdf" target="_blank" rel="noopener">A Regra é Não Ter Regras - A Netflix e a Cultura da Reinvenção</a></h3>
+              <p>Reed Hastings</p>
+              <a class="open-link" href="LivrosDev/A%20Regra%20%C3%A9%20N%C3%A3o%20Ter%20Regras%20-%20A%20Netflix%20e%20a%20Cultura%20da%20Reinven%C3%A7%C3%A3o%20-%20Autor%20(Reed%20Hastings).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de A Regra é Não Ter Regras - A Netflix e a Cultura da Reinvenção">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Liderança e Cultura" data-search="como melhorar o desempenho da sua equipe de desenvolvimento software house lideranca e cultura">
+            <a class="cover-link" href="LivrosDev/Como%20Melhorar%20o%20Desempenho%20da%20Sua%20Equipe%20de%20Desenvolvimento%20-%20Autor(Software%20House).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento">
+              <img src=".github/img/Como%20Melhorar%20o%20Desempenho%20da%20Sua%20Equipe%20de%20Desenvolvimento%20-%20Autor(Software%20House).svg" alt="Capa do livro Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Liderança e Cultura</span>
+              <h3><a href="LivrosDev/Como%20Melhorar%20o%20Desempenho%20da%20Sua%20Equipe%20de%20Desenvolvimento%20-%20Autor(Software%20House).pdf" target="_blank" rel="noopener">Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento</a></h3>
+              <p>Software House</p>
+              <a class="open-link" href="LivrosDev/Como%20Melhorar%20o%20Desempenho%20da%20Sua%20Equipe%20de%20Desenvolvimento%20-%20Autor(Software%20House).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Liderança e Cultura" data-search="dsl quebre a barreira entre desenvolvimento e negocios casa do codigo lideranca e cultura">
+            <a class="cover-link" href="LivrosDev/DSL%20-%20Quebre%20a%20barreira%20entre%20desenvolvimento%20e%20neg%C3%B3cios%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: DSL - Quebre a barreira entre desenvolvimento e negócios">
+              <span class="cover-placeholder" aria-hidden="true">DQ</span>
+            </a>
+            <div class="book-body">
+              <span class="book-category">Liderança e Cultura</span>
+              <h3><a href="LivrosDev/DSL%20-%20Quebre%20a%20barreira%20entre%20desenvolvimento%20e%20neg%C3%B3cios%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">DSL - Quebre a barreira entre desenvolvimento e negócios</a></h3>
+              <p>Casa do Código</p>
+              <a class="open-link" href="LivrosDev/DSL%20-%20Quebre%20a%20barreira%20entre%20desenvolvimento%20e%20neg%C3%B3cios%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de DSL - Quebre a barreira entre desenvolvimento e negócios">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Liderança e Cultura" data-search="managing for happiness jurgen appelo lideranca e cultura">
+            <a class="cover-link" href="LivrosDev/Managing%20For%20Happiness%20-%20Autor%20(Jurgen%20Appelo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Managing For Happiness">
+              <img src=".github/img/Managing%20For%20Happiness.svg" alt="Capa do livro Managing For Happiness" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Liderança e Cultura</span>
+              <h3><a href="LivrosDev/Managing%20For%20Happiness%20-%20Autor%20(Jurgen%20Appelo).pdf" target="_blank" rel="noopener">Managing For Happiness</a></h3>
+              <p>Jurgen Appelo</p>
+              <a class="open-link" href="LivrosDev/Managing%20For%20Happiness%20-%20Autor%20(Jurgen%20Appelo).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Managing For Happiness">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Liderança e Cultura" data-search="o ego e seu inimigo como dominar seu pior adversario ryan holiday lideranca e cultura">
+            <a class="cover-link" href="LivrosDev/O%20Ego%20%C3%89%20Seu%20Inimigo.%20Como%20Dominar%20Seu%20Pior%20Advers%C3%A1rio%20-%20Autor%20(Ryan%20Holiday).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: O Ego É Seu Inimigo. Como Dominar Seu Pior Adversário">
+              <img src=".github/img/O%20Ego%20%C3%89%20Seu%20Inimigo.%20Como%20Dominar%20Seu%20Pior%20Advers%C3%A1rio.svg" alt="Capa do livro O Ego É Seu Inimigo. Como Dominar Seu Pior Adversário" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Liderança e Cultura</span>
+              <h3><a href="LivrosDev/O%20Ego%20%C3%89%20Seu%20Inimigo.%20Como%20Dominar%20Seu%20Pior%20Advers%C3%A1rio%20-%20Autor%20(Ryan%20Holiday).pdf" target="_blank" rel="noopener">O Ego É Seu Inimigo. Como Dominar Seu Pior Adversário</a></h3>
+              <p>Ryan Holiday</p>
+              <a class="open-link" href="LivrosDev/O%20Ego%20%C3%89%20Seu%20Inimigo.%20Como%20Dominar%20Seu%20Pior%20Advers%C3%A1rio%20-%20Autor%20(Ryan%20Holiday).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de O Ego É Seu Inimigo. Como Dominar Seu Pior Adversário">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="book-card" data-book-card data-category="Liderança e Cultura" data-search="sprint jake knapp lideranca e cultura">
+            <a class="cover-link" href="LivrosDev/Sprint%20-%20Autor%20(Jake%20Knapp).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF: Sprint">
+              <img src=".github/img/Sprint.svg" alt="Capa do livro Sprint" loading="lazy">
+            </a>
+            <div class="book-body">
+              <span class="book-category">Liderança e Cultura</span>
+              <h3><a href="LivrosDev/Sprint%20-%20Autor%20(Jake%20Knapp).pdf" target="_blank" rel="noopener">Sprint</a></h3>
+              <p>Jake Knapp</p>
+              <a class="open-link" href="LivrosDev/Sprint%20-%20Autor%20(Jake%20Knapp).pdf" target="_blank" rel="noopener" aria-label="Abrir PDF de Sprint">
+                Abrir PDF <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    <div class="empty-state" id="emptyState" hidden>Nenhum livro encontrado para esse filtro.</div>
+  </main>
+
+  <footer class="page-footer">
+    Gerado em 24/05/2026, 22:32 a partir dos PDFs locais em <strong>LivrosDev</strong>.
+  </footer>
+
+  <script>
+    const normalizeText = (value) => value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, ' ')
+      .trim();
+
+    const cards = [...document.querySelectorAll('[data-book-card]')];
+    const sections = [...document.querySelectorAll('[data-category-section]')];
+    const filters = [...document.querySelectorAll('[data-category-filter]')];
+    const search = document.querySelector('#bookSearch');
+    const visibleCount = document.querySelector('#visibleCount');
+    const emptyState = document.querySelector('#emptyState');
+    let activeCategory = 'all';
+
+    function applyFilters() {
+      const query = normalizeText(search.value);
+      let visible = 0;
+
+      for (const card of cards) {
+        const matchesCategory = activeCategory === 'all' || card.dataset.category === activeCategory;
+        const matchesSearch = !query || card.dataset.search.includes(query);
+        const shouldShow = matchesCategory && matchesSearch;
+        card.hidden = !shouldShow;
+
+        if (shouldShow) {
+          visible += 1;
+        }
+      }
+
+      for (const section of sections) {
+        const hasVisibleBooks = [...section.querySelectorAll('[data-book-card]')].some((card) => !card.hidden);
+        section.hidden = !hasVisibleBooks;
+      }
+
+      visibleCount.textContent = visible;
+      emptyState.hidden = visible > 0;
+    }
+
+    search.addEventListener('input', applyFilters);
+
+    for (const filter of filters) {
+      filter.addEventListener('click', () => {
+        activeCategory = filter.dataset.categoryFilter;
+        filters.forEach((item) => item.classList.toggle('is-active', item === filter));
+        applyFilters();
+      });
+    }
+  </script>
+</body>
+</html>
