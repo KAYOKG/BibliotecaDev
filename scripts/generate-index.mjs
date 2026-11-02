@@ -415,39 +415,55 @@ function renderHtml(books) {
     }
 
     .site-header {
+      position: relative;
+      overflow: hidden;
       background: var(--header);
       color: #ffffff;
       border-bottom: 1px solid #3d444d;
     }
 
+    .site-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(130, 80, 223, 0.28), transparent 28%),
+        radial-gradient(circle at 58% 110%, rgba(47, 129, 247, 0.24), transparent 36%),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: auto, auto, 32px 32px, 32px 32px;
+      pointer-events: none;
+    }
+
     .header-shell {
       width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 0;
+      position: relative;
+      padding: 64px 0 58px;
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 24px;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: 64px;
       align-items: center;
     }
 
     .brand {
       display: flex;
-      align-items: center;
-      gap: 16px;
+      align-items: flex-start;
+      gap: 20px;
       min-width: 0;
     }
 
     .brand-mark {
-      width: 56px;
-      height: 56px;
-      border-radius: 8px;
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
       flex: 0 0 auto;
       background: linear-gradient(135deg, #2f81f7, #8250df);
       color: #fff;
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 1.15rem;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
     }
 
@@ -462,35 +478,78 @@ function renderHtml(books) {
 
     .brand h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(3rem, 7vw, 5.4rem);
       line-height: 1;
       letter-spacing: -0.035em;
     }
 
     .brand p {
       margin: 10px 0 0;
-      max-width: 760px;
+      max-width: 680px;
       color: #b1bac4;
-      font-size: 1rem;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .hero-actions a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 15px;
+      border-radius: 7px;
+      font-weight: 700;
+    }
+
+    .hero-primary {
+      background: #2f81f7;
+      color: #ffffff;
+      box-shadow: 0 8px 24px rgba(47, 129, 247, 0.24);
+    }
+
+    .hero-primary:hover {
+      background: #1f6feb;
+    }
+
+    .hero-secondary {
+      border: 1px solid #57606a;
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+    }
+
+    .hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .stats {
       display: grid;
-      grid-template-columns: repeat(2, minmax(112px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .stat {
-      min-width: 112px;
-      padding: 14px 16px;
+      min-width: 0;
+      padding: 20px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid #3d444d;
-      border-radius: 8px;
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+    }
+
+    .stat:last-child {
+      grid-column: 1 / -1;
     }
 
     .stat strong {
       display: block;
-      font-size: 1.7rem;
+      font-size: 2rem;
       line-height: 1;
       color: #ffffff;
     }
@@ -514,7 +573,7 @@ function renderHtml(books) {
     .toolbar-shell {
       width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 16px 0;
+      padding: 14px 0;
       display: grid;
       gap: 14px;
     }
@@ -542,7 +601,7 @@ function renderHtml(books) {
 
     .search-box input {
       width: 100%;
-      height: 48px;
+      height: 52px;
       padding: 0 16px 0 42px;
       border: 1px solid var(--line);
       border-radius: 6px;
@@ -564,24 +623,24 @@ function renderHtml(books) {
     }
 
     .filter-row {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding-bottom: 2px;
-      scrollbar-width: thin;
+      display: grid;
+      gap: 5px;
+      margin-top: 18px;
     }
 
     .filter-button {
-      min-height: 38px;
-      border: 1px solid var(--line);
+      width: 100%;
+      min-height: 42px;
+      border: 0;
       border-radius: 6px;
-      background: var(--surface);
+      background: transparent;
       color: var(--text);
-      padding: 8px 13px;
-      display: inline-flex;
+      padding: 9px 10px;
+      display: flex;
       align-items: center;
+      justify-content: space-between;
       gap: 8px;
-      white-space: nowrap;
+      text-align: left;
       cursor: pointer;
     }
 
@@ -596,35 +655,73 @@ function renderHtml(books) {
 
     .filter-button:hover,
     .filter-button:focus-visible {
-      border-color: var(--accent);
+      background: #f3f5f7;
       color: var(--accent-dark);
       outline: none;
     }
 
     .filter-button.is-active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #fff;
+      background: #ddf4ff;
+      color: var(--accent-dark);
+      box-shadow: inset 3px 0 0 var(--accent);
     }
 
     .filter-button.is-active span {
-      background: rgba(255, 255, 255, 0.18);
-      color: #fff;
+      background: #b6e3ff;
+      color: var(--accent-dark);
+    }
+
+    .catalog-shell {
+      width: min(1240px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 72px;
+      display: grid;
+      grid-template-columns: 248px minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 96px;
+    }
+
+    .sidebar-card {
+      padding: 18px 14px 14px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      box-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
+    }
+
+    .sidebar-eyebrow {
+      color: var(--accent-dark);
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .sidebar h2 {
+      margin: 4px 0 0;
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+    }
+
+    .sidebar p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.86rem;
     }
 
     main {
-      width: min(1240px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 28px 0 64px;
+      min-width: 0;
     }
 
     .category-section {
-      margin-bottom: 20px;
-      padding: 24px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
+      margin-bottom: 44px;
+      scroll-margin-top: 100px;
     }
 
     .category-section:last-child {
@@ -636,8 +733,8 @@ function renderHtml(books) {
       grid-template-columns: minmax(220px, 0.8fr) minmax(260px, 1.2fr);
       gap: 24px;
       align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 16px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
       border-bottom: 1px solid var(--line);
     }
 
@@ -669,44 +766,46 @@ function renderHtml(books) {
 
     .book-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .book-card {
-      min-height: 176px;
-      display: grid;
-      grid-template-columns: 96px minmax(0, 1fr);
-      gap: 14px;
-      padding: 12px;
+      min-height: 430px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 6px;
+      border-radius: 10px;
       transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
     }
 
     .book-card:hover {
-      transform: translateY(-1px);
-      border-color: #8c959f;
+      transform: translateY(-4px);
+      border-color: #afb8c1;
       box-shadow: var(--shadow);
     }
 
     .cover-link {
-      width: 96px;
-      aspect-ratio: 2 / 3;
-      display: block;
-      align-self: start;
+      width: 100%;
+      height: 282px;
+      display: grid;
+      place-items: center;
       overflow: hidden;
-      border-radius: 4px;
-      background: #dfe7ed;
-      border: 1px solid rgba(23, 33, 43, 0.08);
+      padding: 18px;
+      background:
+        linear-gradient(135deg, rgba(9, 105, 218, 0.06), rgba(130, 80, 223, 0.08)),
+        #f6f8fa;
+      border-bottom: 1px solid var(--line);
     }
 
     .cover-link img {
       width: 100%;
       height: 100%;
       display: block;
-      object-fit: cover;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 12px rgba(31, 35, 40, 0.18));
     }
 
     .cover-placeholder {
@@ -721,17 +820,19 @@ function renderHtml(books) {
     }
 
     .book-body {
+      flex: 1;
       min-width: 0;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      padding: 16px;
     }
 
     .book-body h3 {
       margin: 2px 0 0;
       color: var(--text);
-      font-size: 1rem;
-      line-height: 1.25;
+      font-size: 1.02rem;
+      line-height: 1.35;
       letter-spacing: 0;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -812,6 +913,17 @@ function renderHtml(books) {
       display: none !important;
     }
 
+    @media (max-width: 1080px) {
+      .catalog-shell {
+        grid-template-columns: 220px minmax(0, 1fr);
+        gap: 24px;
+      }
+
+      .book-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     @media (max-width: 820px) {
       .header-shell,
       .section-heading {
@@ -819,29 +931,45 @@ function renderHtml(books) {
       }
 
       .stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
 
-      .book-grid {
+      .stat:last-child {
+        grid-column: auto;
+      }
+
+      .catalog-shell {
         grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+
+      .filter-row {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 560px) {
+    @media (max-width: 620px) {
       .header-shell,
       .toolbar-shell,
-      main,
+      .catalog-shell,
       .page-footer {
         width: min(100% - 22px, 1240px);
       }
 
+      .header-shell {
+        padding: 42px 0 38px;
+      }
+
       .brand {
-        align-items: flex-start;
+        flex-direction: column;
       }
 
       .brand-mark {
-        width: 46px;
-        height: 46px;
+        width: 56px;
+        height: 56px;
       }
 
       .search-row {
@@ -853,17 +981,25 @@ function renderHtml(books) {
         text-align: left;
       }
 
-      .category-section {
-        padding: 18px 14px;
+      .stats {
+        gap: 8px;
       }
 
-      .book-card {
-        grid-template-columns: 88px minmax(0, 1fr);
-        min-height: 176px;
+      .stat {
+        padding: 14px 10px;
+      }
+
+      .stat strong {
+        font-size: 1.45rem;
+      }
+
+      .filter-row,
+      .book-grid {
+        grid-template-columns: 1fr;
       }
 
       .cover-link {
-        width: 88px;
+        height: 320px;
       }
     }
 
@@ -888,6 +1024,10 @@ function renderHtml(books) {
           <span class="eyebrow">github.com/KAYOKG/BibliotecaDev</span>
           <h1>BibliotecaDev</h1>
           <p>Uma biblioteca aberta para quem constrói software. Busque por tema, explore as categorias e abra os PDFs direto no navegador.</p>
+          <div class="hero-actions">
+            <a class="hero-primary" href="#catalogo">Explorar biblioteca <span aria-hidden="true">↓</span></a>
+            <a class="hero-secondary" href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver no GitHub <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
       </div>
       <div class="stats" aria-label="Resumo da biblioteca">
@@ -898,6 +1038,10 @@ function renderHtml(books) {
         <div class="stat">
           <strong>${categoryOrder.filter((category) => booksByCategory.get(category).length).length}</strong>
           <span>categorias</span>
+        </div>
+        <div class="stat">
+          <strong>100%</strong>
+          <span>com capa</span>
         </div>
       </div>
     </div>
@@ -912,16 +1056,26 @@ function renderHtml(books) {
         </label>
         <div class="visible-count" aria-live="polite"><strong id="visibleCount">${books.length}</strong> encontrados</div>
       </div>
-      <nav class="filter-row" aria-label="Categorias">
-          ${filters}
-      </nav>
     </div>
   </div>
 
-  <main id="catalogo" tabindex="-1">
+  <div class="catalog-shell">
+    <aside class="sidebar" aria-label="Sumário da biblioteca">
+      <div class="sidebar-card">
+        <span class="sidebar-eyebrow">Navegação</span>
+        <h2>Sumário</h2>
+        <p>Filtre o acervo por área de conhecimento.</p>
+        <nav class="filter-row" aria-label="Categorias">
+            ${filters}
+        </nav>
+      </div>
+    </aside>
+
+    <main id="catalogo" tabindex="-1">
 ${sections}
-    <div class="empty-state" id="emptyState" hidden>Nenhum livro encontrado para esse filtro.</div>
-  </main>
+      <div class="empty-state" id="emptyState" hidden>Nenhum livro encontrado para esse filtro.</div>
+    </main>
+  </div>
 
   <footer class="page-footer">
     Gerado em ${escapeHtml(generatedAt)} a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
