@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const booksDir = path.join(rootDir, 'LivrosDev');
-const coversDir = path.join(rootDir, '.github', 'img');
+const coversDir = path.join(rootDir, 'assets', 'img');
 const outputFile = path.join(rootDir, 'index.html');
 
 const categoryOrder = [
@@ -947,7 +947,7 @@ const books = pdfFiles.map((file) => {
   book.category = categoryFor(book);
   book.cover = coverFor(book, covers);
   book.pdfHref = encodeUrlPath('LivrosDev', file);
-  book.coverHref = book.cover ? encodeUrlPath('.github', 'img', book.cover.file) : '';
+  book.coverHref = book.cover ? encodeUrlPath('assets', 'img', book.cover.file) : '';
   return book;
 });
 
