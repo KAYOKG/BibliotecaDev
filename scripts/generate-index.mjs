@@ -104,6 +104,7 @@ const categoryRules = [
     terms: [
       'arquitetura',
       'domain driven',
+      'dsl',
       'domain-driven',
       'design de software',
       'padrões',
@@ -285,7 +286,6 @@ function renderBook(book) {
               ${renderCover(book)}
             </a>
             <div class="book-body">
-              <span class="book-category">${category}</span>
               <h3><a href="${href}" target="_blank" rel="noopener">${title}</a></h3>
               <p>${author}</p>
               <a class="open-link" href="${href}" target="_blank" rel="noopener" aria-label="Abrir PDF de ${title}">
@@ -303,8 +303,8 @@ function renderSection(category, books) {
       <section class="category-section" id="${encodeURIComponent(category)}" data-category-section="${escapeHtml(category)}">
         <div class="section-heading">
           <div>
-            <span>${books.length} livros</span>
             <h2>${escapeHtml(category)}</h2>
+            <span>${books.length} livros</span>
           </div>
           <p>${escapeHtml(description)}</p>
         </div>
@@ -353,18 +353,17 @@ function renderHtml(books) {
   <style>
     :root {
       color-scheme: light;
-      --bg: #f5f7fa;
+      --bg: #f6f8fa;
       --surface: #ffffff;
-      --surface-strong: #eef3f7;
-      --text: #17212b;
-      --muted: #637083;
-      --line: #d9e0e7;
-      --teal: #0f7c80;
-      --teal-dark: #0a5e61;
-      --coral: #cf4f45;
-      --gold: #b77812;
-      --ink: #242934;
-      --shadow: 0 12px 28px rgba(28, 38, 50, 0.08);
+      --surface-strong: #f6f8fa;
+      --text: #1f2328;
+      --muted: #59636e;
+      --line: #d1d9e0;
+      --accent: #0969da;
+      --accent-dark: #0550ae;
+      --header: #25292e;
+      --ink: #1f2328;
+      --shadow: 0 8px 24px rgba(31, 35, 40, 0.08);
     }
 
     * {
@@ -388,20 +387,43 @@ function renderHtml(books) {
       text-decoration: none;
     }
 
+    :focus-visible {
+      outline: 3px solid rgba(9, 105, 218, 0.35);
+      outline-offset: 2px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 100;
+      transform: translateY(-150%);
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--accent-dark);
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
     button,
     input {
       font: inherit;
     }
 
     .site-header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--line);
+      background: var(--header);
+      color: #ffffff;
+      border-bottom: 1px solid #3d444d;
     }
 
     .header-shell {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 0 28px;
+      padding: 32px 0;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 24px;
@@ -422,25 +444,33 @@ function renderHtml(books) {
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      background:
-        linear-gradient(90deg, var(--teal) 0 50%, var(--coral) 50% 100%);
+      background: linear-gradient(135deg, #2f81f7, #8250df);
       color: #fff;
       font-weight: 800;
       font-size: 1rem;
-      box-shadow: var(--shadow);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 8px;
+      color: #8c959f;
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 600;
     }
 
     .brand h1 {
       margin: 0;
-      font-size: clamp(2rem, 4vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: 0;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -0.035em;
     }
 
     .brand p {
       margin: 10px 0 0;
       max-width: 760px;
-      color: var(--muted);
+      color: #b1bac4;
       font-size: 1rem;
     }
 
@@ -453,8 +483,8 @@ function renderHtml(books) {
     .stat {
       min-width: 112px;
       padding: 14px 16px;
-      background: var(--surface-strong);
-      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid #3d444d;
       border-radius: 8px;
     }
 
@@ -462,13 +492,13 @@ function renderHtml(books) {
       display: block;
       font-size: 1.7rem;
       line-height: 1;
-      color: var(--ink);
+      color: #ffffff;
     }
 
     .stat span {
       display: block;
       margin-top: 6px;
-      color: var(--muted);
+      color: #b1bac4;
       font-size: 0.84rem;
     }
 
@@ -476,13 +506,13 @@ function renderHtml(books) {
       position: sticky;
       top: 0;
       z-index: 20;
-      background: rgba(245, 247, 250, 0.96);
+      background: rgba(255, 255, 255, 0.96);
       border-bottom: 1px solid var(--line);
       backdrop-filter: blur(12px);
     }
 
     .toolbar-shell {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
       padding: 16px 0;
       display: grid;
@@ -515,15 +545,15 @@ function renderHtml(books) {
       height: 48px;
       padding: 0 16px 0 42px;
       border: 1px solid var(--line);
-      border-radius: 8px;
+      border-radius: 6px;
       background: var(--surface);
       color: var(--text);
       outline: none;
     }
 
     .search-box input:focus {
-      border-color: var(--teal);
-      box-shadow: 0 0 0 4px rgba(15, 124, 128, 0.14);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.16);
     }
 
     .visible-count {
@@ -544,7 +574,7 @@ function renderHtml(books) {
     .filter-button {
       min-height: 38px;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: 6px;
       background: var(--surface);
       color: var(--text);
       padding: 8px 13px;
@@ -566,13 +596,14 @@ function renderHtml(books) {
 
     .filter-button:hover,
     .filter-button:focus-visible {
-      border-color: var(--teal);
+      border-color: var(--accent);
+      color: var(--accent-dark);
       outline: none;
     }
 
     .filter-button.is-active {
-      background: var(--teal);
-      border-color: var(--teal);
+      background: var(--accent);
+      border-color: var(--accent);
       color: #fff;
     }
 
@@ -582,41 +613,52 @@ function renderHtml(books) {
     }
 
     main {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 26px 0 56px;
+      padding: 28px 0 64px;
     }
 
     .category-section {
-      padding: 22px 0 34px;
-      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 1px 0 rgba(31, 35, 40, 0.04);
     }
 
     .category-section:last-child {
-      border-bottom: 0;
+      margin-bottom: 0;
     }
 
     .section-heading {
       display: grid;
       grid-template-columns: minmax(220px, 0.8fr) minmax(260px, 1.2fr);
       gap: 24px;
-      align-items: end;
-      margin-bottom: 18px;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
     }
 
     .section-heading span {
-      color: var(--gold);
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      display: inline-flex;
+      margin-top: 8px;
+      padding: 2px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: var(--surface-strong);
+      font-size: 0.76rem;
+      font-weight: 600;
     }
 
     .section-heading h2 {
-      margin: 4px 0 0;
+      margin: 0;
       color: var(--ink);
-      font-size: clamp(1.55rem, 3vw, 2.4rem);
-      line-height: 1;
-      letter-spacing: 0;
+      font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
     }
 
     .section-heading p {
@@ -627,26 +669,25 @@ function renderHtml(books) {
 
     .book-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
     .book-card {
-      min-height: 190px;
+      min-height: 176px;
       display: grid;
       grid-template-columns: 96px minmax(0, 1fr);
       gap: 14px;
       padding: 12px;
       background: var(--surface);
       border: 1px solid var(--line);
-      border-radius: 8px;
-      box-shadow: 0 1px 0 rgba(28, 38, 50, 0.04);
+      border-radius: 6px;
       transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
     }
 
     .book-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(15, 124, 128, 0.45);
+      transform: translateY(-1px);
+      border-color: #8c959f;
       box-shadow: var(--shadow);
     }
 
@@ -656,7 +697,7 @@ function renderHtml(books) {
       display: block;
       align-self: start;
       overflow: hidden;
-      border-radius: 6px;
+      border-radius: 4px;
       background: #dfe7ed;
       border: 1px solid rgba(23, 33, 43, 0.08);
     }
@@ -673,8 +714,7 @@ function renderHtml(books) {
       height: 100%;
       display: grid;
       place-items: center;
-      background:
-        linear-gradient(135deg, rgba(15, 124, 128, 0.9), rgba(207, 79, 69, 0.9));
+      background: linear-gradient(135deg, #2f81f7, #8250df);
       color: #fff;
       font-weight: 800;
       font-size: 1.4rem;
@@ -687,22 +727,8 @@ function renderHtml(books) {
       align-items: flex-start;
     }
 
-    .book-category {
-      max-width: 100%;
-      color: var(--teal-dark);
-      background: rgba(15, 124, 128, 0.09);
-      border: 1px solid rgba(15, 124, 128, 0.16);
-      border-radius: 999px;
-      padding: 3px 8px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
     .book-body h3 {
-      margin: 10px 0 0;
+      margin: 2px 0 0;
       color: var(--text);
       font-size: 1rem;
       line-height: 1.25;
@@ -715,7 +741,7 @@ function renderHtml(books) {
 
     .book-body h3 a:hover,
     .book-body h3 a:focus-visible {
-      color: var(--teal-dark);
+      color: var(--accent-dark);
       outline: none;
       text-decoration: underline;
       text-underline-offset: 3px;
@@ -738,16 +764,19 @@ function renderHtml(books) {
       align-items: center;
       gap: 7px;
       padding: 7px 10px;
-      border-radius: 8px;
-      background: var(--ink);
-      color: #fff;
-      font-weight: 700;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface-strong);
+      color: var(--text);
+      font-weight: 600;
       font-size: 0.88rem;
     }
 
     .open-link:hover,
     .open-link:focus-visible {
-      background: var(--teal-dark);
+      border-color: #8c959f;
+      background: #eef1f4;
+      color: var(--accent-dark);
       outline: none;
     }
 
@@ -762,11 +791,21 @@ function renderHtml(books) {
     }
 
     .page-footer {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 32px));
       margin: 0 auto;
       padding: 0 0 32px;
       color: var(--muted);
       font-size: 0.86rem;
+    }
+
+    .page-footer a {
+      color: var(--accent-dark);
+      font-weight: 600;
+    }
+
+    .page-footer a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     [hidden] {
@@ -782,6 +821,10 @@ function renderHtml(books) {
       .stats {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+
+      .book-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 560px) {
@@ -789,7 +832,7 @@ function renderHtml(books) {
       .toolbar-shell,
       main,
       .page-footer {
-        width: min(100% - 22px, 1180px);
+        width: min(100% - 22px, 1240px);
       }
 
       .brand {
@@ -810,8 +853,8 @@ function renderHtml(books) {
         text-align: left;
       }
 
-      .book-grid {
-        grid-template-columns: 1fr;
+      .category-section {
+        padding: 18px 14px;
       }
 
       .book-card {
@@ -823,16 +866,28 @@ function renderHtml(books) {
         width: 88px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .book-card {
+        transition: none;
+      }
+    }
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#catalogo">Ir para o catálogo</a>
   <header class="site-header">
     <div class="header-shell">
       <div class="brand">
         <div class="brand-mark" aria-hidden="true">BD</div>
         <div>
+          <span class="eyebrow">github.com/KAYOKG/BibliotecaDev</span>
           <h1>BibliotecaDev</h1>
-          <p>Catálogo local dos livros da pasta <strong>LivrosDev</strong>, com capas e abertura direta dos PDFs no navegador.</p>
+          <p>Uma biblioteca aberta para quem constrói software. Busque por tema, explore as categorias e abra os PDFs direto no navegador.</p>
         </div>
       </div>
       <div class="stats" aria-label="Resumo da biblioteca">
@@ -852,10 +907,10 @@ function renderHtml(books) {
     <div class="toolbar-shell">
       <div class="search-row">
         <label class="search-box" for="bookSearch">
-          <span aria-hidden="true">⌕</span>
+          <span aria-hidden="true">&#128269;</span>
           <input id="bookSearch" type="search" autocomplete="off" placeholder="Buscar por título, autor ou tecnologia">
         </label>
-        <div class="visible-count"><strong id="visibleCount">${books.length}</strong> encontrados</div>
+        <div class="visible-count" aria-live="polite"><strong id="visibleCount">${books.length}</strong> encontrados</div>
       </div>
       <nav class="filter-row" aria-label="Categorias">
           ${filters}
@@ -863,13 +918,13 @@ function renderHtml(books) {
     </div>
   </div>
 
-  <main>
+  <main id="catalogo" tabindex="-1">
 ${sections}
     <div class="empty-state" id="emptyState" hidden>Nenhum livro encontrado para esse filtro.</div>
   </main>
 
   <footer class="page-footer">
-    Gerado em ${escapeHtml(generatedAt)} a partir dos PDFs locais em <strong>LivrosDev</strong>.
+    Gerado em ${escapeHtml(generatedAt)} a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
   </footer>
 
   <script>
