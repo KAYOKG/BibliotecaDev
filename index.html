@@ -182,6 +182,7 @@
     }
 
     .header-shell {
+      margin: 0 auto;
       width: min(1480px, calc(100% - 64px));
       min-height: 92px;
       padding: 0;
@@ -264,12 +265,206 @@
       text-transform: uppercase;
     }
 
-    .intro p {
-      max-width: 660px;
-      margin: 18px auto 0;
-      color: #666;
-      font-size: 0.95rem;
+    .hint-touch { display: none; }
+    @media (hover: none) {
+      .hint-hover { display: none; }
+      .hint-touch { display: inline; }
     }
+
+    .rack-hint {
+      margin: 14px 0 0;
+      color: #8a8a8a;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Hero rack: books hang on a rod showing the spine and turn to the cover on hover/focus. */
+    .rack {
+      --cover-w: 206px;
+      --cover-h: 300px;
+      --thick: 46px;
+      --rest: 84px;
+      position: relative;
+      margin: 40px auto 0;
+      padding: 34px 32px 26px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .rack::-webkit-scrollbar { display: none; }
+
+    .rack-row {
+      position: relative;
+      width: max-content;
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: clamp(22px, 3vw, 44px);
+      padding: 46px 28px 0;
+    }
+
+    /* the rod */
+    .rack-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      border: 1px solid #a9a9a9;
+      border-radius: 3px;
+      background: linear-gradient(#fafafa, #cfcfcf);
+    }
+
+    .rack-book {
+      position: relative;
+      flex: 0 0 var(--rest);
+      height: var(--cover-h);
+      perspective: 1400px;
+      transition: flex-basis 600ms cubic-bezier(0.22, 1, 0.36, 1);
+      outline: none;
+    }
+
+    /* the hook */
+    .rack-book::before {
+      content: "";
+      position: absolute;
+      top: -46px;
+      left: 50%;
+      width: 12px;
+      height: 46px;
+      margin-left: -6px;
+      border: 1.5px solid #8d8d8d;
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+      clip-path: inset(0 0 0 50%);
+    }
+
+    .rack-book.is-active { flex-basis: var(--cover-w); }
+
+    .book-3d {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: var(--cover-w);
+      height: var(--cover-h);
+      margin-left: calc(var(--cover-w) / -2);
+      transform-style: preserve-3d;
+      transform: rotateY(78deg);
+      transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .rack-book.is-active .book-3d { transform: rotateY(0deg) scale(1.06); }
+    .rack-book:not(.is-active):hover .book-3d { transform: rotateY(66deg); }
+
+    .book-face {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .book-front {
+      left: 0;
+      width: 100%;
+      transform: translateZ(calc(var(--thick) / 2));
+      background: #f1f1f1;
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .book-front img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* binding crease */
+    .book-front::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.18) 3%, transparent 7%);
+    }
+
+    .book-spine {
+      left: calc((var(--cover-w) - var(--thick)) / 2);
+      width: var(--thick);
+      transform: rotateY(-90deg) translateZ(calc(var(--cover-w) / 2));
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 18px 0;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(255, 255, 255, 0.14) 38%, rgba(0, 0, 0, 0.22)),
+        var(--spine-bg);
+      color: var(--spine-ink);
+    }
+
+    .book-spine span {
+      max-height: 100%;
+      overflow: hidden;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .rack-book:focus-visible .book-front,
+    .rack-book:focus-visible .book-spine {
+      outline: 2px solid #171717;
+      outline-offset: 4px;
+    }
+
+    .rack-detail {
+      max-width: 820px;
+      margin: 26px auto 0;
+    }
+
+    .rack-detail h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3.4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+
+    .rack-detail p {
+      margin: 14px 0 0;
+      color: #555;
+      font-size: 0.86rem;
+    }
+
+    .rack-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn-solid,
+    .btn-outline {
+      min-width: 220px;
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      border: 1px solid #171717;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-solid { background: #171717; color: #fff; }
+    .btn-outline { background: #fff; color: #171717; border-color: #d4d4d4; }
+    .btn-solid:hover, .btn-solid:focus-visible { background: #fff; color: #171717; }
+    .btn-outline:hover, .btn-outline:focus-visible { border-color: #171717; }
 
     .toolbar {
       position: relative;
@@ -282,6 +477,7 @@
     }
 
     .toolbar-shell {
+      margin: 0 auto;
       width: min(1480px, calc(100% - 64px));
       padding: 0;
       display: grid;
@@ -485,6 +681,7 @@
     }
 
     .page-footer {
+      margin: 0 auto;
       width: min(1480px, calc(100% - 64px));
       padding: 28px 0;
       border-top: 1px solid #e4e4e4;
@@ -512,6 +709,10 @@
       .brand-sub, .github-link { font-size: 0.62rem; }
       .intro { padding: 52px 0 40px; }
       .intro h1 { font-size: 1.7rem; }
+      .rack { --cover-w: 158px; --cover-h: 230px; --thick: 38px; --rest: 64px; margin-top: 24px; padding: 30px 0 22px; }
+      .rack-row { justify-content: flex-start; gap: 18px; padding-left: 20px; padding-right: 20px; }
+      .rack-actions { flex-direction: column; align-items: stretch; }
+      .btn-solid, .btn-outline { min-width: 0; }
       .filter-row { gap: 24px; }
       .filter-button { min-height: 58px; }
       .search-row { grid-template-columns: 1fr; }
@@ -532,7 +733,9 @@
         scroll-behavior: auto;
       }
 
-      .book-card {
+      .book-card,
+      .rack-book,
+      .book-3d {
         transition: none;
       }
     }
@@ -555,10 +758,105 @@
     </div>
   </header>
 
-  <section class="intro" id="top">
+
+  <section class="intro" id="top" aria-labelledby="heroTitle">
     <span class="eyebrow">Leitura para quem constrói software</span>
     <h1>BibliotecaDev</h1>
-    <p>Explore livros de tecnologia por categoria, encontre um título e abra o PDF direto no navegador.</p>
+    <p class="rack-hint"><span class="hint-hover">Passe o mouse para virar a capa · clique para abrir o PDF</span><span class="hint-touch">Toque para virar a capa · toque de novo para abrir o PDF</span></p>
+
+    <div class="rack" data-rack>
+      <div class="rack-row">
+
+        <a class="rack-book" href="LivrosDev/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica%20-%20Autor%20(Thomas%20Cormen).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Algoritmos - Teoria e Prática" data-author="Thomas Cormen" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Algoritmos - Teoria e Prática — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Algoritmos - Teoria e Prática</span></span>
+          </span>
+        </a>
+
+        <a class="rack-book" href="LivrosDev/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman%20-%20Autor%20(Dave%20Hoover%20e%20Adewale%20Oshineye).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman" data-author="Dave Hoover e Adewale Oshineye" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman</span></span>
+          </span>
+        </a>
+
+        <a class="rack-book" href="LivrosDev/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A Web Mobile - Programe para um Mundo de Muitos Dispositivos" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="A Web Mobile - Programe para um Mundo de Muitos Dispositivos — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A Web Mobile - Programe para um Mundo de Muitos Dispositivos</span></span>
+          </span>
+        </a>
+
+        <a class="rack-book" href="LivrosDev/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Amazon AWS - Descomplicando a computação na nuvem" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Amazon AWS - Descomplicando a computação na nuvem — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Amazon AWS - Descomplicando a computação na nuvem</span></span>
+          </span>
+        </a>
+
+        <a class="rack-book is-active" href="LivrosDev/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Big Data - Técnicas e tecnologias para extração de valor dos dados" data-author="Casa do Código" data-category="Dados, BI e Estatística"
+          data-section="#Dados%2C%20BI%20e%20Estat%C3%ADstica" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Big Data - Técnicas e tecnologias para extração de valor dos dados — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Big Data - Técnicas e tecnologias para extração de valor dos dados</span></span>
+          </span>
+        </a>
+
+        <a class="rack-book" href="LivrosDev/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio</span></span>
+          </span>
+        </a>
+
+        <a class="rack-book" href="LivrosDev/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A jornada do empreendedor - O herói da nossa Era" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="A jornada do empreendedor - O herói da nossa Era — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A jornada do empreendedor - O herói da nossa Era</span></span>
+          </span>
+        </a>
+
+        <a class="rack-book" href="LivrosDev/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe.%20Melhore%20a%20comunica%C3%A7%C3%A3o.%20Estabele%C3%A7a%20objetivos%20claros.%20-%20Autor%20(Harvard%20Business%20Review).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros." data-author="Harvard Business Review" data-category="Liderança e Cultura"
+          data-section="#Lideran%C3%A7a%20e%20Cultura" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros. — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe%20Melhore%20a%20comunica%C3%A7%C3%A3o%20Estabele%C3%A7a%20objetivos%20claros.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros.</span></span>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <div class="rack-detail" aria-live="polite">
+      <h2 id="heroTitle" data-detail-title>Big Data - Técnicas e tecnologias para extração de valor dos dados</h2>
+      <p data-detail-meta>Casa do Código · Dados, BI e Estatística</p>
+      <div class="rack-actions">
+        <a class="btn-solid" data-detail-open href="LivrosDev/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener">Abrir PDF</a>
+        <a class="btn-outline" data-detail-section href="#Dados%2C%20BI%20e%20Estat%C3%ADstica">Ver categoria</a>
+      </div>
+    </div>
   </section>
 
   <div class="toolbar" id="categorias">
@@ -2104,7 +2402,7 @@
   </div>
 
   <footer class="page-footer">
-    Gerado em 02/11/2026, 08:50 a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
+    Gerado em 07/11/2026, 20:26 a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
   </footer>
 
   <script>
@@ -2156,6 +2454,49 @@
         applyFilters();
       });
     }
+
+    const rackBooks = [...document.querySelectorAll('[data-rack-book]')];
+    const detailTitle = document.querySelector('[data-detail-title]');
+    const detailMeta = document.querySelector('[data-detail-meta]');
+    const detailOpen = document.querySelector('[data-detail-open]');
+    const detailSection = document.querySelector('[data-detail-section]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function activateBook(book) {
+      if (book.classList.contains('is-active')) return;
+      rackBooks.forEach((item) => item.classList.toggle('is-active', item === book));
+      detailTitle.textContent = book.dataset.title;
+      detailMeta.textContent = book.dataset.author + ' · ' + book.dataset.category;
+      detailOpen.href = book.href;
+      detailSection.href = book.dataset.section;
+    }
+
+    for (const book of rackBooks) {
+      book.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') activateBook(book);
+      });
+      book.addEventListener('focus', () => activateBook(book));
+      // Touch has no hover: the first tap turns the book, the second opens it.
+      book.addEventListener('click', (event) => {
+        if (book.classList.contains('is-active')) return;
+        event.preventDefault();
+        activateBook(book);
+        book.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    }
+
+    // On narrow screens start with the featured book centered in the scrollable rack.
+    const rack = document.querySelector('[data-rack]');
+    const startBook = rack.querySelector('.is-active');
+    const bookBox = startBook.getBoundingClientRect();
+    const rackBox = rack.getBoundingClientRect();
+    rack.scrollLeft += bookBox.left + bookBox.width / 2 - (rackBox.left + rackBox.width / 2);
+
+    // The target section may be hidden by an active filter or search.
+    detailSection.addEventListener('click', () => {
+      search.value = '';
+      document.querySelector('[data-category-filter="all"]').click();
+    });
   </script>
 </body>
 </html>

@@ -295,6 +295,67 @@ function renderBook(book) {
           </article>`;
 }
 
+const spinePalette = [
+  ['#7b1e2b', '#fff'],
+  ['#5f8fc2', '#fff'],
+  ['#1c1c1c', '#fff'],
+  ['#e2a72a', '#171717'],
+  ['#5c4f78', '#fff'],
+  ['#ece9e2', '#171717'],
+  ['#2f5d50', '#fff'],
+  ['#b5532f', '#fff'],
+];
+
+// One featured book per category keeps the hero varied without manual curation.
+function pickFeatured(books) {
+  return categoryOrder
+    .map((category) => books.find((book) => book.category === category && book.cover))
+    .filter(Boolean);
+}
+
+function renderRackBook(book, index, activeIndex) {
+  const title = escapeHtml(book.title);
+  const [spine, ink] = spinePalette[index % spinePalette.length];
+
+  return `
+        <a class="rack-book${index === activeIndex ? ' is-active' : ''}" href="${escapeHtml(book.pdfHref)}" target="_blank" rel="noopener"
+          data-rack-book data-title="${title}" data-author="${escapeHtml(book.author)}" data-category="${escapeHtml(book.category)}"
+          data-section="#${encodeURIComponent(book.category)}" style="--spine-bg: ${spine}; --spine-ink: ${ink};"
+          aria-label="${title} — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="${book.coverHref}" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>${title}</span></span>
+          </span>
+        </a>`;
+}
+
+function renderRack(featured) {
+  const activeIndex = Math.floor(featured.length / 2);
+  const active = featured[activeIndex];
+
+  return `
+  <section class="intro" id="top" aria-labelledby="heroTitle">
+    <span class="eyebrow">Leitura para quem constrói software</span>
+    <h1>BibliotecaDev</h1>
+    <p class="rack-hint"><span class="hint-hover">Passe o mouse para virar a capa · clique para abrir o PDF</span><span class="hint-touch">Toque para virar a capa · toque de novo para abrir o PDF</span></p>
+
+    <div class="rack" data-rack>
+      <div class="rack-row">
+${featured.map((book, index) => renderRackBook(book, index, activeIndex)).join('\n')}
+      </div>
+    </div>
+
+    <div class="rack-detail" aria-live="polite">
+      <h2 id="heroTitle" data-detail-title>${escapeHtml(active.title)}</h2>
+      <p data-detail-meta>${escapeHtml(active.author)} · ${escapeHtml(active.category)}</p>
+      <div class="rack-actions">
+        <a class="btn-solid" data-detail-open href="${escapeHtml(active.pdfHref)}" target="_blank" rel="noopener">Abrir PDF</a>
+        <a class="btn-outline" data-detail-section href="#${encodeURIComponent(active.category)}">Ver categoria</a>
+      </div>
+    </div>
+  </section>`;
+}
+
 function renderSection(category, books) {
   const description = categoryDescriptions[category] || 'Livros disponíveis localmente.';
   const cards = books.map(renderBook).join('\n');
@@ -528,6 +589,7 @@ function renderHtml(books) {
     }
 
     .header-shell {
+      margin: 0 auto;
       width: min(1480px, calc(100% - 64px));
       min-height: 92px;
       padding: 0;
@@ -610,12 +672,206 @@ function renderHtml(books) {
       text-transform: uppercase;
     }
 
-    .intro p {
-      max-width: 660px;
-      margin: 18px auto 0;
-      color: #666;
-      font-size: 0.95rem;
+    .hint-touch { display: none; }
+    @media (hover: none) {
+      .hint-hover { display: none; }
+      .hint-touch { display: inline; }
     }
+
+    .rack-hint {
+      margin: 14px 0 0;
+      color: #8a8a8a;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* Hero rack: books hang on a rod showing the spine and turn to the cover on hover/focus. */
+    .rack {
+      --cover-w: 206px;
+      --cover-h: 300px;
+      --thick: 46px;
+      --rest: 84px;
+      position: relative;
+      margin: 40px auto 0;
+      padding: 34px 32px 26px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .rack::-webkit-scrollbar { display: none; }
+
+    .rack-row {
+      position: relative;
+      width: max-content;
+      min-width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: clamp(22px, 3vw, 44px);
+      padding: 46px 28px 0;
+    }
+
+    /* the rod */
+    .rack-row::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      border: 1px solid #a9a9a9;
+      border-radius: 3px;
+      background: linear-gradient(#fafafa, #cfcfcf);
+    }
+
+    .rack-book {
+      position: relative;
+      flex: 0 0 var(--rest);
+      height: var(--cover-h);
+      perspective: 1400px;
+      transition: flex-basis 600ms cubic-bezier(0.22, 1, 0.36, 1);
+      outline: none;
+    }
+
+    /* the hook */
+    .rack-book::before {
+      content: "";
+      position: absolute;
+      top: -46px;
+      left: 50%;
+      width: 12px;
+      height: 46px;
+      margin-left: -6px;
+      border: 1.5px solid #8d8d8d;
+      border-bottom: 0;
+      border-radius: 6px 6px 0 0;
+      clip-path: inset(0 0 0 50%);
+    }
+
+    .rack-book.is-active { flex-basis: var(--cover-w); }
+
+    .book-3d {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: var(--cover-w);
+      height: var(--cover-h);
+      margin-left: calc(var(--cover-w) / -2);
+      transform-style: preserve-3d;
+      transform: rotateY(78deg);
+      transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .rack-book.is-active .book-3d { transform: rotateY(0deg) scale(1.06); }
+    .rack-book:not(.is-active):hover .book-3d { transform: rotateY(66deg); }
+
+    .book-face {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      backface-visibility: hidden;
+    }
+
+    .book-front {
+      left: 0;
+      width: 100%;
+      transform: translateZ(calc(var(--thick) / 2));
+      background: #f1f1f1;
+      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .book-front img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* binding crease */
+    .book-front::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.22), rgba(255, 255, 255, 0.18) 3%, transparent 7%);
+    }
+
+    .book-spine {
+      left: calc((var(--cover-w) - var(--thick)) / 2);
+      width: var(--thick);
+      transform: rotateY(-90deg) translateZ(calc(var(--cover-w) / 2));
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 18px 0;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(255, 255, 255, 0.14) 38%, rgba(0, 0, 0, 0.22)),
+        var(--spine-bg);
+      color: var(--spine-ink);
+    }
+
+    .book-spine span {
+      max-height: 100%;
+      overflow: hidden;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .rack-book:focus-visible .book-front,
+    .rack-book:focus-visible .book-spine {
+      outline: 2px solid #171717;
+      outline-offset: 4px;
+    }
+
+    .rack-detail {
+      max-width: 820px;
+      margin: 26px auto 0;
+    }
+
+    .rack-detail h2 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3.4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+    }
+
+    .rack-detail p {
+      margin: 14px 0 0;
+      color: #555;
+      font-size: 0.86rem;
+    }
+
+    .rack-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn-solid,
+    .btn-outline {
+      min-width: 220px;
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      border: 1px solid #171717;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+    }
+
+    .btn-solid { background: #171717; color: #fff; }
+    .btn-outline { background: #fff; color: #171717; border-color: #d4d4d4; }
+    .btn-solid:hover, .btn-solid:focus-visible { background: #fff; color: #171717; }
+    .btn-outline:hover, .btn-outline:focus-visible { border-color: #171717; }
 
     .toolbar {
       position: relative;
@@ -628,6 +884,7 @@ function renderHtml(books) {
     }
 
     .toolbar-shell {
+      margin: 0 auto;
       width: min(1480px, calc(100% - 64px));
       padding: 0;
       display: grid;
@@ -831,6 +1088,7 @@ function renderHtml(books) {
     }
 
     .page-footer {
+      margin: 0 auto;
       width: min(1480px, calc(100% - 64px));
       padding: 28px 0;
       border-top: 1px solid #e4e4e4;
@@ -858,6 +1116,10 @@ function renderHtml(books) {
       .brand-sub, .github-link { font-size: 0.62rem; }
       .intro { padding: 52px 0 40px; }
       .intro h1 { font-size: 1.7rem; }
+      .rack { --cover-w: 158px; --cover-h: 230px; --thick: 38px; --rest: 64px; margin-top: 24px; padding: 30px 0 22px; }
+      .rack-row { justify-content: flex-start; gap: 18px; padding-left: 20px; padding-right: 20px; }
+      .rack-actions { flex-direction: column; align-items: stretch; }
+      .btn-solid, .btn-outline { min-width: 0; }
       .filter-row { gap: 24px; }
       .filter-button { min-height: 58px; }
       .search-row { grid-template-columns: 1fr; }
@@ -878,7 +1140,9 @@ function renderHtml(books) {
         scroll-behavior: auto;
       }
 
-      .book-card {
+      .book-card,
+      .rack-book,
+      .book-3d {
         transition: none;
       }
     }
@@ -901,11 +1165,7 @@ function renderHtml(books) {
     </div>
   </header>
 
-  <section class="intro" id="top">
-    <span class="eyebrow">Leitura para quem constrói software</span>
-    <h1>BibliotecaDev</h1>
-    <p>Explore livros de tecnologia por categoria, encontre um título e abra o PDF direto no navegador.</p>
-  </section>
+${renderRack(pickFeatured(books))}
 
   <div class="toolbar" id="categorias">
     <div class="toolbar-shell">
@@ -982,6 +1242,49 @@ ${sections}
         applyFilters();
       });
     }
+
+    const rackBooks = [...document.querySelectorAll('[data-rack-book]')];
+    const detailTitle = document.querySelector('[data-detail-title]');
+    const detailMeta = document.querySelector('[data-detail-meta]');
+    const detailOpen = document.querySelector('[data-detail-open]');
+    const detailSection = document.querySelector('[data-detail-section]');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function activateBook(book) {
+      if (book.classList.contains('is-active')) return;
+      rackBooks.forEach((item) => item.classList.toggle('is-active', item === book));
+      detailTitle.textContent = book.dataset.title;
+      detailMeta.textContent = book.dataset.author + ' · ' + book.dataset.category;
+      detailOpen.href = book.href;
+      detailSection.href = book.dataset.section;
+    }
+
+    for (const book of rackBooks) {
+      book.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') activateBook(book);
+      });
+      book.addEventListener('focus', () => activateBook(book));
+      // Touch has no hover: the first tap turns the book, the second opens it.
+      book.addEventListener('click', (event) => {
+        if (book.classList.contains('is-active')) return;
+        event.preventDefault();
+        activateBook(book);
+        book.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    }
+
+    // On narrow screens start with the featured book centered in the scrollable rack.
+    const rack = document.querySelector('[data-rack]');
+    const startBook = rack.querySelector('.is-active');
+    const bookBox = startBook.getBoundingClientRect();
+    const rackBox = rack.getBoundingClientRect();
+    rack.scrollLeft += bookBox.left + bookBox.width / 2 - (rackBox.left + rackBox.width / 2);
+
+    // The target section may be hidden by an active filter or search.
+    detailSection.addEventListener('click', () => {
+      search.value = '';
+      document.querySelector('[data-category-filter="all"]').click();
+    });
   </script>
 </body>
 </html>
