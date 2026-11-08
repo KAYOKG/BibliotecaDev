@@ -271,6 +271,15 @@
       .hint-touch { display: inline; }
     }
 
+    .rack-shelf {
+      margin: 34px 0 0;
+      color: #171717;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
     .rack-hint {
       margin: 14px 0 0;
       color: #8a8a8a;
@@ -774,8 +783,11 @@
     <h1>BibliotecaDev</h1>
     <p class="rack-hint"><span class="hint-hover">Passe o mouse para virar a capa · clique para abrir o PDF</span><span class="hint-touch">Deslize o dedo pelos livros · toque para abrir o PDF</span></p>
 
+    <p class="rack-shelf" data-shelf-label>Um de cada categoria</p>
+
     <div class="rack" data-rack>
-      <div class="rack-row">
+      <div class="rack-row" data-rack-row>
+        <noscript>
 
         <a class="rack-book" href="LivrosDev/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica%20-%20Autor%20(Thomas%20Cormen).pdf" target="_blank" rel="noopener"
           data-rack-book data-title="Algoritmos - Teoria e Prática" data-author="Thomas Cormen" data-category="Algoritmos e Fundamentos"
@@ -856,8 +868,1006 @@
             <span class="book-face book-spine" aria-hidden="true"><span>A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros.</span></span>
           </span>
         </a>
+        </noscript>
       </div>
     </div>
+    <template data-shelf="Algoritmos e Fundamentos">
+        <a class="rack-book" href="LivrosDev/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica%20-%20Autor%20(Thomas%20Cormen).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Algoritmos - Teoria e Prática" data-author="Thomas Cormen" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Algoritmos - Teoria e Prática — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Algoritmos%20-%20Teoria%20e%20Pr%C3%A1tica.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Algoritmos - Teoria e Prática</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/But%20How%20Do%20It%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone%20-%20Author%20(J.%20Clark%20Scott).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="But How Do It Know - The Basic Principles of Computers for Everyone" data-author="J. Clark Scott" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="But How Do It Know - The Basic Principles of Computers for Everyone — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/But%20How%20Do%20it%20Know%20-%20The%20Basic%20Principles%20of%20Computers%20for%20Everyone.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>But How Do It Know - The Basic Principles of Computers for Everyone</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Comunica%C3%A7%C3%A3o%20de%20Dados%20e%20Redes%20de%20Computadores%20-%20Autor%20(Behrouz%20A.%20Forouzan).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Comunicação de Dados e Redes de Computadores" data-author="Behrouz A. Forouzan" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Comunicação de Dados e Redes de Computadores — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Comunica%C3%A7%C3%A3o%20de%20Dados%20e%20Redes%20de%20Computadores.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Comunicação de Dados e Redes de Computadores</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions%20-%20Author%20(Gayle%20Laakmann%20McDowell).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Cracking the Coding Interview - 189 Programming Questions and Solutions" data-author="Gayle Laakmann McDowell" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Cracking the Coding Interview - 189 Programming Questions and Solutions — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Cracking%20the%20Coding%20Interview%20-%20189%20Programming%20Questions%20and%20Solutions.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Cracking the Coding Interview - 189 Programming Questions and Solutions</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos%20-%20Autor%20(Aditya%20Y.%20Bhargava).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos" data-author="Aditya Y. Bhargava" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Entendendo%20Algoritmos%20-%20Um%20Guia%20Ilustrado%20Para%20Programadores%20e%20Outros%20Curiosos.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Entendendo Algoritmos - Um Guia Ilustrado Para Programadores e Outros Curiosos</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Expressões Regulares - uma abordagem divertida" data-author="Aurelio Marinho" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Expressões Regulares - uma abordagem divertida — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Express%C3%B5es%20Regulares%20-%20uma%20abordagem%20divertida%20-%20Autor%20(Aurelio%20Marinho).svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Expressões Regulares - uma abordagem divertida</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Introdução a data science - Algoritmos de machine learning e métodos de análise" data-author="Casa do Código" data-category="Algoritmos e Fundamentos"
+          data-section="#Algoritmos%20e%20Fundamentos" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="Introdução a data science - Algoritmos de machine learning e métodos de análise — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Introdu%C3%A7%C3%A3o%20a%20data%20science%20-%20Algoritmos%20de%20machine%20learning%20e%20m%C3%A9todos%20de%20an%C3%A1lise.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Introdução a data science - Algoritmos de machine learning e métodos de análise</span></span>
+          </span>
+        </a>
+    </template>
+    <template data-shelf="Arquitetura, Design e Código">
+        <a class="rack-book" href="LivrosDev/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman%20-%20Autor%20(Dave%20Hoover%20e%20Adewale%20Oshineye).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman" data-author="Dave Hoover e Adewale Oshineye" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Apprenticeship%20Patterns%20-%20Guidance%20for%20the%20Aspiring%20Software%20Craftsman.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Apprenticeship Patterns - Guidance for the Aspiring Software Craftsman</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software" data-author="Robert C. Martin" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Arquitetura%20Limpa%20-%20O%20Guia%20do%20Artes%C3%A3o%20para%20Estrutura%20e%20Design%20de%20Software.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Arquitetura Limpa - O Guia do Artesão para Estrutura e Design de Software</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Clean%20Coder%2C%20The%20-%20A%20Code%20of%20Conduct%20for%20Professional%20Programmers%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Clean Coder, The - A Code of Conduct for Professional Programmers" data-author="Robert C. Martin" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Clean Coder, The - A Code of Conduct for Professional Programmers — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Clean%20Coder%2C%20The%20-%20A%20Code%20of%20Conduct%20for%20Professional%20Programmers.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Clean Coder, The - A Code of Conduct for Professional Programmers</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/C%C3%B3digo%20limpo%20-%20Habilidades%20pr%C3%A1ticas%20do%20Agile%20Software%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Código limpo - Habilidades práticas do Agile Software" data-author="Robert C. Martin" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Código limpo - Habilidades práticas do Agile Software — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/C%C3%B3digo%20limpo%20-%20Habilidades%20pr%C3%A1ticas%20do%20Agile%20Software.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Código limpo - Habilidades práticas do Agile Software</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Domain%20Driven%20Design%20Rapido%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Domain Driven Design Rapido" data-author="Eric Evans" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Domain Driven Design Rapido — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Domain%20Driven%20Design%20Rapido.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Domain Driven Design Rapido</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Domain-Driven%20Design%20Refer%C3%AAncia%20-%20Sum%C3%A1rio%20de%20Padr%C3%B5es%20e%20Defini%C3%A7%C3%B5es%20-%20Autor%20(Eric%20Evans).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Domain-Driven Design Referência - Sumário de Padrões e Definições" data-author="Eric Evans" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Domain-Driven Design Referência - Sumário de Padrões e Definições — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Domain-Driven%20Design%20Refer%C3%AAncia%20-%20Sum%C3%A1rio%20de%20Padr%C3%B5es%20e%20Defini%C3%A7%C3%B5es.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Domain-Driven Design Referência - Sumário de Padrões e Definições</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/DSL%20-%20Quebre%20a%20barreira%20entre%20desenvolvimento%20e%20neg%C3%B3cios%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="DSL - Quebre a barreira entre desenvolvimento e negócios" data-author="Casa do Código" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="DSL - Quebre a barreira entre desenvolvimento e negócios — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/DSL%20-%20Quebre%20a%20barreira%20entre%20desenvolvimento%20e%20neg%C3%B3cios.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>DSL - Quebre a barreira entre desenvolvimento e negócios</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Introdu%C3%A7%C3%A3o%20%C3%A0%20arquitetura%20de%20design%20de%20software%20-%20Autor%20(Paulo%20Silveira).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Introdução à arquitetura de design de software" data-author="Paulo Silveira" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="Introdução à arquitetura de design de software — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Introdu%C3%A7%C3%A3o%20%C3%A0%20arquitetura%20de%20design%20de%20software.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Introdução à arquitetura de design de software</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Padr%C3%B5es%20de%20Projetos%20-%20Solu%C3%A7%C3%B5es%20Reutiliz%C3%A1veis%20de%20Software%20Orientados%20a%20Objetos%20-%20Autor%20(Erich%20Gamma).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos" data-author="Erich Gamma" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Padr%C3%B5es%20de%20Projetos%20-%20Solu%C3%A7%C3%B5es%20Reutiliz%C3%A1veis%20de%20Software%20Orientados%20a%20Objetos.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Padrões de Projetos - Soluções Reutilizáveis de Software Orientados a Objetos</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Princ%C3%ADpios%20de%20Design%20e%20Padr%C3%B5es%20de%20Projeto%20-%20Autor%20(Robert%20C.%20Martin).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Princípios de Design e Padrões de Projeto" data-author="Robert C. Martin" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Princípios de Design e Padrões de Projeto — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Princ%C3%ADpios%20de%20Design%20e%20Padr%C3%B5es%20de%20Projeto.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Princípios de Design e Padrões de Projeto</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Refatora%C3%A7%C3%A3o%20-%20Aperfei%C3%A7oando%20o%20Design%20de%20C%C3%B3digos%20Existentes%20-%20Autor%20(Martin%20Fowler).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Refatoração - Aperfeiçoando o Design de Códigos Existentes" data-author="Martin Fowler" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Refatoração - Aperfeiçoando o Design de Códigos Existentes — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Refatora%C3%A7%C3%A3o%20-%20Aperfei%C3%A7oando%20o%20Design%20de%20C%C3%B3digos%20Existentes.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Refatoração - Aperfeiçoando o Design de Códigos Existentes</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/The%20Software%20Craftsman%20-%20Professionalism%2C%20Pragmatism%2C%20Pride%20-%20Autor%20(Sandro%20Mancuso).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="The Software Craftsman - Professionalism, Pragmatism, Pride" data-author="Sandro Mancuso" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="The Software Craftsman - Professionalism, Pragmatism, Pride — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/The%20Software%20Craftsman%20-%20Professionalism%2C%20Pragmatism%2C%20Pride.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>The Software Craftsman - Professionalism, Pragmatism, Pride</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Trabalho%20Eficaz%20com%20C%C3%B3digo%20Legado%20-%20Autor%20(Michael%20C.%20Feathers).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Trabalho Eficaz com Código Legado" data-author="Michael C. Feathers" data-category="Arquitetura, Design e Código"
+          data-section="#Arquitetura%2C%20Design%20e%20C%C3%B3digo" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Trabalho Eficaz com Código Legado — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Trabalho%20Eficaz%20com%20C%C3%B3digo%20Legado.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Trabalho Eficaz com Código Legado</span></span>
+          </span>
+        </a>
+    </template>
+    <template data-shelf="Web, Mobile e APIs">
+        <a class="rack-book" href="LivrosDev/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A Web Mobile - Programe para um Mundo de Muitos Dispositivos" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="A Web Mobile - Programe para um Mundo de Muitos Dispositivos — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20Web%20Mobile%20-%20Programe%20para%20um%20Mundo%20de%20Muitos%20Dispositivos.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A Web Mobile - Programe para um Mundo de Muitos Dispositivos</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Aplica%C3%A7%C3%B5es%20web%20real%20time%20com%20Node-js%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Aplicações web real time com Node-js" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Aplicações web real time com Node-js — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Aplica%C3%A7%C3%B5es%20web%20real%20time%20com%20Node-js.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Aplicações web real time com Node-js</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Canivete%20suico%20do%20desenvolvedor%20Node%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Canivete suico do desenvolvedor Node" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Canivete suico do desenvolvedor Node — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Canivete%20sui%C3%A7o%20do%20desenvolvedor%20Node.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Canivete suico do desenvolvedor Node</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Construindo%20API%20REST%20com%20Node%20JS%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Construindo API REST com Node JS" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Construindo API REST com Node JS — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Construindo%20API%20REST%20com%20Node%20JS.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Construindo API REST com Node JS</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/CSS%20Eficiente%20-%20T%C3%A9cnicas%20e%20ferramentas%20que%20fazem%20a%20diferen%C3%A7a%20nos%20seus%20estilos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/CSS%20Eficiente%20-%20T%C3%A9cnicas%20e%20ferramentas%20que%20fazem%20a%20diferen%C3%A7a%20nos%20seus%20estilos.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>CSS Eficiente - Técnicas e ferramentas que fazem a diferença nos seus estilos</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Desconstruindo%20a%20Web%20-%20As%20Tecnologias%20por%20Tr%C3%A1s%20de%20uma%20Requisi%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Desconstruindo a Web - As Tecnologias por Trás de uma Requisição" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Desconstruindo a Web - As Tecnologias por Trás de uma Requisição — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Desconstruindo%20a%20Web%20-%20As%20Tecnologias%20por%20Tr%C3%A1s%20de%20uma%20Requisi%C3%A7%C3%A3o.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Desconstruindo a Web - As Tecnologias por Trás de uma Requisição</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Google%20Android%20-%20crie%20aplica%C3%A7%C3%B5es%20para%20celulares%20e%20tablets%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Google Android - crie aplicações para celulares e tablets" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="Google Android - crie aplicações para celulares e tablets — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Google%20Android%20-%20crie%20aplica%C3%A7%C3%B5es%20para%20celulares%20e%20tablets.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Google Android - crie aplicações para celulares e tablets</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Guia%20da%20Startup%20-%20Como%20Startups%20e%20Empresas%20Estabelecidas%20Podem%20Criar%20Produtos%20Web%20Rent%C3%A1veis%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Guia da Startup - Como Startups e Empresas Estabelecidas Podem Criar Produtos Web Rentáveis" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="Guia da Startup - Como Startups e Empresas Estabelecidas Podem Criar Produtos Web Rentáveis — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Guia%20da%20Startup%20-%20Como%20Startups%20e%20Empresas%20Estabelecidas%20Podem%20Criar%20Produtos%20Web%20Rent%C3%A1veis.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Guia da Startup - Como Startups e Empresas Estabelecidas Podem Criar Produtos Web Rentáveis</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Guia%20pr%C3%A1tico%20de%20TypeScript%20-%20Melhore%20suas%20aplica%C3%A7%C3%B5es%20JavaScript%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Guia prático de TypeScript - Melhore suas aplicações JavaScript" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Guia prático de TypeScript - Melhore suas aplicações JavaScript — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Guia%20pr%C3%A1tico%20de%20TypeScript%20-%20Melhore%20suas%20aplica%C3%A7%C3%B5es%20JavaScript.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Guia prático de TypeScript - Melhore suas aplicações JavaScript</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/HTML5%20e%20CSS3%20-%20domine%20a%20web%20do%20futuro%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="HTML5 e CSS3 - domine a web do futuro" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="HTML5 e CSS3 - domine a web do futuro — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/HTML5%20e%20CSS3%20-%20domine%20a%20web%20do%20futuro.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>HTML5 e CSS3 - domine a web do futuro</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Introdu%C3%A7%C3%A3o%20e%20boas%20pr%C3%A1ticas%20em%20UX%20Design%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Introdução e boas práticas em UX Design" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Introdução e boas práticas em UX Design — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Introdu%C3%A7%C3%A3o%20e%20boas%20pr%C3%A1ticas%20em%20UX%20Design.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Introdução e boas práticas em UX Design</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Oauth%202.0%20Proteja%20Suas%20Aplicacoes%20Com%20O%20Spring%20Security%20Oauth2%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Oauth 2.0 Proteja Suas Aplicacoes Com O Spring Security Oauth2" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Oauth 2.0 Proteja Suas Aplicacoes Com O Spring Security Oauth2 — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Oauth%202.0%20Proteja%20Suas%20Aplica%C3%A7%C3%B5es%20Com%20O%20Spring%20Security%20Oauth2.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Oauth 2.0 Proteja Suas Aplicacoes Com O Spring Security Oauth2</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Progressive%20web%20apps%20-%20Construa%20aplica%C3%A7%C3%B5es%20progressivas%20com%20React%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Progressive web apps - Construa aplicações progressivas com React" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Progressive web apps - Construa aplicações progressivas com React — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Progressive%20web%20apps%20-%20Construa%20aplica%C3%A7%C3%B5es%20progressivas%20com%20React.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Progressive web apps - Construa aplicações progressivas com React</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/REST%20-%20Construa%20API&#39;s%20inteligentes%20de%20maneira%20simples%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="REST - Construa API&#39;s inteligentes de maneira simples" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="REST - Construa API&#39;s inteligentes de maneira simples — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/REST%20-%20Construa%20API's%20inteligentes%20de%20maneira%20simples.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>REST - Construa API&#39;s inteligentes de maneira simples</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/SEO%20Pr%C3%A1tico%20-%20Seu%20Site%20na%20Primeira%20P%C3%A1gina%20das%20Buscas%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="SEO Prático - Seu Site na Primeira Página das Buscas" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="SEO Prático - Seu Site na Primeira Página das Buscas — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/SEO%20Pr%C3%A1tico%20-%20Seu%20Site%20na%20Primeira%20P%C3%A1gina%20das%20Buscas.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>SEO Prático - Seu Site na Primeira Página das Buscas</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/SOA%20Aplicado%20-%20Integrando%20com%20web%20services%20e%20al%C3%A9m%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="SOA Aplicado - Integrando com web services e além" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="SOA Aplicado - Integrando com web services e além — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/SOA%20Aplicado%20-%20Integrando%20com%20web%20services%20e%20al%C3%A9m.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>SOA Aplicado - Integrando com web services e além</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/UX%20e%20Usabilidade%20Aplicados%20em%20Mobile%20e%20Web%20-%20Autor%20(Caelum).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="UX e Usabilidade Aplicados em Mobile e Web" data-author="Caelum" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="UX e Usabilidade Aplicados em Mobile e Web — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/UX%20e%20Usabilidade%20Aplicados%20em%20Mobile%20e%20Web.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>UX e Usabilidade Aplicados em Mobile e Web</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Web%20Design%20Responsivo%20-%20P%C3%A1ginas%20adapt%C3%A1veis%20para%20todos%20os%20dispositivos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Web Design Responsivo - Páginas adaptáveis para todos os dispositivos" data-author="Casa do Código" data-category="Web, Mobile e APIs"
+          data-section="#Web%2C%20Mobile%20e%20APIs" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Web Design Responsivo - Páginas adaptáveis para todos os dispositivos — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Web%20Design%20Responsivo%20-%20P%C3%A1ginas%20adapt%C3%A1veis%20para%20todos%20os%20dispositivos.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Web Design Responsivo - Páginas adaptáveis para todos os dispositivos</span></span>
+          </span>
+        </a>
+    </template>
+    <template data-shelf="DevOps e Cloud">
+        <a class="rack-book" href="LivrosDev/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Amazon AWS - Descomplicando a computação na nuvem" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Amazon AWS - Descomplicando a computação na nuvem — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Amazon%20AWS%20-%20Descomplicando%20a%20computa%C3%A7%C3%A3o%20na%20nuvem.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Amazon AWS - Descomplicando a computação na nuvem</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20Cloud%20Practitioner%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified Cloud Practitioner Exam" data-author="Jon Bonso and Adrian Formaran" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="AWS Certified Cloud Practitioner Exam — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20Cloud%20Practitioner%20Exam.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified Cloud Practitioner Exam</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20Developer%20Associate%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified Developer Associate Exam" data-author="Jon Bonso and Adrian Formaran" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="AWS Certified Developer Associate Exam — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20Developer%20Associate%20Exam.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified Developer Associate Exam</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20DevOps%20Engineer%20-%20Professional%20Certification%20and%20Beyond%20-%20Autor%20(Adam%20Book).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified DevOps Engineer - Professional Certification and Beyond" data-author="Adam Book" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="AWS Certified DevOps Engineer - Professional Certification and Beyond — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20DevOps%20Engineer.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified DevOps Engineer - Professional Certification and Beyond</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20DevOps%20Professional%20Engineer%20-%20Autor%20(Jon%20Bonso%20and%20Kenneth%20Samonte).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified DevOps Professional Engineer" data-author="Jon Bonso and Kenneth Samonte" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="AWS Certified DevOps Professional Engineer — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20DevOps%20Professional%20Engineer.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified DevOps Professional Engineer</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20Security%20Specialty%20Exam%20-%20Autor%20(Jon%20Bonso%20and%20Carlo%20Acebedo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified Security Specialty Exam" data-author="Jon Bonso and Carlo Acebedo" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="AWS Certified Security Specialty Exam — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20Security%20Specialty%20Exam.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified Security Specialty Exam</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Associate%20SAA-C03%20-%20Autor%20(Jon%20Bonso).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified Solutions Architect Associate SAA-C03" data-author="Jon Bonso" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="AWS Certified Solutions Architect Associate SAA-C03 — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20Solutions%20Architect%20Associate%20SAA-C03.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified Solutions Architect Associate SAA-C03</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20Solutions%20Architect%20Professional%20-%20Autor%20(Jon%20Bonso%20and%20Adrian%20Formaran).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified Solutions Architect Professional" data-author="Jon Bonso and Adrian Formaran" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="AWS Certified Solutions Architect Professional — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20Solutions%20Architect%20Professional.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified Solutions Architect Professional</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20Certified%20SysOps%20Administrator%20Associate%20Version%202%20-%20Autor%20(Jon%20Bonso%20and%20Lervin%20John%20Obando).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS Certified SysOps Administrator Associate Version 2" data-author="Jon Bonso and Lervin John Obando" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="AWS Certified SysOps Administrator Associate Version 2 — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20Certified%20SysOps%20Administrator%20Associate%20Version%202.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS Certified SysOps Administrator Associate Version 2</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20For%20Beginners%20-%20The%20ultimate%20guide%20to%20the%20fundamentals%20of%20aws%20-%20Autor%20(Steve%20M%20Burnett).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS For Beginners - The ultimate guide to the fundamentals of aws" data-author="Steve M Burnett" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="AWS For Beginners - The ultimate guide to the fundamentals of aws — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20For%20Beginners%20-%20The%20ultimate%20guide%20to%20the%20fundamentals%20of%20aws.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS For Beginners - The ultimate guide to the fundamentals of aws</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/AWS%20for%20Non-Engineers%20-%20Autor%20(Hiroko%20Nishimura).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="AWS for Non-Engineers" data-author="Hiroko Nishimura" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="AWS for Non-Engineers — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/AWS%20for%20Non-Engineers.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>AWS for Non-Engineers</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Azure%20-%20Coloque%20suas%20plataformas%20e%20servi%C3%A7os%20no%20cloud%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Azure - Coloque suas plataformas e serviços no cloud" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Azure - Coloque suas plataformas e serviços no cloud — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Azure%20-%20Coloque%20suas%20plataformas%20e%20servi%C3%A7os%20no%20cloud.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Azure - Coloque suas plataformas e serviços no cloud</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Caixa%20de%20Ferramentas%20DevOps%20-%20Um%20Guia%20para%20Constru%C3%A7%C3%A3o%2C%20Administra%C3%A7%C3%A3o%20e%20Arquitetura%20de%20Sistemas%20Modernos%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Caixa%20de%20Ferramentas%20DevOps%20-%20Um%20Guia%20para%20Constru%C3%A7%C3%A3o%2C%20Administra%C3%A7%C3%A3o%20e%20Arquitetura%20de%20Sistemas%20Modernos.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Caixa de Ferramentas DevOps - Um Guia para Construção, Administração e Arquitetura de Sistemas Modernos</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Come%C3%A7ando%20com%20o%20Linux%20-%20Comandos%2C%20servi%C3%A7os%20e%20administra%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Começando com o Linux - Comandos, serviços e administração" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Começando com o Linux - Comandos, serviços e administração — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Come%C3%A7ando%20com%20o%20Linux%20-%20Comandos%2C%20servi%C3%A7os%20e%20administra%C3%A7%C3%A3o.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Começando com o Linux - Comandos, serviços e administração</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Containers%20com%20Docker%20-%20Do%20desenvolvimento%20%C3%A0%20produ%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Containers com Docker - Do desenvolvimento à produção" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="Containers com Docker - Do desenvolvimento à produção — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Containers%20com%20Docker%20-%20Do%20desenvolvimento%20%C3%A0%20produ%C3%A7%C3%A3o.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Containers com Docker - Do desenvolvimento à produção</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Controlando%20Vers%C3%B5es%20com%20Git%20e%20GitHub%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Controlando Versões com Git e GitHub" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="Controlando Versões com Git e GitHub — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Controlando%20Vers%C3%B5es%20com%20Git%20e%20GitHub.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Controlando Versões com Git e GitHub</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/DevOps%20na%20Pr%C3%A1tica%20-%20Entrega%20de%20Software%20Confi%C3%A1vel%20e%20Automatizada%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="DevOps na Prática - Entrega de Software Confiável e Automatizada" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="DevOps na Prática - Entrega de Software Confiável e Automatizada — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/DevOps%20na%20Pr%C3%A1tica%20-%20Entrega%20de%20Software%20Confi%C3%A1vel%20e%20Automatizada.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>DevOps na Prática - Entrega de Software Confiável e Automatizada</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Entrega%20Cont%C3%ADnua%20-%20Como%20Entregar%20Software%20de%20Forma%20R%C3%A1pida%20e%20Confi%C3%A1vel%20-%20Auto%20(Jez%20Humble).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Entrega Contínua - Como Entregar Software de Forma Rápida e Confiável" data-author="Jez Humble" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Entrega Contínua - Como Entregar Software de Forma Rápida e Confiável — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Entrega%20Cont%C3%ADnua%20-%20Como%20Entregar%20Software%20de%20Forma%20R%C3%A1pida%20e%20Confi%C3%A1vel.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Entrega Contínua - Como Entregar Software de Forma Rápida e Confiável</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Entrega%20cont%C3%ADnua%20em%20Android%20-%20Como%20automatizar%20a%20distribui%C3%A7%C3%A3o%20de%20apps%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Entrega contínua em Android - Como automatizar a distribuição de apps" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Entrega contínua em Android - Como automatizar a distribuição de apps — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Entrega%20cont%C3%ADnua%20em%20Android%20-%20Como%20automatizar%20a%20distribui%C3%A7%C3%A3o%20de%20apps.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Entrega contínua em Android - Como automatizar a distribuição de apps</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Guia%20pr%C3%A1tico%20do%20servidor%20Linux%20-%20Administra%C3%A7%C3%A3o%20Linux%20para%20iniciantes%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Guia prático do servidor Linux - Administração Linux para iniciantes" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Guia prático do servidor Linux - Administração Linux para iniciantes — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Guia%20pr%C3%A1tico%20do%20servidor%20Linux%20-%20Administra%C3%A7%C3%A3o%20Linux%20para%20iniciantes.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Guia prático do servidor Linux - Administração Linux para iniciantes</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Jenkins%20-%20Automatize%20Tudo%20sem%20Complica%C3%A7%C3%B5es%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Jenkins - Automatize Tudo sem Complicações" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Jenkins - Automatize Tudo sem Complicações — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Jenkins%20-%20Automatize%20Tudo%20sem%20Complica%C3%A7%C3%B5es.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Jenkins - Automatize Tudo sem Complicações</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Kubernetes%20-%20Tudo%20sobre%20orquestra%C3%A7%C3%A3o%20de%20cont%C3%AAineres%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Kubernetes - Tudo sobre orquestração de contêineres" data-author="Casa do Código" data-category="DevOps e Cloud"
+          data-section="#DevOps%20e%20Cloud" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Kubernetes - Tudo sobre orquestração de contêineres — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Kubernetes%20-%20Tudo%20sobre%20orquestra%C3%A7%C3%A3o%20de%20cont%C3%AAineres.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Kubernetes - Tudo sobre orquestração de contêineres</span></span>
+          </span>
+        </a>
+    </template>
+    <template data-shelf="Dados, BI e Estatística">
+        <a class="rack-book" href="LivrosDev/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Big Data - Técnicas e tecnologias para extração de valor dos dados" data-author="Casa do Código" data-category="Dados, BI e Estatística"
+          data-section="#Dados%2C%20BI%20e%20Estat%C3%ADstica" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Big Data - Técnicas e tecnologias para extração de valor dos dados — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Big%20Data%20-%20T%C3%A9cnicas%20e%20tecnologias%20para%20extra%C3%A7%C3%A3o%20de%20valor%20dos%20dados.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Big Data - Técnicas e tecnologias para extração de valor dos dados</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Business%20Intelligence%20-%20Implementar%20do%20jeito%20certo%20e%20a%20custo%20zero%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Business Intelligence - Implementar do jeito certo e a custo zero" data-author="Casa do Código" data-category="Dados, BI e Estatística"
+          data-section="#Dados%2C%20BI%20e%20Estat%C3%ADstica" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Business Intelligence - Implementar do jeito certo e a custo zero — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Business%20Intelligence%20-%20Implementar%20do%20jeito%20certo%20e%20a%20custo%20zero.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Business Intelligence - Implementar do jeito certo e a custo zero</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Como%20mentir%20com%20estat%C3%ADstica%20-%20Auto%20(Darrell-Heff).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Como mentir com estatística" data-author="Darrell-Heff" data-category="Dados, BI e Estatística"
+          data-section="#Dados%2C%20BI%20e%20Estat%C3%ADstica" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Como mentir com estatística — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Como%20mentir%20com%20estat%C3%ADstica.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Como mentir com estatística</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Estatistica%20-%20O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona%20.pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Estatistica - O que e, para que serve, como funciona" data-author="Autor não informado" data-category="Dados, BI e Estatística"
+          data-section="#Dados%2C%20BI%20e%20Estat%C3%ADstica" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Estatistica - O que e, para que serve, como funciona — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/O%20que%20e%2C%20para%20que%20serve%2C%20como%20funciona.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Estatistica - O que e, para que serve, como funciona</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/MongoDB%20-%20Construa%20Novas%20Aplica%C3%A7%C3%B5es%20com%20Novas%20Tecnologias%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="MongoDB - Construa Novas Aplicações com Novas Tecnologias" data-author="Casa do Código" data-category="Dados, BI e Estatística"
+          data-section="#Dados%2C%20BI%20e%20Estat%C3%ADstica" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="MongoDB - Construa Novas Aplicações com Novas Tecnologias — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/MongoDB%20-%20Construa%20Novas%20Aplica%C3%A7%C3%B5es%20com%20Novas%20Tecnologias.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>MongoDB - Construa Novas Aplicações com Novas Tecnologias</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/NoSQL%20-%20Como%20armazenar%20os%20dados%20de%20uma%20aplica%C3%A7%C3%A3o%20moderna%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="NoSQL - Como armazenar os dados de uma aplicação moderna" data-author="Casa do Código" data-category="Dados, BI e Estatística"
+          data-section="#Dados%2C%20BI%20e%20Estat%C3%ADstica" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="NoSQL - Como armazenar os dados de uma aplicação moderna — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/NoSQL%20-%20Como%20armazenar%20os%20dados%20de%20uma%20aplica%C3%A7%C3%A3o%20moderna.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>NoSQL - Como armazenar os dados de uma aplicação moderna</span></span>
+          </span>
+        </a>
+    </template>
+    <template data-shelf="Agilidade e Qualidade">
+        <a class="rack-book" href="LivrosDev/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Agile%20-%20Desenvolvimento%20de%20Software%20com%20Entregas%20Frequentes%20e%20Foco%20no%20Valor%20de%20Neg%C3%B3cio.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Agile - Desenvolvimento de Software com Entregas Frequentes e Foco no Valor de Negócio</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Agile%20Estimating%20and%20Planning%20-%20Autor%20(Mike%20Cohn).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Agile Estimating and Planning" data-author="Mike Cohn" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Agile Estimating and Planning — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Agile%20Estimating%20and%20Planning.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Agile Estimating and Planning</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Agile%20Project%20Management%20with%20Scrum%20-%20Autor%20(Ken%20Schwaber).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Agile Project Management with Scrum" data-author="Ken Schwaber" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Agile Project Management with Scrum — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Agile%20Project%20Management%20with%20Scrum.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Agile Project Management with Scrum</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Agile%20Retrospectives%20-%20Making%20Good%20Teams%20Great%20(Pragmatic%20Programmers)%20-%20Autor%20(Esther%20Derby).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Agile Retrospectives - Making Good Teams Great (Pragmatic Programmers)" data-author="Esther Derby" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Agile Retrospectives - Making Good Teams Great (Pragmatic Programmers) — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Agile%20Retrospectives%20-%20Making%20Good%20Teams%20Great.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Agile Retrospectives - Making Good Teams Great (Pragmatic Programmers)</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/BDD%20in%20Action%20-%20Behavior-Driven%20Development%20for%20the%20Whole%20Software%20Lifecycle%20-%20Autor%20(John%20Ferguson%20Smart).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle" data-author="John Ferguson Smart" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/BDD%20in%20Action%20-%20Behavior-Driven%20Development%20for%20the%20Whole%20Software%20Lifecycle.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>BDD in Action - Behavior-Driven Development for the Whole Software Lifecycle</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Clean%20Agile%20-%20Back%20to%20Basics%20-%20Autor%20(Robert%20Martin).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Clean Agile - Back to Basics" data-author="Robert Martin" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Clean Agile - Back to Basics — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Clean%20Agile%20-%20Back%20to%20Basics.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Clean Agile - Back to Basics</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Coaching%20Agile%20Teams%20-%20A%20Companion%20for%20ScrumMasters%2C%20Agile%20Coaches%2C%20and%20Project%20Managers%20in%20Transition%20-%20Autor%20(Adkins%20Lyssa).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition" data-author="Adkins Lyssa" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Coaching%20Agile%20Teams%20-%20A%20Companion%20for%20ScrumMasters%2C%20Agile%20Coaches%2C%20and%20Project%20Managers%20in%20Transition.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Coaching Agile Teams - A Companion for ScrumMasters, Agile Coaches, and Project Managers in Transition</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Crystal%20Clear%20-%20A%20Human-Powered%20Methodology%20for%20Small%20Teams%20-%20Autor%20(Alistair%20Cockburn).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Crystal Clear - A Human-Powered Methodology for Small Teams" data-author="Alistair Cockburn" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="Crystal Clear - A Human-Powered Methodology for Small Teams — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Crystal%20Clear%20-%20A%20Human-Powered%20Methodology%20for%20Small%20Teams.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Crystal Clear - A Human-Powered Methodology for Small Teams</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/eXtreme%20Programming%20-%20Pr%C3%A1ticas%20para%20o%20dia%20a%20dia%20no%20desenvolvimento%20%C3%A1gil%20de%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/eXtreme%20Programming%20-%20Pr%C3%A1ticas%20para%20o%20dia%20a%20dia%20no%20desenvolvimento%20%C3%A1gil%20de%20software.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>eXtreme Programming - Práticas para o dia a dia no desenvolvimento ágil de software</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Extreme%20Programming%20Explained%20-%20Embrace%20Change%20-%20Autor%20(Kent%20Beck).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Extreme Programming Explained - Embrace Change" data-author="Kent Beck" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Extreme Programming Explained - Embrace Change — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Extreme%20Programming%20Explained%20-%20Embrace%20Change.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Extreme Programming Explained - Embrace Change</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/LEAN%20ENTERPRISE%20-%20Como%20empresas%20de%20alta%20performance%20inovam%20em%20escala%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="LEAN ENTERPRISE - Como empresas de alta performance inovam em escala" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="LEAN ENTERPRISE - Como empresas de alta performance inovam em escala — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/LEAN%20ENTERPRISE%20-%20Como%20empresas%20de%20alta%20performance%20inovam%20em%20escala.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>LEAN ENTERPRISE - Como empresas de alta performance inovam em escala</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/M%C3%A9tricas%20%C3%A1geis%20-%20Obtenha%20melhores%20resultados%20em%20sua%20equipe%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Métricas ágeis - Obtenha melhores resultados em sua equipe" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Métricas ágeis - Obtenha melhores resultados em sua equipe — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/M%C3%A9tricas%20%C3%A1geis%20-%20Obtenha%20melhores%20resultados%20em%20sua%20equipe.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Métricas ágeis - Obtenha melhores resultados em sua equipe</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/More%20Agile%20Testing%20-%20Learning%20Journeys%20for%20the%20Whole%20Team%20-%20Autor%20(Lisa%20Crispin).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="More Agile Testing - Learning Journeys for the Whole Team" data-author="Lisa Crispin" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="More Agile Testing - Learning Journeys for the Whole Team — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/More%20Agile%20Testing%20-%20Learning%20Journeys%20for%20the%20Whole%20Team.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>More Agile Testing - Learning Journeys for the Whole Team</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Real-World%20Kanban%20-%20Do%20Less%2C%20Accomplish%20More%20with%20Lean%20Thinking%20-%20Autor%20(Mattias%20Skarin).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Real-World Kanban - Do Less, Accomplish More with Lean Thinking" data-author="Mattias Skarin" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Real-World Kanban - Do Less, Accomplish More with Lean Thinking — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Real-World%20Kanban%20-%20Do%20Less%2C%20Accomplish%20More%20with%20Lean%20Thinking.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Real-World Kanban - Do Less, Accomplish More with Lean Thinking</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Scrum%20-%20Gest%C3%A3o%20%C3%A1gil%20para%20projetos%20de%20sucesso%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Scrum - Gestão ágil para projetos de sucesso" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="Scrum - Gestão ágil para projetos de sucesso — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Scrum%20-%20Gest%C3%A3o%20%C3%A1gil%20para%20projetos%20de%20sucesso.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Scrum - Gestão ágil para projetos de sucesso</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Scrum%20360%20-%20Um%20guia%20completo%20e%20pra%CC%81tico%20de%20agilidade%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Scrum 360 - Um guia completo e prático de agilidade" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="Scrum 360 - Um guia completo e prático de agilidade — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Scrum%20360%20-%20Um%20guia%20completo%20e%20pr%C3%A1tico%20de%20agilidade.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Scrum 360 - Um guia completo e prático de agilidade</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/TDD%20-%20Desenvolvimento%20Guiado%20por%20Testes%20-%20Autor%20(Ken%20Beck).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="TDD - Desenvolvimento Guiado por Testes" data-author="Ken Beck" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="TDD - Desenvolvimento Guiado por Testes — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/TDD%20-%20Desenvolvimento%20Guiado%20por%20Testes.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>TDD - Desenvolvimento Guiado por Testes</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Test-Driven%20Development%20-%20Teste%20e%20Design%20no%20Mundo%20Real%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Test-Driven Development - Teste e Design no Mundo Real" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="Test-Driven Development - Teste e Design no Mundo Real — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Test-Driven%20Development%20-%20Teste%20e%20Design%20no%20Mundo%20Real.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Test-Driven Development - Teste e Design no Mundo Real</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Testes%20Automatizados%20de%20Software%20-%20Um%20Guia%20Pr%C3%A1tico%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Testes Automatizados de Software - Um Guia Prático" data-author="Casa do Código" data-category="Agilidade e Qualidade"
+          data-section="#Agilidade%20e%20Qualidade" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Testes Automatizados de Software - Um Guia Prático — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Testes%20Automatizados%20de%20Software%20-%20Um%20Guia%20Pr%C3%A1tico.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Testes Automatizados de Software - Um Guia Prático</span></span>
+          </span>
+        </a>
+    </template>
+    <template data-shelf="Carreira, Produto e Soft Skills">
+        <a class="rack-book" href="LivrosDev/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A jornada do empreendedor - O herói da nossa Era" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="A jornada do empreendedor - O herói da nossa Era — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20jornada%20do%20empreendedor%20-%20O%20her%C3%B3i%20da%20nossa%20Era.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A jornada do empreendedor - O herói da nossa Era</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/A%20Startup%20Enxuta%20-%20Autor%20(Eric%20Ries).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A Startup Enxuta" data-author="Eric Ries" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="A Startup Enxuta — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20Startup%20Enxuta.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A Startup Enxuta</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Como%20ser%20um%20Programador%20Melhor%20-%20um%20Manual%20Para%20Programadores%20que%20se%20Importam%20com%20C%C3%B3digo%20-%20Autor%20(Pete%20Goodliffe).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código" data-author="Pete Goodliffe" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Como%20ser%20um%20Programador%20Melhor%20-%20um%20Manual%20Para%20Programadores%20que%20se%20Importam%20com%20C%C3%B3digo.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Como ser um Programador Melhor - um Manual Para Programadores que se Importam com Código</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Direto%20ao%20Ponto%20-%20Criando%20produtos%20de%20forma%20enxuta%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Direto ao Ponto - Criando produtos de forma enxuta" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Direto ao Ponto - Criando produtos de forma enxuta — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Direto%20ao%20Ponto%20-%20Criando%20produtos%20de%20forma%20enxuta.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Direto ao Ponto - Criando produtos de forma enxuta</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Fragmentos%20de%20um%20programador%20-%20Artigos%20e%20insights%20da%20carreira%20de%20um%20profissional%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Fragmentos de um programador - Artigos e insights da carreira de um profissional" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Fragmentos de um programador - Artigos e insights da carreira de um profissional — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Fragmentos%20de%20um%20programador%20-%20Artigos%20e%20insights%20da%20carreira%20de%20um%20profissional.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Fragmentos de um programador - Artigos e insights da carreira de um profissional</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Gest%C3%A3o%20de%20produtos%20-%20Como%20aumentar%20as%20chances%20de%20sucesso%20do%20seu%20software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Gestão de produtos - Como aumentar as chances de sucesso do seu software" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Gestão de produtos - Como aumentar as chances de sucesso do seu software — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Gest%C3%A3o%20de%20produtos%20-%20Como%20aumentar%20as%20chances%20de%20sucesso%20do%20seu%20software.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Gestão de produtos - Como aumentar as chances de sucesso do seu software</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Guia%20do%20Mestre%20Programador%20-%20Pensando%20como%20pirata%2C%20evoluindo%20como%20jedi%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Guia%20do%20Mestre%20Programador%20-%20Pensando%20como%20pirata%2C%20evoluindo%20como%20jedi.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Guia do Mestre Programador - Pensando como pirata, evoluindo como jedi</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Learning%203.0%20-%20Como%20os%20profissionais%20criativos%20aprendem%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Learning 3.0 - Como os profissionais criativos aprendem" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="Learning 3.0 - Como os profissionais criativos aprendem — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Learning%203.0%20-%20Como%20os%20profissionais%20criativos%20aprendem.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Learning 3.0 - Como os profissionais criativos aprendem</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/O%20Programador%20Apaixonado%20-%20Construindo%20uma%20Carreira%20Not%C3%A1vel%20em%20Desenvolvimento%20de%20Software%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/O%20Programador%20Apaixonado%20-%20Construindo%20uma%20Carreira%20Not%C3%A1vel%20em%20Desenvolvimento%20de%20Software.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>O Programador Apaixonado - Construindo uma Carreira Notável em Desenvolvimento de Software</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/O%20Programador%20Pragm%C3%A1tico%20-%20Autor%20(Andrew%20Hunt%20e%20David%20Thomas).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="O Programador Pragmático" data-author="Andrew Hunt e David Thomas" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="O Programador Pragmático — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/O%20Programador%20Pragm%C3%A1tico.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>O Programador Pragmático</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Por%20que%20Os%20Generalistas%20Vencem%20Em%20um%20Mundo%20de%20Especialistas%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Por que Os Generalistas Vencem Em um Mundo de Especialistas" data-author="David Epstein" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Por que Os Generalistas Vencem Em um Mundo de Especialistas — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Por%20que%20Os%20Generalistas%20Vencem%20Em%20um%20Mundo%20de%20Especialistas%20-%20Autor(David%20Epstein).svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Por que Os Generalistas Vencem Em um Mundo de Especialistas</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Range%20-%20Why%20Generalists%20Triumph%20in%20a%20Specialized%20World%20-%20Autor(David%20Epstein).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Range - Why Generalists Triumph in a Specialized World" data-author="David Epstein" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Range - Why Generalists Triumph in a Specialized World — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Range%20-%20Why%20Generalists%20Triumph%20in%20a%20Specialized%20World%20-%20Autor(David%20Epstein).svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Range - Why Generalists Triumph in a Specialized World</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Secrets%20of%20a%20Buccaneer-Scholar%20-%20How%20Self-Education%20and%20the%20Pursuit%20of%20Passion%20Can%20Lead%20to%20a%20Lifetime%20of%20Success%20-%20Autor%20(James%20Marcus%20Bach).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success" data-author="James Marcus Bach" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Secrets%20of%20a%20Buccaneer-Scholar%20-%20How%20Self-Education%20and%20the%20Pursuit%20of%20Passion%20Can%20Lead%20to%20a%20Lifetime%20of%20Success.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Secrets of a Buccaneer-Scholar - How Self-Education and the Pursuit of Passion Can Lead to a Lifetime of Success</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Soft%20Skills%20-%20The%20Software%20Developer&#39;s%20Life%20Manual%20-%20Autor%20(John%20Sonmez).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Soft Skills - The Software Developer&#39;s Life Manual" data-author="John Sonmez" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Soft Skills - The Software Developer&#39;s Life Manual — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Soft%20Skills%20-%20The%20Software%20Developer's%20Life%20Manual.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Soft Skills - The Software Developer&#39;s Life Manual</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/The%20Cambridge%20Handbook%20of%20the%20Learning%20Sciences%20-%20Autor(R.%20Keith%20Sawyer).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="The Cambridge Handbook of the Learning Sciences" data-author="R. Keith Sawyer" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #2f5d50; --spine-ink: #fff;"
+          aria-label="The Cambridge Handbook of the Learning Sciences — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/The%20Cambridge%20Handbook%20of%20the%20Learning%20Sciences%20-%20Autor(R.%20Keith%20Sawyer).svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>The Cambridge Handbook of the Learning Sciences</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering%20-%20Author%20(Frederick%20P.%20Brooks).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="The Mythical Man-Month Essays On Software Engineering" data-author="Frederick P. Brooks" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #b5532f; --spine-ink: #fff;"
+          aria-label="The Mythical Man-Month Essays On Software Engineering — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/The%20Mythical%20Man-Month%20Essays%20On%20Software%20Engineering.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>The Mythical Man-Month Essays On Software Engineering</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/The%20Passionate%20Programmer%20-%20Creating%20a%20Remarkable%20Career%20in%20Software%20Development%20-%20Autor%20(Chad%20Fowler).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="The Passionate Programmer - Creating a Remarkable Career in Software Development" data-author="Chad Fowler" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="The Passionate Programmer - Creating a Remarkable Career in Software Development — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/The%20Passionate%20Programmer%20-%20Creating%20a%20Remarkable%20Career%20in%20Software%20Development.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>The Passionate Programmer - Creating a Remarkable Career in Software Development</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/ThoughtWorks%20Antologia%20Brasil%20-%20Hist%C3%B3rias%20de%20aprendizado%20e%20inova%C3%A7%C3%A3o%20-%20Autor%20(Casa%20do%20C%C3%B3digo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação" data-author="Casa do Código" data-category="Carreira, Produto e Soft Skills"
+          data-section="#Carreira%2C%20Produto%20e%20Soft%20Skills" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/ThoughtWorks%20Antologia%20Brasil%20-%20Hist%C3%B3rias%20de%20aprendizado%20e%20inova%C3%A7%C3%A3o.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>ThoughtWorks Antologia Brasil - Histórias de aprendizado e inovação</span></span>
+          </span>
+        </a>
+    </template>
+    <template data-shelf="Liderança e Cultura">
+        <a class="rack-book" href="LivrosDev/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe.%20Melhore%20a%20comunica%C3%A7%C3%A3o.%20Estabele%C3%A7a%20objetivos%20claros.%20-%20Autor%20(Harvard%20Business%20Review).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros." data-author="Harvard Business Review" data-category="Liderança e Cultura"
+          data-section="#Lideran%C3%A7a%20e%20Cultura" style="--spine-bg: #7b1e2b; --spine-ink: #fff;"
+          aria-label="A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros. — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20arte%20de%20dar%20feedback%20(Um%20guia%20acima%20da%20m%C3%A9dia%20-%20HBR)%20-%20Motive%20sua%20equipe%20Melhore%20a%20comunica%C3%A7%C3%A3o%20Estabele%C3%A7a%20objetivos%20claros.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A arte de dar feedback (Um guia acima da média - HBR) - Motive sua equipe. Melhore a comunicação. Estabeleça objetivos claros.</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/A%20Regra%20%C3%A9%20N%C3%A3o%20Ter%20Regras%20-%20A%20Netflix%20e%20a%20Cultura%20da%20Reinven%C3%A7%C3%A3o%20-%20Autor%20(Reed%20Hastings).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="A Regra é Não Ter Regras - A Netflix e a Cultura da Reinvenção" data-author="Reed Hastings" data-category="Liderança e Cultura"
+          data-section="#Lideran%C3%A7a%20e%20Cultura" style="--spine-bg: #5f8fc2; --spine-ink: #fff;"
+          aria-label="A Regra é Não Ter Regras - A Netflix e a Cultura da Reinvenção — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/A%20Regra%20%C3%A9%20N%C3%A3o%20Ter%20Regras%20-%20A%20Netflix%20e%20a%20Cultura%20da%20Reinven%C3%A7%C3%A3o.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>A Regra é Não Ter Regras - A Netflix e a Cultura da Reinvenção</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Como%20Melhorar%20o%20Desempenho%20da%20Sua%20Equipe%20de%20Desenvolvimento%20-%20Autor(Software%20House).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento" data-author="Software House" data-category="Liderança e Cultura"
+          data-section="#Lideran%C3%A7a%20e%20Cultura" style="--spine-bg: #1c1c1c; --spine-ink: #fff;"
+          aria-label="Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Como%20Melhorar%20o%20Desempenho%20da%20Sua%20Equipe%20de%20Desenvolvimento%20-%20Autor(Software%20House).svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Como Melhorar o Desempenho da Sua Equipe de Desenvolvimento</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Managing%20For%20Happiness%20-%20Autor%20(Jurgen%20Appelo).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Managing For Happiness" data-author="Jurgen Appelo" data-category="Liderança e Cultura"
+          data-section="#Lideran%C3%A7a%20e%20Cultura" style="--spine-bg: #e2a72a; --spine-ink: #171717;"
+          aria-label="Managing For Happiness — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Managing%20For%20Happiness.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Managing For Happiness</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/O%20Ego%20%C3%89%20Seu%20Inimigo.%20Como%20Dominar%20Seu%20Pior%20Advers%C3%A1rio%20-%20Autor%20(Ryan%20Holiday).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="O Ego É Seu Inimigo. Como Dominar Seu Pior Adversário" data-author="Ryan Holiday" data-category="Liderança e Cultura"
+          data-section="#Lideran%C3%A7a%20e%20Cultura" style="--spine-bg: #5c4f78; --spine-ink: #fff;"
+          aria-label="O Ego É Seu Inimigo. Como Dominar Seu Pior Adversário — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/O%20Ego%20%C3%89%20Seu%20Inimigo.%20Como%20Dominar%20Seu%20Pior%20Advers%C3%A1rio.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>O Ego É Seu Inimigo. Como Dominar Seu Pior Adversário</span></span>
+          </span>
+        </a>
+        <a class="rack-book" href="LivrosDev/Sprint%20-%20Autor%20(Jake%20Knapp).pdf" target="_blank" rel="noopener"
+          data-rack-book data-title="Sprint" data-author="Jake Knapp" data-category="Liderança e Cultura"
+          data-section="#Lideran%C3%A7a%20e%20Cultura" style="--spine-bg: #ece9e2; --spine-ink: #171717;"
+          aria-label="Sprint — abrir PDF">
+          <span class="book-3d">
+            <span class="book-face book-front"><img src="assets/img/Sprint.svg" alt="" width="206" height="300"></span>
+            <span class="book-face book-spine" aria-hidden="true"><span>Sprint</span></span>
+          </span>
+        </a>
+    </template>
 
     <div class="rack-detail" aria-live="polite">
       <h2 id="heroTitle" data-detail-title>Big Data - Técnicas e tecnologias para extração de valor dos dados</h2>
@@ -2412,7 +3422,7 @@
   </div>
 
   <footer class="page-footer">
-    Gerado em 07/11/2026, 23:23 a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
+    Gerado em 07/11/2026, 23:27 a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
   </footer>
 
   <script>
@@ -2465,6 +3475,34 @@
       });
     }
 
+    // Random themed shelf per visit: one category, or one book from each. Never the same theme twice in a row.
+    const spinePalette = [["#7b1e2b","#fff"],["#5f8fc2","#fff"],["#1c1c1c","#fff"],["#e2a72a","#171717"],["#5c4f78","#fff"],["#ece9e2","#171717"],["#2f5d50","#fff"],["#b5532f","#fff"]];
+    const shelves = [...document.querySelectorAll('template[data-shelf]')];
+    const shuffle = (list) => {
+      for (let i = list.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+      return list;
+    };
+    const shelfBooks = (template) => [...template.content.children].map((node) => node.cloneNode(true));
+    let lastTheme = null;
+    try { lastTheme = localStorage.getItem('bibliotecadev-shelf'); } catch {}
+    const themes = ['mix', ...shelves.map((template) => template.dataset.shelf)].filter((theme) => theme !== lastTheme);
+    const theme = themes[Math.floor(Math.random() * themes.length)];
+    try { localStorage.setItem('bibliotecadev-shelf', theme); } catch {}
+
+    const shelf = theme === 'mix'
+      ? shelves.map((template) => shuffle(shelfBooks(template))[0])
+      : shuffle(shelfBooks(shelves.find((template) => template.dataset.shelf === theme))).slice(0, 8);
+    shelf.forEach((book, index) => {
+      const [spine, ink] = spinePalette[index % spinePalette.length];
+      book.style.setProperty('--spine-bg', spine);
+      book.style.setProperty('--spine-ink', ink);
+    });
+    document.querySelector('[data-rack-row]').replaceChildren(...shelf);
+    document.querySelector('[data-shelf-label]').textContent = theme === 'mix' ? 'Um de cada categoria' : 'Estante · ' + theme;
+
     const rackBooks = [...document.querySelectorAll('[data-rack-book]')];
     const detailTitle = document.querySelector('[data-detail-title]');
     const detailMeta = document.querySelector('[data-detail-meta]');
@@ -2499,6 +3537,7 @@
     }
     rack.addEventListener('pointerdown', scrub);
     rack.addEventListener('pointermove', scrub);
+    activateBook(rackBooks[Math.floor(rackBooks.length / 2)]);
 
     // The target section may be hidden by an active filter or search.
     detailSection.addEventListener('click', () => {

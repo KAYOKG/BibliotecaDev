@@ -329,7 +329,20 @@ function renderRackBook(book, index, activeIndex) {
         </a>`;
 }
 
-function renderRack(featured) {
+// Every category becomes a themed shelf in an inert <template>; the page draws one at random per visit.
+function renderShelves(books) {
+  return categoryOrder
+    .map((category) => {
+      const shelf = books.filter((book) => book.category === category && book.cover);
+      if (!shelf.length) return '';
+      return `    <template data-shelf="${escapeHtml(category)}">${shelf.map((book, index) => renderRackBook(book, index, -1)).join('')}
+    </template>`;
+    })
+    .join('\n');
+}
+
+function renderRack(books) {
+  const featured = pickFeatured(books);
   const activeIndex = Math.floor(featured.length / 2);
   const active = featured[activeIndex];
 
@@ -339,11 +352,16 @@ function renderRack(featured) {
     <h1>BibliotecaDev</h1>
     <p class="rack-hint"><span class="hint-hover">Passe o mouse para virar a capa · clique para abrir o PDF</span><span class="hint-touch">Deslize o dedo pelos livros · toque para abrir o PDF</span></p>
 
+    <p class="rack-shelf" data-shelf-label>Um de cada categoria</p>
+
     <div class="rack" data-rack>
-      <div class="rack-row">
+      <div class="rack-row" data-rack-row>
+        <noscript>
 ${featured.map((book, index) => renderRackBook(book, index, activeIndex)).join('\n')}
+        </noscript>
       </div>
     </div>
+${renderShelves(books)}
 
     <div class="rack-detail" aria-live="polite">
       <h2 id="heroTitle" data-detail-title>${escapeHtml(active.title)}</h2>
@@ -676,6 +694,15 @@ function renderHtml(books) {
     @media (hover: none) {
       .hint-hover { display: none; }
       .hint-touch { display: inline; }
+    }
+
+    .rack-shelf {
+      margin: 34px 0 0;
+      color: #171717;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
     }
 
     .rack-hint {
@@ -1175,7 +1202,7 @@ function renderHtml(books) {
     </div>
   </header>
 
-${renderRack(pickFeatured(books))}
+${renderRack(books)}
 
   <div class="toolbar" id="categorias">
     <div class="toolbar-shell">
@@ -1253,6 +1280,34 @@ ${sections}
       });
     }
 
+    // Random themed shelf per visit: one category, or one book from each. Never the same theme twice in a row.
+    const spinePalette = ${JSON.stringify(spinePalette)};
+    const shelves = [...document.querySelectorAll('template[data-shelf]')];
+    const shuffle = (list) => {
+      for (let i = list.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [list[i], list[j]] = [list[j], list[i]];
+      }
+      return list;
+    };
+    const shelfBooks = (template) => [...template.content.children].map((node) => node.cloneNode(true));
+    let lastTheme = null;
+    try { lastTheme = localStorage.getItem('bibliotecadev-shelf'); } catch {}
+    const themes = ['mix', ...shelves.map((template) => template.dataset.shelf)].filter((theme) => theme !== lastTheme);
+    const theme = themes[Math.floor(Math.random() * themes.length)];
+    try { localStorage.setItem('bibliotecadev-shelf', theme); } catch {}
+
+    const shelf = theme === 'mix'
+      ? shelves.map((template) => shuffle(shelfBooks(template))[0])
+      : shuffle(shelfBooks(shelves.find((template) => template.dataset.shelf === theme))).slice(0, 8);
+    shelf.forEach((book, index) => {
+      const [spine, ink] = spinePalette[index % spinePalette.length];
+      book.style.setProperty('--spine-bg', spine);
+      book.style.setProperty('--spine-ink', ink);
+    });
+    document.querySelector('[data-rack-row]').replaceChildren(...shelf);
+    document.querySelector('[data-shelf-label]').textContent = theme === 'mix' ? 'Um de cada categoria' : 'Estante · ' + theme;
+
     const rackBooks = [...document.querySelectorAll('[data-rack-book]')];
     const detailTitle = document.querySelector('[data-detail-title]');
     const detailMeta = document.querySelector('[data-detail-meta]');
@@ -1287,6 +1342,7 @@ ${sections}
     }
     rack.addEventListener('pointerdown', scrub);
     rack.addEventListener('pointermove', scrub);
+    activateBook(rackBooks[Math.floor(rackBooks.length / 2)]);
 
     // The target section may be hidden by an active filter or search.
     detailSection.addEventListener('click', () => {
