@@ -6,6 +6,8 @@ const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const booksDir = path.join(rootDir, 'LivrosDev');
 const coversDir = path.join(rootDir, 'assets', 'img');
 const outputFile = path.join(rootDir, 'index.html');
+// Share previews need absolute URLs.
+const siteUrl = 'https://kayokg.github.io/BibliotecaDev/';
 
 const categoryOrder = [
   'Algoritmos e Fundamentos',
@@ -428,7 +430,23 @@ function renderHtml(books) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BibliotecaDev</title>
+  <title>BibliotecaDev — livros de tecnologia em PDF</title>
+  <meta name="description" content="${books.length} livros de programação, arquitetura, DevOps, cloud, dados, agilidade e carreira para ler em PDF, organizados por categoria.">
+  <link rel="canonical" href="${siteUrl}">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#ffffff">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="BibliotecaDev">
+  <meta property="og:title" content="BibliotecaDev — livros de tecnologia em PDF">
+  <meta property="og:description" content="${books.length} livros de programação, arquitetura, DevOps, dados e carreira, organizados por categoria.">
+  <meta property="og:url" content="${siteUrl}">
+  <meta property="og:image" content="${siteUrl}assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="BibliotecaDev: estante com lombadas coloridas de livros">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     :root {
       color-scheme: light;
