@@ -360,7 +360,9 @@
     }
 
     .rack-book.is-active .book-3d { transform: rotateY(0deg) scale(1.06); }
-    .rack-book:not(.is-active):hover .book-3d { transform: rotateY(66deg); }
+    @media (hover: hover) {
+      .rack-book:not(.is-active):hover .book-3d { transform: rotateY(66deg); }
+    }
 
     .book-face {
       position: absolute;
@@ -713,8 +715,12 @@
       .brand-sub, .github-link { font-size: 0.62rem; }
       .intro { padding: 52px 0 40px; }
       .intro h1 { font-size: 1.7rem; }
-      .rack { --cover-w: 158px; --cover-h: 230px; --thick: 38px; --rest: 64px; --fade: 16%; margin: 24px -14px 0; padding: 30px 0 60px; }
-      .rack-row { justify-content: flex-start; gap: 18px; padding-left: 20px; padding-right: 20px; }
+      /* All books fit the screen: no horizontal scroll, so a sideways swipe scrubs the rack. */
+      .rack { --cover-w: 36vw; --cover-h: 52vw; --thick: 4.5vw; --rest: 6.5vw; --fade: 2%; margin: 24px -14px 0; padding: 30px 0 60px; overflow: hidden; touch-action: pan-y; }
+      .rack-row { gap: 1.5vw; padding-left: 2vw; padding-right: 2vw; }
+      .book-3d { transform: rotateY(84deg); }
+      .book-spine { padding: 10px 0; }
+      .book-spine span { font-size: 0.5rem; letter-spacing: 0.1em; }
       .rack-actions { flex-direction: column; align-items: stretch; }
       .btn-solid, .btn-outline { min-width: 0; }
       .filter-row { gap: 24px; }
@@ -766,7 +772,7 @@
   <section class="intro" id="top" aria-labelledby="heroTitle">
     <span class="eyebrow">Leitura para quem constrói software</span>
     <h1>BibliotecaDev</h1>
-    <p class="rack-hint"><span class="hint-hover">Passe o mouse para virar a capa · clique para abrir o PDF</span><span class="hint-touch">Toque para virar a capa · toque de novo para abrir o PDF</span></p>
+    <p class="rack-hint"><span class="hint-hover">Passe o mouse para virar a capa · clique para abrir o PDF</span><span class="hint-touch">Deslize o dedo pelos livros · toque para abrir o PDF</span></p>
 
     <div class="rack" data-rack>
       <div class="rack-row">
@@ -2406,7 +2412,7 @@
   </div>
 
   <footer class="page-footer">
-    Gerado em 07/11/2026, 21:13 a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
+    Gerado em 07/11/2026, 23:23 a partir dos PDFs locais em <strong>LivrosDev</strong> · <a href="https://github.com/KAYOKG/BibliotecaDev" target="_blank" rel="noopener">Ver projeto no GitHub ↗</a>
   </footer>
 
   <script>
@@ -2464,7 +2470,6 @@
     const detailMeta = document.querySelector('[data-detail-meta]');
     const detailOpen = document.querySelector('[data-detail-open]');
     const detailSection = document.querySelector('[data-detail-section]');
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function activateBook(book) {
       if (book.classList.contains('is-active')) return;
@@ -2480,21 +2485,20 @@
         if (event.pointerType === 'mouse') activateBook(book);
       });
       book.addEventListener('focus', () => activateBook(book));
-      // Touch has no hover: the first tap turns the book, the second opens it.
-      book.addEventListener('click', (event) => {
-        if (book.classList.contains('is-active')) return;
-        event.preventDefault();
-        activateBook(book);
-        book.scrollIntoView({ block: 'nearest', inline: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
-      });
     }
 
-    // On narrow screens start with the featured book centered in the scrollable rack.
+    // Touch scrub: sliding a finger across the rack turns the book under it, like hover.
+    // A plain tap still reaches the link and opens the PDF. Touch pointers are captured
+    // by the element they start on, so hit-test the finger position instead of event.target.
     const rack = document.querySelector('[data-rack]');
-    const startBook = rack.querySelector('.is-active');
-    const bookBox = startBook.getBoundingClientRect();
-    const rackBox = rack.getBoundingClientRect();
-    rack.scrollLeft += bookBox.left + bookBox.width / 2 - (rackBox.left + rackBox.width / 2);
+    function scrub(event) {
+      if (event.pointerType === 'mouse') return;
+      const hit = document.elementFromPoint(event.clientX, event.clientY);
+      const book = hit && hit.closest('[data-rack-book]');
+      if (book) activateBook(book);
+    }
+    rack.addEventListener('pointerdown', scrub);
+    rack.addEventListener('pointermove', scrub);
 
     // The target section may be hidden by an active filter or search.
     detailSection.addEventListener('click', () => {
