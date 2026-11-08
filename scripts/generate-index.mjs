@@ -692,9 +692,13 @@ function renderHtml(books) {
       --cover-h: 300px;
       --thick: 46px;
       --rest: 84px;
+      --fade: 7%;
       position: relative;
       margin: 40px auto 0;
-      padding: 34px 32px 26px;
+      padding: 34px 32px 72px;
+      /* fade every edge into the page so the clipped scroll area never shows a seam */
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 var(--fade), #000 calc(100% - var(--fade)), transparent);
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -777,7 +781,7 @@ function renderHtml(books) {
       width: 100%;
       transform: translateZ(calc(var(--thick) / 2));
       background: #f1f1f1;
-      box-shadow: 0 18px 30px rgba(0, 0, 0, 0.18);
+      box-shadow: 0 22px 36px -14px rgba(0, 0, 0, 0.24), 0 6px 14px -8px rgba(0, 0, 0, 0.12);
     }
 
     .book-front img {
@@ -830,7 +834,7 @@ function renderHtml(books) {
 
     .rack-detail {
       max-width: 820px;
-      margin: 26px auto 0;
+      margin: -20px auto 0;
     }
 
     .rack-detail h2 {
@@ -1116,7 +1120,7 @@ function renderHtml(books) {
       .brand-sub, .github-link { font-size: 0.62rem; }
       .intro { padding: 52px 0 40px; }
       .intro h1 { font-size: 1.7rem; }
-      .rack { --cover-w: 158px; --cover-h: 230px; --thick: 38px; --rest: 64px; margin-top: 24px; padding: 30px 0 22px; }
+      .rack { --cover-w: 158px; --cover-h: 230px; --thick: 38px; --rest: 64px; --fade: 16%; margin: 24px -14px 0; padding: 30px 0 60px; }
       .rack-row { justify-content: flex-start; gap: 18px; padding-left: 20px; padding-right: 20px; }
       .rack-actions { flex-direction: column; align-items: stretch; }
       .btn-solid, .btn-outline { min-width: 0; }
