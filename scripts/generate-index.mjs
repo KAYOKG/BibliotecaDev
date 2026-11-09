@@ -1185,9 +1185,14 @@ function renderHtml(books) {
       .cover-link { height: 260px; }
     }
 
+    /* Phones keep two books per row: one full-width cover per screen made browsing slow. */
     @media (max-width: 430px) {
-      .book-grid { grid-template-columns: 1fr; }
-      .cover-link { height: 360px; }
+      .book-grid { gap: 28px 12px; padding-top: 26px; }
+      .cover-link { height: 230px; padding: 6px; }
+      .book-body { padding: 14px 2px 0; }
+      .book-body h3 { font-size: 0.86rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .book-body p { margin: 6px 0 12px; font-size: 0.62rem; }
+      .open-link { min-height: 40px; font-size: 0.68rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
